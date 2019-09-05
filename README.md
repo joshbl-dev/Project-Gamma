@@ -1,0 +1,2 @@
+# Project-Gamma
+IDLE GAME
