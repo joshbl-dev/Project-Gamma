@@ -14,3 +14,6 @@ require 'src/GUI/Menu'
 require 'src/GUI/Panel'
 require 'src/GUI/Selection'
 require 'src/GUI/Textbox'
+
+require 'src/Grid'
+require 'src/Cell'
