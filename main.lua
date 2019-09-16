@@ -5,7 +5,7 @@ WINDOW_WIDTH = 1280
 WINDOW_HEIGHT = 720
 
 -- size to emulate with push
-VIRTUAL_WIDTH = 432
+VIRTUAL_WIDTH = 430
 VIRTUAL_HEIGHT = 243
 
 
@@ -48,5 +48,5 @@ end
 
 function displayFPS()
     love.graphics.setColor(0, 255, 0, 255)
-    love.graphics.print('FPS: ' .. tostring(love.timer.getFPS()), 10, 10)
+    love.graphics.print('FPS: ' .. tostring(love.timer.getFPS()), 0, 0)
 end
