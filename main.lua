@@ -1,12 +1,12 @@
 require 'src/Dependencies'
 
 -- size of actual window
-WINDOW_WIDTH = 1280
-WINDOW_HEIGHT = 720
+WINDOW_WIDTH = 1000
+WINDOW_HEIGHT = 600
 
 -- size to emulate with push
-VIRTUAL_WIDTH = 432
-VIRTUAL_HEIGHT = 243
+VIRTUAL_WIDTH = 1000
+VIRTUAL_HEIGHT = 600
 
 
 
@@ -19,6 +19,14 @@ function love.load()
         resizable = true,
         vsync = true
     })
+
+    stateMachine = StateMachine{
+        ['start'] = function() return StartState() end,
+        ['play'] = function() return PlayState() end
+    }
+
+    stateMachine:change('start')
+
 end
 
 function love.resize(w, h)
@@ -38,15 +46,18 @@ function love.keyboard.wasPressed(key)
 end
 
 function love.update(dt)
+    stateMachine:update(dt)
 end
 
 function love.draw()
 	push:apply('start')
+    love.graphics.clear(0, 0, 255)
+    stateMachine:render()
 	displayFPS()
 	push:apply('end')
 end
 
 function displayFPS()
     love.graphics.setColor(0, 255, 0, 255)
-    love.graphics.print('FPS: ' .. tostring(love.timer.getFPS()), 10, 10)
+    love.graphics.print('FPS: ' .. tostring(love.timer.getFPS()), 0, 0)
 end
