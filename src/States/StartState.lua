@@ -11,7 +11,9 @@ end
 
 function StartState:update(dt)
 	self.button:update(dt)
-	--stateMachine:change("play")
+	if self.button:isPressed() then
+		stateMachine:change("play")
+	end
 end
 
 function StartState:render()
