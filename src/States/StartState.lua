@@ -7,10 +7,12 @@ function StartState:init()
 	}
 end
 
-function StartState:update()
+function StartState:update(dt)
+	self.grid:update(dt)
 end
 
 function StartState:render()
+	self.grid:render()
 end
 
 
