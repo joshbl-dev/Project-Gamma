@@ -7,9 +7,12 @@ WINDOW_HEIGHT = 600
 -- size to emulate with push
 VIRTUAL_WIDTH = 430
 VIRTUAL_HEIGHT = 243
+
 VIRTUAL_WIDTH = 1000
 VIRTUAL_HEIGHT = 600
 
+VIRTUAL_WIDTH = 1000
+VIRTUAL_HEIGHT = 600
 
 
 
@@ -54,7 +57,7 @@ end
 
 function love.draw()
 	push:apply('start')
-    love.graphics.clear(0, 0, 255)
+    love.graphics.clear(255, 255, 255)
     stateMachine:render()
 	displayFPS()
 	push:apply('end')
