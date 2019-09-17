@@ -10,10 +10,7 @@ require 'src/States/StartState'
 require 'src/States/PlayState'
 
 -- GUI
-require 'src/GUI/Menu'
-require 'src/GUI/Panel'
-require 'src/GUI/Selection'
-require 'src/GUI/Textbox'
+require 'src/GUI/Button'
 
 require 'src/Grid'
 require 'src/Cell'
