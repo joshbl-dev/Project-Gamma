@@ -7,7 +7,7 @@ function Grid:init(defs)
 	for i = 1, self.rows, 1 do
 		self.cells[i] = {}
 		for j = 1, self.cols, 1 do
-			self.cells[i][j] = Cell{
+			self.cells[i][j] = Cell {
 				x = (VIRTUAL_WIDTH * .85) / 5 * (j - 1) + VIRTUAL_WIDTH * .15,
 				y = (VIRTUAL_HEIGHT * .85) / 5 * (i - 1) + VIRTUAL_HEIGHT * .15,
 				width = (VIRTUAL_WIDTH - VIRTUAL_WIDTH * .15) / 5,

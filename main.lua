@@ -52,13 +52,13 @@ end
 
 function love.draw()
 	push:apply('start')
-    love.graphics.clear(255, 255, 255)
+    love.graphics.clear(colors['white'])
     stateMachine:render()
 	displayFPS()
 	push:apply('end')
 end
 
 function displayFPS()
-    love.graphics.setColor(0, 255, 0, 255)
+    love.graphics.setColor(colors['black'])
     love.graphics.print('FPS: ' .. tostring(love.timer.getFPS()), 0, 0)
 end

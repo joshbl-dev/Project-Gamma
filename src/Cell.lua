@@ -5,7 +5,7 @@ function Cell:init(defs)
 	self.y = defs.y
 	self.width = defs.width
 	self.height = defs.height
-	self.color = {137, 137, 137, 255} -- gray
+	self.color = colors['gray'] -- gray
 	self.border = "line"
 end
 
@@ -13,13 +13,13 @@ function Cell:update(dt)
 	local x, y = love.mouse.getPosition()
 	if x > self.x and x < self.x + self.width and y > self.y and y < self.y + self.height then
 		if love.mouse.isDown(1) then
-			self.color = {65, 78, 150, 255}
+			self.color = colors['green']
 		else
-			self.color = {114, 59, 135, 255}
+			self.color = colors['purple']
 		end
 		self.border = "fill"
 	else
-		self. color = {137, 137, 137, 255} -- gray
+		self. color = colors['gray'] -- gray
 		self.border = "line"
 	end
 end
