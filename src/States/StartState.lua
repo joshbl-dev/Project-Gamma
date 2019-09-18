@@ -11,7 +11,7 @@ end
 
 function StartState:update(dt)
 	self.button:update(dt)
-	if self.button:isPressed() then
+	if self.button.pressed then
 		stateMachine:change("play")
 	end
 end

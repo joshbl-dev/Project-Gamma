@@ -40,14 +40,4 @@ function Button:render()
     love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
 end
 
-function Button:isPressed()
-    local x, y = love.mouse.getPosition()
-    if x > self.x and x < self.x + self.width and y > self.y and y < self.y + self.height then
-        if love.mouse.isDown(1) then 
-            return true
-        end
-    end
-    return false
-end
-
 
