@@ -6,4 +6,11 @@ colors = {
 		  	['black'] = {10, 9, 8, 255},
 		  	['green'] = {0, 227, 72, 255},
 		  	['white'] = {255, 255, 255, 255}
-		  }
+		 }
+
+fonts = {
+			['papyrus'] = "/fonts/PAPYRUS.ttf",
+			['skia'] = "/fonts/Skia_Regular.ttf",
+			['stsong'] = "/fonts/chinese.stsong.ttf",
+			['noteworthy'] = "/fonts/Noteworthy-Lt.ttf"
+		}
