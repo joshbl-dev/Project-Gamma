@@ -1,11 +1,12 @@
 
 Button = Class{}
 
-function Button:init(x, y, width, height)
+function Button:init(x, y, width, height, text)
     self.x = x
     self.y = y
     self.width = width
     self.height = height
+    self.text = text
 
     self.pressed = false
     self.hovering = false
@@ -37,7 +38,10 @@ function Button:render()
     else
         love.graphics.setColor(colors['gray'])
     end
+    font = love.graphics.getFont()
     love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
+    love.graphics.setColor(colors["black"])
+    love.graphics.print(self.text, self.x + self.width / 2 - font:getWidth(self.text) / 2, self.y + self.height / 2 - font:getHeight(self.text) / 2)
 end
 
 

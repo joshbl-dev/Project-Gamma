@@ -1,23 +1,50 @@
 StartState = Class{__includes = BaseState}
 
 function StartState:init()
-	self.button = Button (
-		VIRTUAL_WIDTH / 2 - 50, 
-		VIRTUAL_HEIGHT / 2 - 50,
-		100,
-		100
-	)
+	local buttonWidth = 120
+	local buttonHeight = 50
+	self.buttons = {
+		["start"] = Button (
+		VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
+		VIRTUAL_HEIGHT / 2 - buttonHeight / 2 - 75,
+		buttonWidth,
+		buttonHeight,
+		"Start"),
+		["settings"] = Button (
+		VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
+		VIRTUAL_HEIGHT / 2 - buttonHeight / 2,
+		buttonWidth,
+		buttonHeight,
+		"Settings"),
+		["Quit"] = Button (
+		VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
+		VIRTUAL_HEIGHT / 2 - buttonHeight / 2 + 75,
+		buttonWidth,
+		buttonHeight,
+		"Quit")
+
+}
+
 end
 
 function StartState:update(dt)
-	self.button:update(dt)
-	if self.button.pressed then
-		stateMachine:change("play")
+	for i, button in pairs(self.buttons) do
+		button:update(dt)
+		if button.pressed then
+			if button.text == "Start" then
+				stateMachine:change("play")
+			elseif button.text == "Quit" then
+				love.event.quit()
+			end
+		end
+
 	end
 end
 
 function StartState:render()
-	self.button:render()
+	for i, button in pairs(self.buttons) do
+		button:render()
+	end
 end
 
 
