@@ -17,7 +17,7 @@ function love.load()
 
 	push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
         fullscreen = false,
-        resizable = true,
+        resizable = false,
         vsync = true
     })
 
@@ -27,6 +27,8 @@ function love.load()
     }
 
     stateMachine:change('start')
+
+    love.keyboard.keysPressed = {}
 
 end
 

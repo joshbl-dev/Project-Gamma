@@ -38,10 +38,11 @@ function Button:render()
     else
         love.graphics.setColor(colors['gray'])
     end
+    love.graphics.setFont(love.graphics.newFont(fonts["papyrus"], 20))
     font = love.graphics.getFont()
     love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
     love.graphics.setColor(colors["black"])
-    love.graphics.print(self.text, self.x + self.width / 2 - font:getWidth(self.text) / 2, self.y + self.height / 2 - font:getHeight(self.text) / 2)
+    love.graphics.print(self.text, math.floor(self.x + self.width / 2 - font:getWidth(self.text) / 2), math.floor(self.y + self.height / 2 - font:getHeight(self.text) / 2))
 end
 
 
