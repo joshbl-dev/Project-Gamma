@@ -5,25 +5,24 @@ function StartState:init()
 	local buttonHeight = 50
 	self.buttons = {
 		["start"] = Button (
-		VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
-		VIRTUAL_HEIGHT / 2 - buttonHeight / 2 - 75,
-		buttonWidth,
-		buttonHeight,
-		"Start"),
+			VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
+			VIRTUAL_HEIGHT / 2 - buttonHeight / 2 - 75,
+			buttonWidth,
+			buttonHeight,
+			"Start"),
 		["settings"] = Button (
-		VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
-		VIRTUAL_HEIGHT / 2 - buttonHeight / 2,
-		buttonWidth,
-		buttonHeight,
-		"Settings"),
+			VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
+			VIRTUAL_HEIGHT / 2 - buttonHeight / 2,
+			buttonWidth,
+			buttonHeight,
+			"Settings"),
 		["Quit"] = Button (
-		VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
-		VIRTUAL_HEIGHT / 2 - buttonHeight / 2 + 75,
-		buttonWidth,
-		buttonHeight,
-		"Quit")
-
-}
+			VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
+			VIRTUAL_HEIGHT / 2 - buttonHeight / 2 + 75,
+			buttonWidth,
+			buttonHeight,
+			"Quit")
+	}
 
 end
 
@@ -33,6 +32,8 @@ function StartState:update(dt)
 		if button.pressed then
 			if button.text == "Start" then
 				stateMachine:change("play")
+			elseif button.text == "Settings" then
+				stateMachine:change("settings")
 			elseif button.text == "Quit" then
 				love.event.quit()
 			end

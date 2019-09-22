@@ -23,7 +23,8 @@ function love.load()
 
     stateMachine = StateMachine{
         ['start'] = function() return StartState() end,
-        ['play'] = function() return PlayState() end
+        ['play'] = function() return PlayState() end,
+        ['settings'] = function() return SettingsState() end
     }
 
     stateMachine:change('start')

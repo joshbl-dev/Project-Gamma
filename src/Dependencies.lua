@@ -8,6 +8,7 @@ require 'src/StateMachine'
 require 'src/States/BaseState'
 require 'src/States/StartState'
 require 'src/States/PlayState'
+require 'src/States/SettingsState'
 
 -- GUI
 require 'src/GUI/Button'
