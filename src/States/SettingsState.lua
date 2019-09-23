@@ -33,6 +33,9 @@ function SettingsState:update(dt)
 end
 
 function SettingsState:render()
+	for i, button in pairs(self.buttons) do
+		button:render()
+	end
 end
 
 

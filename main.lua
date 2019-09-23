@@ -9,6 +9,10 @@ WINDOW_HEIGHT = 600
 VIRTUAL_WIDTH = 1000
 VIRTUAL_HEIGHT = 600
 
+-- current font being used
+
+currFont = fonts["papyrus"]
+
 
 
 function love.load()
