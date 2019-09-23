@@ -5,10 +5,15 @@ function SettingsState:init()
 	local buttonHeight = 50
 	self.buttons = {
 		["font"] = Button (VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
-			VIRTUAL_HEIGHT / 2 - buttonHeight / 2 - 75,
+			VIRTUAL_HEIGHT / 2 - buttonHeight / 2 - 40,
 			buttonWidth,
 			buttonHeight,
-			"Font")
+			"Font"),
+		["back"] = Button (VIRTUAL_WIDTH / 2 - buttonWidth / 2,
+			VIRTUAL_HEIGHT / 2 - buttonHeight / 2 + 40,
+			buttonWidth,
+			buttonHeight,
+			"Back")
 	}
 
 end
@@ -27,6 +32,8 @@ function SettingsState:update(dt)
 				elseif currFont == fonts["noteworthy"] then
 					currFont = fonts["papyrus"]
 				end
+			elseif button.text == "Back" then
+				stateMachine:change("start")
 			end
 		end
 	end
