@@ -21,7 +21,7 @@ end
 function SettingsState:update(dt)
 	for i, button in pairs(self.buttons) do
 		button:update(dt)
-		if button.pressed then
+		if button.clickable.pressed then
 			if button.text == "Font" then
 				if currFont == fonts["papyrus"] then
 					currFont = fonts["skia"]
