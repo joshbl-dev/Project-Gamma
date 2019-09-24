@@ -22,7 +22,7 @@ function Button:render()
         love.graphics.setColor(colors['gray'])
     end
     love.graphics.rectangle("fill", self.clickable.x, self.clickable.y, self.clickable.width, self.clickable.height)
-    love.graphics.setFont(love.graphics.newFont(fonts["papyrus"], 20))
+    love.graphics.setFont(love.graphics.newFont(currFont, 20))
     font = love.graphics.getFont()
     if self.clickable.hovering then
         love.graphics.setColor(colors["white"])
