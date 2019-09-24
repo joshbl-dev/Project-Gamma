@@ -16,7 +16,7 @@ function StartState:init()
 			buttonWidth,
 			buttonHeight,
 			"Settings"),
-		["Quit"] = Button (
+		["quit"] = Button (
 			VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
 			VIRTUAL_HEIGHT / 2 - buttonHeight / 2 + 75,
 			buttonWidth,

@@ -9,6 +9,10 @@ WINDOW_HEIGHT = 600
 VIRTUAL_WIDTH = 1000
 VIRTUAL_HEIGHT = 600
 
+-- current font being used
+
+currFont = fonts["papyrus"]
+
 
 
 function love.load()
@@ -65,3 +69,28 @@ function displayFPS()
     love.graphics.setColor(colors['black'])
     love.graphics.print('FPS: ' .. tostring(love.timer.getFPS()), 0, 0)
 end
+
+--[[
+function Button:update(dt)
+	local x, y = love.mouse.getPosition()
+	clickedDown
+    if x > self.x and x < self.x + self.width and y > self.y and y < self.y + self.height then
+        if love.mouse.isDown(1) then
+            clickedDown = true
+        elseif clickedDown = true then
+        	self.pressed = true
+        	clickedDown = false
+        else
+        	self.pressed = false
+        end
+        self.hovering = true
+    else
+        self.hovering = false
+    end
+end
+]]
+
+
+
+
+
