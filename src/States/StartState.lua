@@ -29,7 +29,7 @@ end
 function StartState:update(dt)
 	for i, button in pairs(self.buttons) do
 		button:update(dt)
-		if button.pressed then
+		if button.clickable.pressed then
 			if button.text == "Start" then
 				stateMachine:change("play")
 			elseif button.text == "Settings" then

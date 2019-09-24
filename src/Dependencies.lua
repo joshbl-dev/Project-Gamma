@@ -11,7 +11,9 @@ require 'src/States/PlayState'
 require 'src/States/SettingsState'
 
 -- GUI
+require 'src/GUI/Clickable'
 require 'src/GUI/Button'
+
 
 require 'src/Grid'
 require 'src/Cell'
