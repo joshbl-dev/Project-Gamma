@@ -12,12 +12,10 @@ end
 
 function Button:render()
     self.clickable:render()
-    if self.clickable.hovering then
-        if self.clickable.pressed then
-            love.graphics.setColor(colors['blue'])
-        else
-            love.graphics.setColor(colors['black'])
-        end
+    if self.clickable.pressed then
+        love.graphics.setColor(colors['blue'])
+    elseif self.clickable.hovering then
+        love.graphics.setColor(colors['black'])
     else
         love.graphics.setColor(colors['gray'])
     end

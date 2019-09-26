@@ -20,8 +20,6 @@ function Clickable:update(dt)
         elseif self.holding and not love.mouse.isDown(1) then
             self.pressed = true
             self.holding = false
-        else
-            self.pressed = false
         end
         self.hovering = true
     else
