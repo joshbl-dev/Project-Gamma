@@ -65,7 +65,7 @@ end
 
 function love.update(dt)
 	time = time + dt
-	time = time/(5 * math.pow(10, -5))
+	--time = time/(5 * math.pow(10, -5))
 	minutes = math.floor(time/60)
 	while minutes >= 60 do
 		hours = hours + 1
