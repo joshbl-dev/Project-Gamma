@@ -14,3 +14,9 @@ fonts = {
 			['stsong'] = "fonts/chinese.stsong.ttf",
 			['noteworthy'] = "fonts/Noteworthy-Lt.ttf"
 		}
+
+DEFAULT_REV = 100 --default revenue of worker per month
+DEFAULT_EXP = 10 --default salary of worker per month
+DEFAULT_CUB = 200 --default cubicle cost
+DEFAULT_UP = 1000 --default upgrade worker cost
+DEFAULT_FLOOR = 2000 --default floor cost
