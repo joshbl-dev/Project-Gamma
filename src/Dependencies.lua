@@ -13,6 +13,7 @@ require 'src/States/SettingsState'
 -- GUI
 require 'src/GUI/Clickable'
 require 'src/GUI/Button'
+require 'src/GUI/UpgradeMenu'
 
 
 require 'src/Grid'
