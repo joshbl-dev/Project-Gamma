@@ -65,21 +65,14 @@ end
 
 function love.update(dt)
 	time = time + dt
-	--time = time/(5 * math.pow(10, -5))
-	minutes = math.floor(time/60)
-	while minutes >= 60 do
-		hours = hours + 1
-		minutes = minutes - 60
-	end
-	while hours >= 24 do
-		day = day + 1
-		hours = hours - 24
-	end
-	while day >= 30 do
-		month = month + 1
-		day = day - 30
-	end
-    stateMachine:update(dt)
+	local temp = time/(6.9*math.pow(10,-5))
+	month = math.floor(temp/(30 * 24 * 3600))
+	temp = temp % (30 * 24 * 3600)
+	day = math.floor(temp/(24 * 3600))
+	temp = temp % (24 * 3600)
+	hours = math.floor(temp/(3600))
+	temp = temp % 3600
+	minutes = math.floor(temp/60)
 end
 
 function love.draw()
