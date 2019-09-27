@@ -25,7 +25,6 @@ function Clickable:update(dt)
     else
         self.hovering = false
     end
-
 end
 
 function Clickable:render()

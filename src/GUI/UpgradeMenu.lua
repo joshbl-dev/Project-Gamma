@@ -13,6 +13,7 @@ function UpgradeMenu:init(defs)
     self.buttonHeight = font:getHeight(self.buttonText)
     self.button = Button(self.x + self.width - self.buttonWidth * 1.2, self.y + self.height - self.buttonHeight * 1.2,
                             self.buttonWidth * 1.1, self.buttonHeight * 1.1, self.buttonText)
+
 end
 
 function UpgradeMenu:update(dt)
@@ -22,5 +23,7 @@ end
 
 function UpgradeMenu:render()
     self.button:render()
-    love.graphics.print(self.type, self.x + self.width / 2 - font:getWidth(self.type) / 2, self.y + font:getHeight(self.type))
+    love.graphics.setColor(colors["black"])
+    love.graphics.print("$" .. self.cost, self.x, self.y + self.height - font:getHeight("$" .. self.cost))
+    love.graphics.print(self.type, self.x + self.width / 2 - font:getWidth(self.type) / 2, self.y)
 end

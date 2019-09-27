@@ -18,3 +18,5 @@ require 'src/GUI/UpgradeMenu'
 
 require 'src/Grid'
 require 'src/Cell'
+require 'src/Cubicle'
+require 'src/Worker'
