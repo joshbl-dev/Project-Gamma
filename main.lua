@@ -73,6 +73,7 @@ function love.update(dt)
 	hours = math.floor(temp/(3600))
 	temp = temp % 3600
 	minutes = math.floor(temp/60)
+    stateMachine:update(dt)
 end
 
 function love.draw()
