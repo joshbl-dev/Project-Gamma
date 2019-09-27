@@ -14,6 +14,7 @@ require 'src/States/SettingsState'
 require 'src/GUI/Clickable'
 require 'src/GUI/Button'
 require 'src/GUI/UpgradeMenu'
+require 'src/GUI/Clock'
 
 
 require 'src/Grid'
