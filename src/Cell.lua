@@ -14,7 +14,6 @@ function Cell:init(defs)
 		buttonText = "Buy"
 	}
 	self.cubicle = nil
-	self.worker = nil
 end
 
 function Cell:update(dt)
@@ -23,18 +22,20 @@ function Cell:update(dt)
 		self.buyCubicle:update(dt)
 
 		if self.buyCubicle.button.clickable.pressed then
-			self.cubicle = Cubicle()
+			self.cubicle = Cubicle({x = self.clickable.x, y = self.clickable.y, width = self.clickable.width, height = self.clickable.height})
 		end
+	end
+
+	if self.cubicle ~= nil then
+		self.cubicle:update(dt)
 	end
 end
 
 function Cell:render()
 	love.graphics.setColor(self.color)
 	love.graphics.rectangle(self.border, self.clickable.x, self.clickable.y, self.clickable.width, self.clickable.height)
-
 	if self.cubicle ~= nil then
-		love.graphics.setColor(colors["purple"])
-		love.graphics.rectangle("fill", self.clickable.x, self.clickable.y, self.clickable.width * .25, self.clickable.height * .75)
+		self.cubicle:render()
 	end
 
 	if self.clickable.pressed and self.cubicle == nil then

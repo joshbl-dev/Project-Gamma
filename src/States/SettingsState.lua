@@ -32,6 +32,7 @@ function SettingsState:update(dt)
 				elseif currFont == fonts["noteworthy"] then
 					currFont = fonts["papyrus"]
 				end
+				button.clickable.pressed = false
 			elseif button.text == "Back" then
 				stateMachine:change("start")
 			end
