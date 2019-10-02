@@ -3,8 +3,6 @@ Clock = Class{}
 
 
 
-local time = 0
-
 function Clock:init(x, y)
 	self.x = x
 	self.y = y
@@ -15,7 +13,7 @@ function Clock:init(x, y)
 end
 
 function Clock:update(dt)
-	time = time + dt
+	local time = time + dt
 	local temp = time/(6.9*math.pow(10,-5))
 	self.month = math.floor(temp/(30 * 24 * 3600))
 	temp = temp % (30 * 24 * 3600)

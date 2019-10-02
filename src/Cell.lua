@@ -23,6 +23,7 @@ function Cell:update(dt)
 
 		if self.buyCubicle.button.clickable.pressed then
 			self.cubicle = Cubicle({x = self.clickable.x, y = self.clickable.y, width = self.clickable.width, height = self.clickable.height})
+			self.cubicle.worker.bought = true
 		end
 	end
 
