@@ -13,21 +13,20 @@ function Cell:init(defs)
 		cost = 2000,
 		buttonText = "Buy"
 	}
-	self.cubicle = nil
+	self.cubicle = Cubicle({x = self.clickable.x, y = self.clickable.y, width = self.clickable.width, height = self.clickable.height})
 end
 
 function Cell:update(dt)
 	self.clickable:update(dt)
-	if self.clickable.pressed and self.cubicle == nil then
+	if self.clickable.pressed and self.cubicle.worker.bought == false then
 		self.buyCubicle:update(dt)
 
 		if self.buyCubicle.button.clickable.pressed then
-			self.cubicle = Cubicle({x = self.clickable.x, y = self.clickable.y, width = self.clickable.width, height = self.clickable.height})
-			self.cubicle.worker.bought = true
+			self.cubicle:buyWorker()
 		end
 	end
 
-	if self.cubicle ~= nil then
+	if self.cubicle.worker.bought == true then
 		self.cubicle:update(dt)
 	end
 end
@@ -35,11 +34,11 @@ end
 function Cell:render()
 	love.graphics.setColor(self.color)
 	love.graphics.rectangle(self.border, self.clickable.x, self.clickable.y, self.clickable.width, self.clickable.height)
-	if self.cubicle ~= nil then
+	if self.cubicle.worker.bought == true then
 		self.cubicle:render()
 	end
 
-	if self.clickable.pressed and self.cubicle == nil then
+	if self.clickable.pressed and self.cubicle.worker.bought == false then
 		self.buyCubicle:render()
 	end
 end

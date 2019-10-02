@@ -41,7 +41,7 @@ function love.load()
     love.keyboard.keysPressed = {}
 
     love.filesystem.setIdentity("Project-Gamma")
-    love.filesystem.remove("save-data.dat")
+    --love.filesystem.remove("save-data.dat")
 
 
 end
@@ -64,9 +64,6 @@ end
 
 function love.update(dt)
     stateMachine:update(dt)
-    if stateMachine.current == "play" then
-        saveData("Test")
-    end
 end
 
 function love.draw()
@@ -85,7 +82,7 @@ end
 
 function loadData()
     if not love.filesystem.exists('save-data.dat') then
-        love.filesystem.write('save-data.dat', "Test")
+        love.filesystem.write('save-data.dat', "EMPTY SAVE")
         return bitser.loadLoveFile('save-data.dat')
     else
         return bitser.loadLoveFile('save-data.dat')

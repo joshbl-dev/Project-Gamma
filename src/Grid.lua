@@ -3,6 +3,7 @@ Grid = Class{}
 function Grid:init(defs)
 	self.rows = defs.rows
 	self.cols = defs.cols
+	self.data = defs.data
 	self.cells = {}
 	for i = 1, self.rows, 1 do
 		self.cells[i] = {}
@@ -15,6 +16,15 @@ function Grid:init(defs)
 			}
 		end
 	end
+
+	if self.data ~= nil then
+		for i, row in pairs(self.cells) do
+			for j, cell in pairs(row) do
+				cell.cubicle = Cubicle({x = cell.clickable.x, y = cell.clickable.y, width = cell.clickable.width, height = cell.clickable.height, worker = data[j + (len(row) * (i - 1))]})
+			end
+		end
+	end
+
 end
 
 function Grid:update(dt)

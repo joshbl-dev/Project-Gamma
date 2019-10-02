@@ -1,9 +1,10 @@
 Floor = Class{}
 
-function Floor:init()
+function Floor:init(data)
 	self.grid = Grid{
 		rows = 5,
-		cols = 5
+		cols = 5,
+		data = data
 	}
 end
 
