@@ -33,7 +33,7 @@ function StartState:update(dt)
 
 		if button.clickable.pressed then
 			if button.text == "Start" then
-				stateMachine:change("play")
+				stateMachine:change("play", loadData())
 			elseif button.text == "Settings" then
 				stateMachine:change("settings")
 			elseif button.text == "Quit" then

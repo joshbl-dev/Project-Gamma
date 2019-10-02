@@ -22,6 +22,8 @@ function love.load()
 	love.graphics.setDefaultFilter('nearest', 'nearest')
 	love.window.setTitle('Project Gamma')
 
+
+
 	push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
         fullscreen = false,
         resizable = false,
@@ -37,6 +39,10 @@ function love.load()
     stateMachine:change('start')
 
     love.keyboard.keysPressed = {}
+
+    love.filesystem.setIdentity("Project-Gamma")
+    love.filesystem.remove("save-data.dat")
+
 
 end
 
@@ -58,6 +64,9 @@ end
 
 function love.update(dt)
     stateMachine:update(dt)
+    if stateMachine.current == "play" then
+        saveData("Test")
+    end
 end
 
 function love.draw()
@@ -74,3 +83,15 @@ function displayFPS()
 end
 
 
+function loadData()
+    if not love.filesystem.exists('save-data.dat') then
+        love.filesystem.write('save-data.dat', "Test")
+        return bitser.loadLoveFile('save-data.dat')
+    else
+        return bitser.loadLoveFile('save-data.dat')
+    end
+end
+
+function saveData(data)
+    bitser.dumpLoveFile('save-data.dat', data)
+end

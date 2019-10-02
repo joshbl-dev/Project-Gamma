@@ -1,5 +1,6 @@
 Class = require 'lib/class'
 push = require 'lib/push'
+bitser = require 'lib/bitser'
 
 require 'src/constants'
 require 'src/StateMachine'
@@ -16,7 +17,7 @@ require 'src/GUI/Button'
 require 'src/GUI/UpgradeMenu'
 require 'src/GUI/Clock'
 
-
+require 'src/Floor'
 require 'src/Grid'
 require 'src/Cell'
 require 'src/Cubicle'

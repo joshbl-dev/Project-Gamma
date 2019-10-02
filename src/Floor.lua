@@ -1,0 +1,16 @@
+Floor = Class{}
+
+function Floor:init()
+	self.grid = Grid{
+		rows = 5,
+		cols = 5
+	}
+end
+
+function Floor:update(dt)
+	self.grid:update(dt)
+end
+
+function Floor:render()
+	self.grid:render()
+end
