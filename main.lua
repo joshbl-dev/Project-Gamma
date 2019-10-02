@@ -36,14 +36,14 @@ function love.load()
         ['settings'] = function() return SettingsState() end
     }
 
+    loadData()
     stateMachine:change('start')
 
     love.keyboard.keysPressed = {}
 
     love.filesystem.setIdentity("Project-Gamma")
+
     --love.filesystem.remove("save-data.dat")
-
-
 end
 
 function love.resize(w, h)
@@ -79,12 +79,12 @@ function displayFPS()
     love.graphics.print('FPS: ' .. tostring(love.timer.getFPS()), 0, 0)
 end
 
-
 function loadData()
     if not love.filesystem.exists('save-data.dat') then
-        love.filesystem.write('save-data.dat', "EMPTY SAVE")
-        return bitser.loadLoveFile('save-data.dat')
+        newGame = true
+        print("New Game")
     else
+        newGame = false
         return bitser.loadLoveFile('save-data.dat')
     end
 end

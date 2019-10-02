@@ -1,11 +1,18 @@
 Floor = Class{}
 
-function Floor:init(data)
-	self.grid = Grid{
-		rows = 5,
-		cols = 5,
-		data = data
-	}
+function Floor:init(workerData)
+	if not newGame then
+		self.grid = Grid {
+			rows = 5,
+			cols = 5,
+			workerData = workerData
+		}
+	else
+		self.grid = Grid {
+			rows = 5,
+			cols = 5
+		}
+	end
 end
 
 function Floor:update(dt)

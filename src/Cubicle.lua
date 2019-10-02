@@ -5,20 +5,17 @@ function Cubicle:init(defs)
 	self.y = defs.y
 	self.width = defs.width
 	self.height = defs.height
-	self.worker = Worker()
-	if defs.worker then
-		buyWorker()
-	end
+	self.worker = Worker(defs)
 end
 
 function Cubicle:update(dt)
-	if self.worker.bought then
+	if self.worker.purchased then
 		self.worker:update(dt)
 	end
 end
 
 function Cubicle:render()
-	if self.worker.bought then
+	if self.worker.purchased then
 		self.worker:render()
 	end
 	love.graphics.setColor(colors["purple"])
@@ -26,6 +23,5 @@ function Cubicle:render()
 end
 
 function Cubicle:buyWorker()
-	self.worker = Worker({x = self.x, y = self.y, width = self.width, height = self.height})
-	self.worker.bought = true
+	self.worker.purchased = true
 end
