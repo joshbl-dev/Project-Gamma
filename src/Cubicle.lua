@@ -9,7 +9,9 @@ function Cubicle:init(defs)
 end
 
 function Cubicle:update(dt)
-	self.worker:update(dt)
+	if self.worker.bought == true then
+		self.worker:update(dt)
+	end
 end
 
 function Cubicle:render()
