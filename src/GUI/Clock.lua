@@ -1,10 +1,9 @@
 Clock = Class{}
 
-local time = 0
-
 function Clock:init(x, y)
 	self.x = x
 	self.y = y
+	self.time = 0 --real life time
 	self.month = 0 --once month reaches 12 it loops back to 0
 	self.day = 0 --once day reaches 30, set day to 0 and increment month by 1
 	self.hours = 0 --once hour reaches 24, set hour to 0 and increment day by 1
@@ -12,8 +11,8 @@ function Clock:init(x, y)
 end
 
 function Clock:update(dt)
-	time = time + dt
-	local temp = time/(6.9*math.pow(10,-5))
+	self.time = self.time + dt
+	local temp = self.time/(6.9*math.pow(10,-5)) --scale to in-game time
 	self.month = math.floor(temp/(30 * 24 * 3600))
 	temp = temp % (30 * 24 * 3600)
 	self.day = math.floor(temp/(24 * 3600))
