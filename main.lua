@@ -36,7 +36,6 @@ function love.load()
         ['settings'] = function() return SettingsState() end
     }
 
-    loadData()
     stateMachine:change('start')
 
     love.keyboard.keysPressed = {}
@@ -81,6 +80,7 @@ end
 
 function loadData()
     if not love.filesystem.exists('save-data.dat') then
+        saveData("")
         newGame = true
         print("New Game")
     else

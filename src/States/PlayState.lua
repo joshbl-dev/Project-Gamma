@@ -16,6 +16,7 @@ function PlayState:enter(saveData)
 			table.insert(self.floors, Floor(floor))
 		end
 	end
+	self:saveFloor()
 end
 
 function PlayState:update(dt)
@@ -56,6 +57,18 @@ function PlayState:render()
 	self.clock:render()
 end
 
-
+function PlayState:saveFloor()
+	local floorsData = {}
+		for i, floor in pairs(self.floors) do
+			local floorData = {}
+			for j, row in pairs(floor.grid.cells) do
+				for i, cell in pairs(row) do
+					table.insert(floorData, cell:getData()) -- insert worker into workerData table (containing all workers on the floor)
+			end
+		end
+		table.insert(floorsData, floorData)
+	end
+		saveData(floorsData)
+end
 
 
