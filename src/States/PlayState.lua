@@ -5,7 +5,7 @@ function PlayState:init()
 		self.floors = {Floor()}
 	end
 	self.tempMenu = Button(0, 50, 120, 50, "Menu")
-	self.clock = Clock(VIRTUAL_WIDTH / 2, 0)
+	self.clock = Clock(VIRTUAL_WIDTH / 2, 0, true, 0)
 end
 
 function PlayState:enter(saveData)

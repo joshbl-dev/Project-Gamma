@@ -6,7 +6,7 @@ function Worker:init(defs)
 	self.width = defs.width
 	self.height = defs.height
 	self.size = 10
-	self.wclock = Clock(self.x, self.y + 10)
+	self.wclock = Clock(self.x, self.y + 10, true, 0)
 	self.salary = defs.worker[1] -- salary
 	self.purchased = defs.worker[2] -- purchased
 	self.timeEmployed = defs.worker[3] -- timeEmployed
