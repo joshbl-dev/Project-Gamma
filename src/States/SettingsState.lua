@@ -5,15 +5,20 @@ function SettingsState:init()
 	local buttonHeight = 50
 	self.buttons = {
 		["font"] = Button (VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
-			VIRTUAL_HEIGHT / 2 - buttonHeight / 2 - 40,
+			VIRTUAL_HEIGHT / 2 - buttonHeight / 2 - 75,
 			buttonWidth,
 			buttonHeight,
 			"Font"),
 		["back"] = Button (VIRTUAL_WIDTH / 2 - buttonWidth / 2,
-			VIRTUAL_HEIGHT / 2 - buttonHeight / 2 + 40,
+			VIRTUAL_HEIGHT / 2 - buttonHeight / 2 + 75,
 			buttonWidth,
 			buttonHeight,
-			"Back")
+			"Back"),
+		["reset"] = Button (VIRTUAL_WIDTH / 2 - buttonWidth / 2,
+			VIRTUAL_HEIGHT / 2 - buttonHeight / 2,
+			buttonWidth,
+			buttonHeight,
+			"Reset")
 	}
 
 end
