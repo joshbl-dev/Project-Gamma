@@ -24,6 +24,6 @@ function Worker:render()
 	if self.purchased then
 		love.graphics.setColor(colors["green"])
 		love.graphics.circle("fill", self.x + self.width * .25 + self.size, self.y + self.height * .75 / 2, self.size)
-		self.wclock:render()
+		--self.wclock:render()
 	end
 end

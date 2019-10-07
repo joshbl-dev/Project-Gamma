@@ -6,6 +6,7 @@ function PlayState:init()
 	end
 	self.tempMenu = Button(0, 50, 120, 50, "Menu")
 	self.clock = Clock(VIRTUAL_WIDTH / 2, 0, true, 0)
+	self.saveClock = Clock(-100, -100, false, 0)
 end
 
 function PlayState:enter(saveData)
@@ -25,6 +26,12 @@ function PlayState:update(dt)
 	for i, floor in pairs(self.floors) do
 		floor:update(dt)
 	end
+	self.saveClock:update(dt)
+	if self.saveClock.minutes > 0 then
+		self:saveFloor()
+		self.saveClock.time = 0
+	end
+
 
 	if love.keyboard.wasPressed("s") then
 		local floorsData = {}
