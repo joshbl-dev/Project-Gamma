@@ -80,9 +80,7 @@ end
 
 function loadData()
     if not love.filesystem.exists('save-data.dat') then
-        saveData("")
-        newGame = true
-        print("New Game")
+        saveReset()
     else
         newGame = false
         return bitser.loadLoveFile('save-data.dat')
@@ -91,4 +89,10 @@ end
 
 function saveData(data)
     bitser.dumpLoveFile('save-data.dat', data)
+end
+
+function saveReset()
+    saveData("")
+    newGame = true
+    print("New Game")
 end

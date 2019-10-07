@@ -45,6 +45,7 @@ function PlayState:update(dt)
 	self.tempMenu:update(dt)
 	self.clock:update(dt)
 	if self.tempMenu.clickable.pressed then
+		self:saveFloor()
 		stateMachine:change("start")
 	end
 end
