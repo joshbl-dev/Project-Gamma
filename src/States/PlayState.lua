@@ -17,6 +17,7 @@ function PlayState:enter(saveData)
 		end
 	end
 	self:saveFloor()
+	newGame = false
 end
 
 function PlayState:update(dt)

@@ -40,7 +40,10 @@ function SettingsState:update(dt)
 				button.clickable.pressed = false
 			elseif button.text == "Back" then
 				stateMachine:change("start")
+			elseif button.text == "Reset" then
+				saveReset()
 			end
+			button.clickable.pressed = false
 		end
 	end
 end
