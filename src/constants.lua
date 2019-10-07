@@ -15,8 +15,9 @@ fonts = {
 			['noteworthy'] = "fonts/Noteworthy-Lt.ttf"
 		}
 
-DEFAULT_REV = 100 --default revenue of worker per month
+DEFAULT_REV = 100/30 --default revenue of worker per day
 DEFAULT_EXP = 10 --default salary of worker per month
 DEFAULT_CUB = 200 --default cubicle cost
 DEFAULT_UP = 1000 --default upgrade worker cost
 DEFAULT_FLOOR = 2000 --default floor cost
+DEFAULT_GAME_MONEY = 2100 --money throughout game, starts at 2100
