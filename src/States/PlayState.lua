@@ -1,7 +1,7 @@
 PlayState = Class{__includes = BaseState}
 
 function PlayState:init()
-	self.floors = {Floor(true)}
+	self.floors = {Floor(true, 1)}
 	self.tempMenu = Button(0, 50, 120, 50, "Menu")
 	self.clock = Clock(VIRTUAL_WIDTH / 2, 0, true, 0)
 	self.saveClock = Clock(-100, -100, false, 0)
@@ -12,7 +12,7 @@ function PlayState:enter(saveData)
 		self.floors = {}
 		for i, floor in pairs(saveData) do
 			print(floor[1])
-			table.insert(self.floors, Floor(false, floor))
+			table.insert(self.floors, Floor(false, i, floor))
 		end
 	end
 	self:saveFloor()
