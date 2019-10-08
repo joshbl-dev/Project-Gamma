@@ -25,3 +25,11 @@ end
 function Cubicle:buyWorker()
 	self.worker.purchased = true
 end
+
+function Cubicle:hasWorker()
+	if self.worker.purchased then
+		return true
+	else
+		return false
+	end
+end
