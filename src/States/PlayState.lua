@@ -1,9 +1,7 @@
 PlayState = Class{__includes = BaseState}
 
 function PlayState:init()
-	--if newGame then
-		self.floors = {Floor(true)}
-	--end
+	self.floors = {Floor(true)}
 	self.tempMenu = Button(0, 50, 120, 50, "Menu")
 	self.clock = Clock(VIRTUAL_WIDTH / 2, 0, true, 0)
 	self.saveClock = Clock(-100, -100, false, 0)
