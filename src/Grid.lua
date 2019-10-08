@@ -1,27 +1,27 @@
 Grid = Class{}
 
-function Grid:init(defs)
+function Grid:init(newFloor, defs)
 	self.rows = defs.rows
 	self.cols = defs.cols
 	self.cells = {}
 	for i = 1, self.rows, 1 do
 		self.cells[i] = {}
 		for j = 1, self.cols, 1 do
-			if not newGame then
-				self.cells[i][j] = Cell {
+			if not newFloor then
+				self.cells[i][j] = Cell (newFloor, {
 					x = (VIRTUAL_WIDTH * .85) / 5 * (j - 1) + VIRTUAL_WIDTH * .15,
 					y = (VIRTUAL_HEIGHT * .85) / 5 * (i - 1) + VIRTUAL_HEIGHT * .15,
 					width = (VIRTUAL_WIDTH - VIRTUAL_WIDTH * .15) / 5,
 					height = (VIRTUAL_HEIGHT - VIRTUAL_HEIGHT * .15) / 5,
 					workerData = defs.workerData[(i - 1) * self.rows + j]
-				}
+				})
 			else
-				self.cells[i][j] = Cell {
+				self.cells[i][j] = Cell (newFloor, {
 					x = (VIRTUAL_WIDTH * .85) / 5 * (j - 1) + VIRTUAL_WIDTH * .15,
 					y = (VIRTUAL_HEIGHT * .85) / 5 * (i - 1) + VIRTUAL_HEIGHT * .15,
 					width = (VIRTUAL_WIDTH - VIRTUAL_WIDTH * .15) / 5,
 					height = (VIRTUAL_HEIGHT - VIRTUAL_HEIGHT * .15) / 5
-				}
+				})
 			end
 		end
 	end

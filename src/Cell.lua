@@ -1,6 +1,6 @@
 Cell = Class{}
 
-function Cell:init(defs)
+function Cell:init(newFloor, defs)
 	self.clickable = Clickable(defs.x, defs.y, defs.width, defs.height)
 	self.color = colors['gray']
 	self.border = "line"
@@ -13,7 +13,7 @@ function Cell:init(defs)
 		cost = 2000,
 		buttonText = "Buy"
 	}
-	if not newGame then
+	if not newFloor then
 		self.cubicle = Cubicle {x = self.clickable.x, y = self.clickable.y, width = self.clickable.width, height = self.clickable.height, worker = defs.workerData}
 	else
 		self.cubicle = Cubicle {x = self.clickable.x, y = self.clickable.y, width = self.clickable.width, height = self.clickable.height, worker = {1000, false, 0}}
