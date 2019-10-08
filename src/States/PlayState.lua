@@ -1,9 +1,9 @@
 PlayState = Class{__includes = BaseState}
 
 function PlayState:init()
-	if newGame then
-		self.floors = {Floor()}
-	end
+	--if newGame then
+		self.floors = {Floor(true)}
+	--end
 	self.tempMenu = Button(0, 50, 120, 50, "Menu")
 	self.clock = Clock(VIRTUAL_WIDTH / 2, 0, true, 0)
 	self.saveClock = Clock(-100, -100, false, 0)
@@ -14,7 +14,7 @@ function PlayState:enter(saveData)
 		self.floors = {}
 		for i, floor in pairs(saveData) do
 			print(floor[1])
-			table.insert(self.floors, Floor(floor))
+			table.insert(self.floors, Floor(false, floor))
 		end
 	end
 	self:saveFloor()
@@ -63,7 +63,7 @@ function PlayState:render()
 	end
 	self.tempMenu:render()
 	self.clock:render()
-	love.graphics.print("Money: $" .. (math.floor(money), 100, 0)
+	love.graphics.print("Money: $" .. (math.floor(money), 100, 0))
 end
 
 function PlayState:saveFloor()
