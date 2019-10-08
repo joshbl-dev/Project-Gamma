@@ -63,6 +63,7 @@ function PlayState:render()
 	end
 	self.tempMenu:render()
 	self.clock:render()
+	love.graphics.print("Money: $" .. (math.floor(money * 100)/100), 100, 0)
 end
 
 function PlayState:saveFloor()
