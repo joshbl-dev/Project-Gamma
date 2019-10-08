@@ -1,8 +1,7 @@
 Floor = Class{}
 
-local totalFloors = 0
 
-function Floor:init(newFloor, workerData)
+function Floor:init(newFloor, floorNumber, workerData)
 	if not newFloor then
 		self.grid = Grid (newFloor, {
 			rows = 5,
@@ -15,8 +14,7 @@ function Floor:init(newFloor, workerData)
 			cols = 5
 		})
 	end
-	totalFloors = totalFloors + 1
-	self.floorNumber = totalFloors
+	self.floorNumber = floorNumber
 	print(self.floorNumber)
 	self.grid.cells[1][1].cubicle:buyWorker()
 end

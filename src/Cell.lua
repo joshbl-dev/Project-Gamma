@@ -49,5 +49,5 @@ function Cell:render()
 end
 
 function Cell:getData()
-	return {self.cubicle.worker.salary, self.cubicle.worker.purchased, self.cubicle.worker.timeEmployed}
+	return {self.cubicle.worker.purchased, self.cubicle.worker.timeEmployed}
 end
