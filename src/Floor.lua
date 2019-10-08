@@ -13,6 +13,8 @@ function Floor:init(workerData)
 			cols = 5
 		}
 	end
+
+	self.grid.cells[1][1].cubicle:buyWorker()
 end
 
 function Floor:update(dt)
