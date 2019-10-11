@@ -14,10 +14,11 @@ end
 function PlayState:enter(saveData)
 	if not newGame then
 		self.floors = {}
-		for i, floor in pairs(saveData) do
+		for i, floor in pairs(saveData[1]) do
 			print(floor[1])
 			table.insert(self.floors, Floor(false, i, floor))
 		end
+		money = saveData[2]
 	end
 	self:saveFloor()
 	newGame = false
@@ -65,6 +66,7 @@ function PlayState:render()
 end
 
 function PlayState:saveFloor()
+	local data = {}
 	local floorsData = {}
 		for i, floor in pairs(self.floors) do
 			local floorData = {}
@@ -75,7 +77,9 @@ function PlayState:saveFloor()
 		end
 		table.insert(floorsData, floorData)
 	end
-		saveData(floorsData)
+		table.insert(data, floorsData)
+		table.insert(data, money)
+		saveData(data)
 end
 
 
