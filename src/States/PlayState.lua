@@ -19,6 +19,7 @@ function PlayState:enter(saveData)
 			table.insert(self.floors, Floor(false, i, floor))
 		end
 		money = saveData[2]
+		self.clock = Clock(VIRTUAL_WIDTH / 2, 0, true, saveData[3])
 	end
 	self:saveFloor()
 	newGame = false
@@ -79,6 +80,7 @@ function PlayState:saveFloor()
 	end
 		table.insert(data, floorsData)
 		table.insert(data, money)
+		table.insert(data, self.clock.time)
 		saveData(data)
 end
 
