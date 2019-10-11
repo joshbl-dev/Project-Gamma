@@ -10,7 +10,7 @@ function Cell:init(newFloor, defs)
 		width = self.clickable.width,
 		height = self.clickable.height,
 		type = "Cubicle",
-		cost = 2000,
+		cost = "" .. DEFAULT_CUB,
 		buttonText = "Buy"
 	}
 	if not newFloor then
@@ -26,8 +26,9 @@ function Cell:update(dt)
 	if self.clickable.pressed and not self.cubicle.worker.purchased then
 		self.buyCubicle:update(dt)
 
-		if self.buyCubicle.button.clickable.pressed then
+		if self.buyCubicle.button.clickable.pressed and self.cubicle.price <= money then
 			self.cubicle:buyWorker()
+			money = money - self.cubicle.price
 		end
 	end
 

@@ -6,6 +6,7 @@ function Cubicle:init(defs)
 	self.width = defs.width
 	self.height = defs.height
 	self.worker = Worker(defs)
+	self.price = DEFAULT_CUB
 end
 
 function Cubicle:update(dt)
