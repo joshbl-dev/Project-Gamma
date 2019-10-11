@@ -1,8 +1,9 @@
 
 Button = Class{}
 
-function Button:init(x, y, width, height, text)
-    self.clickable = Clickable(x, y, width, height)
+function Button:init(x, y, width, height, text, onClick)
+    self.clickable = Clickable(x, y, width, height, onClick)
+
     self.text = text
     self.textColor = "black"
     self.buttonColor = "gray"
@@ -11,16 +12,16 @@ end
 function Button:update(dt)
     self.clickable:update(dt)
 
-    if self.clickable.pressed then
+    if self.clickable:wasClicked() then
         self.buttonColor = "blue"
-    elseif self.clickable.hovering then
+    elseif self.clickable:isHovering() then
         self.buttonColor = "black"
     else
         self.buttonColor = "gray"
     end
 
 
-    if self.clickable.hovering then
+    if self.clickable:isHovering() then
         self.textColor = "white"
     else
         self.textColor = "black"
@@ -29,7 +30,6 @@ function Button:update(dt)
 end
 
 function Button:render()
-    self.clickable:render()
     love.graphics.setColor(colors[self.buttonColor])
     love.graphics.rectangle("fill", self.clickable.x, self.clickable.y, self.clickable.width, self.clickable.height)
     love.graphics.setFont(love.graphics.newFont(currFont, 20))

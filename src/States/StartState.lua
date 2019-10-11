@@ -9,19 +9,25 @@ function StartState:init()
 			VIRTUAL_HEIGHT / 2 - buttonHeight / 2 - 75,
 			buttonWidth,
 			buttonHeight,
-			"Start"),
+			"Start", function()
+				stateMachine:change("play", loadData())
+			end),
 		["settings"] = Button (
 			VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
 			VIRTUAL_HEIGHT / 2 - buttonHeight / 2,
 			buttonWidth,
 			buttonHeight,
-			"Settings"),
+			"Settings", function()
+				stateMachine:change("settings")
+			end),
 		["quit"] = Button (
 			VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
 			VIRTUAL_HEIGHT / 2 - buttonHeight / 2 + 75,
 			buttonWidth,
 			buttonHeight,
-			"Quit")
+			"Quit", function()
+				love.event.quit()
+			end)
 	}
 
 end
@@ -29,18 +35,6 @@ end
 function StartState:update(dt)
 	for i, button in pairs(self.buttons) do
 		button:update(dt)
-
-
-		if button.clickable.pressed then
-			if button.text == "Start" then
-				stateMachine:change("play", loadData())
-			elseif button.text == "Settings" then
-				stateMachine:change("settings")
-			elseif button.text == "Quit" then
-				love.event.quit()
-			end
-		end
-
 	end
 end
 

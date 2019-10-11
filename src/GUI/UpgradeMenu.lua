@@ -12,7 +12,7 @@ function UpgradeMenu:init(defs)
     self.buttonWidth = font:getWidth(self.buttonText)
     self.buttonHeight = font:getHeight(self.buttonText)
     self.button = Button(self.x + self.width - self.buttonWidth * 1.2, self.y + self.height - self.buttonHeight * 1.2,
-                            self.buttonWidth * 1.1, self.buttonHeight * 1.1, self.buttonText)
+                            self.buttonWidth * 1.1, self.buttonHeight * 1.1, self.buttonText, defs.onClick)
 
 end
 

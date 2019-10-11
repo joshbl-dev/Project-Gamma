@@ -2,7 +2,10 @@ PlayState = Class{__includes = BaseState}
 
 function PlayState:init()
 	self.floors = {Floor(true, 1)}
-	self.tempMenu = Button(0, 50, 120, 50, "Menu")
+	self.tempMenu = Button(0, 50, 120, 50, "Menu", function()
+		self:saveFloor()
+		stateMachine:change("start")
+	end)
 	self.clock = Clock(VIRTUAL_WIDTH / 2, 0, true, 0)
 	self.saveClock = Clock(-100, -100, false, 0)
 	money = DEFAULT_GAME_MONEY
@@ -50,10 +53,6 @@ function PlayState:update(dt)
 
 	self.tempMenu:update(dt)
 	self.clock:update(dt)
-	if self.tempMenu.clickable.pressed then
-		self:saveFloor()
-		stateMachine:change("start")
-	end
 end
 
 function PlayState:render()
