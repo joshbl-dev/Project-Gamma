@@ -38,8 +38,6 @@ function love.load()
     love.keyboard.keysPressed = {}
 
     love.filesystem.setIdentity("Project-Gamma")
-
-    --love.filesystem.remove("save-data.dat")
 end
 
 function love.resize(w, h)

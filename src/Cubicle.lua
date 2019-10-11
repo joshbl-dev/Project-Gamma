@@ -7,16 +7,17 @@ function Cubicle:init(defs)
 	self.height = defs.height
 	self.worker = Worker(defs)
 	self.price = DEFAULT_CUB
+	self.purchased = defs.worker[1]
 end
 
 function Cubicle:update(dt)
-	if self.worker.purchased then
+	if self.purchased then
 		self.worker:update(dt)
 	end
 end
 
 function Cubicle:render()
-	if self.worker.purchased then
+	if self.purchased then
 		self.worker:render()
 	end
 	love.graphics.setColor(colors["purple"])
@@ -24,11 +25,11 @@ function Cubicle:render()
 end
 
 function Cubicle:buyWorker()
-	self.worker.purchased = true
+	self.purchased = true
 end
 
 function Cubicle:hasWorker()
-	if self.worker.purchased then
+	if self.purchased then
 		return true
 	else
 		return false
