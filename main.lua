@@ -11,7 +11,7 @@ VIRTUAL_HEIGHT = 600
 
 -- current font being used
 
-currFont = fonts["papyrus"]
+currFont = fonts["skia"]
 
 
 
