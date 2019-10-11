@@ -13,7 +13,6 @@ VIRTUAL_HEIGHT = 600
 
 currFont = fonts["papyrus"]
 
-money = DEFAULT_GAME_MONEY
 
 
 function love.load()
