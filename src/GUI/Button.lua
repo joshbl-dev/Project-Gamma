@@ -3,7 +3,6 @@ Button = Class{}
 
 function Button:init(x, y, width, height, text, onClick)
     self.clickable = Clickable(x, y, width, height, onClick)
-
     self.text = text
     self.textColor = "black"
     self.buttonColor = "gray"

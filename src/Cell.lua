@@ -37,6 +37,13 @@ end
 function Cell:update(dt)
 	self.clickable:update(dt)
 	self.buyCubicle:update(dt)
+	if self.buyCubicle.button.clickable:isHovering() and money >= self.buyCubicle.cost then
+		self.buyCubicle.button.buttonColor = "green"
+	elseif self.buyCubicle.button.clickable:isHovering() and money < self.buyCubicle.cost then
+		self.buyCubicle.button.buttonColor = "red"
+	else
+		self.buyCubicle.button.buttonColor = "gray"
+	end
 
 	if self.cubicle.purchased then
 		self.cubicle:update(dt)
