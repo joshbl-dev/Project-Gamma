@@ -2,6 +2,7 @@ PlayState = Class{__includes = BaseState}
 
 function PlayState:init()
 	self.floors = {Floor(true, 1)}
+	self.floorChanger = FloorChanger(1)
 	self.tempMenu = Button(0, 50, 120, 50, "Menu", function()
 		self:saveFloor()
 		stateMachine:change("start")
@@ -55,9 +56,8 @@ function PlayState:update(dt)
 end
 
 function PlayState:render()
-	for i, floor in pairs(self.floors) do
-		floor:render()
-	end
+	self.floorChanger:render()
+	self.floors[self.floorChanger.currentFloor]:render()
 	self.clock:render()
 	self.tempMenu:render()
 	love.graphics.print("Money: $" .. (math.floor(money)), 100, 0)
