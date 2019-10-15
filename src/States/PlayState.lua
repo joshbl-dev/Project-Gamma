@@ -50,17 +50,16 @@ function PlayState:update(dt)
 	end
 
 
-
-	self.tempMenu:update(dt)
 	self.clock:update(dt)
+	self.tempMenu:update(dt)
 end
 
 function PlayState:render()
 	for i, floor in pairs(self.floors) do
 		floor:render()
 	end
-	self.tempMenu:render()
 	self.clock:render()
+	self.tempMenu:render()
 	love.graphics.print("Money: $" .. (math.floor(money)), 100, 0)
 end
 

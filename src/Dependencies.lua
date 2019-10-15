@@ -16,6 +16,7 @@ require 'src/GUI/Clickable'
 require 'src/GUI/Button'
 require 'src/GUI/UpgradeMenu'
 require 'src/GUI/Clock'
+require 'src/GUI/FloorChanger'
 
 require 'src/Floor'
 require 'src/Grid'

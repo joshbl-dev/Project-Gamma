@@ -21,16 +21,15 @@ function Cell:init(newFloor, defs)
 		width = self.clickable.width,
 		height = self.clickable.height,
 		type = "Cubicle",
-		cost = "" .. DEFAULT_CUB,
+		cost = self.cubicle.price,
 		buttonText = "Buy",
 		onClick = function() 
-			if self.cubicle.price <= money then
+			if self.buyCubicle:purchase() then
 				self.cubicle:buyWorker()
-				self.buyCubicle.upgrading = false
 				print("Purchased Cubicle")
-				money = money - self.cubicle.price
 			end
-		end
+		end,
+		timer = true
 	}
 end
 
