@@ -11,8 +11,8 @@ function UpgradeMenu:init(defs)
     self.buttonText = defs.buttonText
     self.buttonWidth = font:getWidth(self.buttonText)
     self.buttonHeight = font:getHeight(self.buttonText)
-    self.button = Button(self.x + self.width - self.buttonWidth * 1.2, self.y + self.height - self.buttonHeight * 1.2,
-                            self.buttonWidth * 1.1, self.buttonHeight * 1.1, self.buttonText, defs.onClick, "rect")
+    self.button = Button({x = self.x + self.width - self.buttonWidth * 1.2, y = self.y + self.height - self.buttonHeight * 1.2,
+                            width = self.buttonWidth * 1.1, height = self.buttonHeight * 1.1, text = self.buttonText, onClick = defs.onClick}, "rect")
     if defs.timer then
         self.timer = defs.timer
         self.clock = Clock(-100, -100, false, 0)

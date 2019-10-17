@@ -13,22 +13,22 @@ function StartState:init()
 			onClick = function()
 				stateMachine:change("play", loadData())
 			end}, "rect"),
-		["settings"] = Button (
-			VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
-			VIRTUAL_HEIGHT / 2 - buttonHeight / 2,
-			buttonWidth,
-			buttonHeight,
-			"Settings", function()
+		["settings"] = Button ({
+			x = VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
+			y = VIRTUAL_HEIGHT / 2 - buttonHeight / 2,
+			width = buttonWidth,
+			height = buttonHeight,
+			text = "Settings", onClick = function()
 				stateMachine:change("settings")
-			end, "rect"),
-		["quit"] = Button (
-			VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
-			VIRTUAL_HEIGHT / 2 - buttonHeight / 2 + 75,
-			buttonWidth,
-			buttonHeight,
-			"Quit", function()
+			end}, "rect"),
+		["quit"] = Button ({
+			x = VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
+			y = VIRTUAL_HEIGHT / 2 - buttonHeight / 2 + 75,
+			width = buttonWidth,
+			height = buttonHeight,
+			text = "Quit", onClick = function()
 				love.event.quit()
-			end, "rect")
+			end}, "rect")
 	}
 
 end
