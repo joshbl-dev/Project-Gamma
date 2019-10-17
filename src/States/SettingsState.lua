@@ -4,11 +4,11 @@ function SettingsState:init()
 	local buttonWidth = 120
 	local buttonHeight = 50
 	self.buttons = {
-		["font"] = Button (VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
-			VIRTUAL_HEIGHT / 2 - buttonHeight / 2 - 75,
-			buttonWidth,
-			buttonHeight,
-			"Font", function()
+		["font"] = Button ({ x = VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
+			y = VIRTUAL_HEIGHT / 2 - buttonHeight / 2 - 75,
+			width = buttonWidth,
+			height = buttonHeight,
+			text = "Font", onClick = function()
 				if currFont == fonts["papyrus"] then
 					currFont = fonts["skia"]
 				elseif currFont == fonts["skia"] then
@@ -18,21 +18,21 @@ function SettingsState:init()
 				elseif currFont == fonts["noteworthy"] then
 					currFont = fonts["papyrus"]
 				end
-			end, "rect"),
-		["back"] = Button (VIRTUAL_WIDTH / 2 - buttonWidth / 2,
-			VIRTUAL_HEIGHT / 2 - buttonHeight / 2 + 75,
-			buttonWidth,
-			buttonHeight,
-			"Back", function()
+			end}, "rect"),
+		["back"] = Button ({ x = VIRTUAL_WIDTH / 2 - buttonWidth / 2,
+			y = VIRTUAL_HEIGHT / 2 - buttonHeight / 2 + 75,
+			width = buttonWidth,
+			height = buttonHeight,
+			text = "Back", onClick = function()
 				stateMachine:change("start")
-			end, "rect"),
-		["reset"] = Button (VIRTUAL_WIDTH / 2 - buttonWidth / 2,
-			VIRTUAL_HEIGHT / 2 - buttonHeight / 2,
-			buttonWidth,
-			buttonHeight,
-			"Reset", function()
+			end}, "rect"),
+		["reset"] = Button ({ x = VIRTUAL_WIDTH / 2 - buttonWidth / 2,
+			y = VIRTUAL_HEIGHT / 2 - buttonHeight / 2,
+			width = buttonWidth,
+			height = buttonHeight,
+			text = "Reset", onClick = function()
 				saveReset()
-			end, "rect")
+			end}, "rect")
 	}
 
 end
