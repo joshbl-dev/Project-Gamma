@@ -50,7 +50,7 @@ function PlayState:update(dt)
 		saveData(floorsData)
 	end
 
-
+	self.floorChanger:update(dt)
 	self.clock:update(dt)
 	self.tempMenu:update(dt)
 end

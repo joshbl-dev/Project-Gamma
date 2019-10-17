@@ -9,21 +9,21 @@ function FloorChanger:init(totalFloors)
 	self.currentFloor = 1
 
 	self.upFloorBtn = Button({
-		verticies =  {VIRTUAL_WIDTH - 180, 35, VIRTUAL_WIDTH - 130, 10, VIRTUAL_WIDTH - 130, 60},
+		verticies =  {{35, VIRTUAL_HEIGHT - 180}, {10, VIRTUAL_HEIGHT - 130}, {60, VIRTUAL_HEIGHT - 130}},
 		onClick = function()
 			if self.currentFloor + 1 <= self.totalFloors then
 				self.currentFloor = self.currentFloor + 1
 			end
 		end
 	}, "triangle")
-	self.downFloorBtn = Button({
-		verticies =  {VIRTUAL_WIDTH - 180, 35, VIRTUAL_WIDTH - 130, 10, VIRTUAL_WIDTH - 130, 60},
-		onClick = function()
-			if self.currentFloor - 1 > 0 then
-				self.currentFloor = self.currentFloor - 1
-			end
-		end
-	}, "triangle")
+	-- self.downFloorBtn = Button({
+	-- 	verticies =  {VIRTUAL_WIDTH - 180, 35, VIRTUAL_WIDTH - 130, 10, VIRTUAL_WIDTH - 130, 60},
+	-- 	onClick = function()
+	-- 		if self.currentFloor - 1 > 0 then
+	-- 			self.currentFloor = self.currentFloor - 1
+	-- 		end
+	-- 	end
+	-- }, "triangle")
  
 	-- passing the table to the function as a second argument
 end
@@ -31,11 +31,11 @@ end
 function FloorChanger:update(dt)
 	self.buyMenu:update(dt)
 	self.upFloorBtn:update(dt)
-	self.downFloorBtn:update(dt)
+	--self.downFloorBtn:update(dt)
 end
 
 function FloorChanger:render()
 	self.buyMenu:render()
 	self.upFloorBtn:render()
-	self.downFloorBtn:render()
+	--self.downFloorBtn:render()
 end
