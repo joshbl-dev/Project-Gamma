@@ -39,7 +39,7 @@ function Button:render()
     love.graphics.setColor(colors[self.buttonColor])
     if self.shape == "rect" then
         love.graphics.rectangle("fill", self.clickable.x, self.clickable.y, self.clickable.width, self.clickable.height)
-    elseif self.shape = "triangle" then
+    elseif self.shape == "triangle" then
         love.graphics.polygon('fill', self.clickable.verticies)
     end
     love.graphics.setFont(love.graphics.newFont(currFont, 20))
