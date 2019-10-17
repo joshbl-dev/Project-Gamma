@@ -6,7 +6,7 @@ function PlayState:init()
 	self.tempMenu = Button(0, 50, 120, 50, "Menu", function()
 		self:saveFloor()
 		stateMachine:change("start")
-	end)
+	end, "rect")
 	self.clock = Clock(VIRTUAL_WIDTH / 2, 0, true, 0)
 	self.saveClock = Clock(-100, -100, false, 0)
 	money = DEFAULT_GAME_MONEY

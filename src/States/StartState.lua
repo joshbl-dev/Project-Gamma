@@ -11,7 +11,7 @@ function StartState:init()
 			buttonHeight,
 			"Start", function()
 				stateMachine:change("play", loadData())
-			end),
+			end, "rect"),
 		["settings"] = Button (
 			VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
 			VIRTUAL_HEIGHT / 2 - buttonHeight / 2,
@@ -19,7 +19,7 @@ function StartState:init()
 			buttonHeight,
 			"Settings", function()
 				stateMachine:change("settings")
-			end),
+			end, "rect"),
 		["quit"] = Button (
 			VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
 			VIRTUAL_HEIGHT / 2 - buttonHeight / 2 + 75,
@@ -27,7 +27,7 @@ function StartState:init()
 			buttonHeight,
 			"Quit", function()
 				love.event.quit()
-			end)
+			end, "rect")
 	}
 
 end

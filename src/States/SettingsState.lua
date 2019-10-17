@@ -18,21 +18,21 @@ function SettingsState:init()
 				elseif currFont == fonts["noteworthy"] then
 					currFont = fonts["papyrus"]
 				end
-			end),
+			end, "rect"),
 		["back"] = Button (VIRTUAL_WIDTH / 2 - buttonWidth / 2,
 			VIRTUAL_HEIGHT / 2 - buttonHeight / 2 + 75,
 			buttonWidth,
 			buttonHeight,
 			"Back", function()
 				stateMachine:change("start")
-			end),
+			end, "rect"),
 		["reset"] = Button (VIRTUAL_WIDTH / 2 - buttonWidth / 2,
 			VIRTUAL_HEIGHT / 2 - buttonHeight / 2,
 			buttonWidth,
 			buttonHeight,
 			"Reset", function()
 				saveReset()
-			end)
+			end, "rect")
 	}
 
 end
