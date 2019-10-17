@@ -80,5 +80,3 @@ function PlayState:saveFloor()
 		table.insert(data, self.clock.time)
 		saveData(data)
 end
-
-
