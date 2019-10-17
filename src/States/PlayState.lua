@@ -60,6 +60,7 @@ function PlayState:render()
 	self.floors[self.floorChanger.currentFloor]:render()
 	self.clock:render()
 	self.tempMenu:render()
+	love.graphics.setColor(colors["black"])
 	love.graphics.print("Money: $" .. (math.floor(money)), 100, 0)
 end
 
