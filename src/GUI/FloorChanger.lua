@@ -8,16 +8,34 @@ function FloorChanger:init(totalFloors)
 	self.totalFloors = totalFloors
 	self.currentFloor = 1
 
-	self.vertices = {VIRTUAL_WIDTH - 180, 35, VIRTUAL_WIDTH - 130, 10, VIRTUAL_WIDTH - 130, 60}
+	self.upFloorBtn = Button({
+		verticies =  {VIRTUAL_WIDTH - 180, 35, VIRTUAL_WIDTH - 130, 10, VIRTUAL_WIDTH - 130, 60},
+		onClick = function()
+			if self.currentFloor + 1 <= self.totalFloors then
+				self.currentFloor = self.currentFloor + 1
+			end
+		end
+	}, "triangle")
+	self.downFloorBtn = Button({
+		verticies =  {VIRTUAL_WIDTH - 180, 35, VIRTUAL_WIDTH - 130, 10, VIRTUAL_WIDTH - 130, 60},
+		onClick = function()
+			if self.currentFloor - 1 > 0 then
+				self.currentFloor = self.currentFloor - 1
+			end
+		end
+	}, "triangle")
  
 	-- passing the table to the function as a second argument
 end
 
-function FloorChanger:update()
-	
+function FloorChanger:update(dt)
+	self.buyMenu:update(dt)
+	self.upFloorBtn:update(dt)
+	self.downFloorBtn:update(dt)
 end
 
 function FloorChanger:render()
 	self.buyMenu:render()
-	love.graphics.polygon('fill', self.vertices)
+	self.upFloorBtn:render()
+	self.downFloorBtn:render()
 end
