@@ -1,8 +1,13 @@
 
 Button = Class{}
 
-function Button:init(x, y, width, height, text, onClick)
-    self.clickable = Clickable(x, y, width, height, onClick)
+function Button:init(defs, shape)
+    -- x, y, width, height, text, onClick, shape
+    if shape == "rect" then
+        self.clickable = Clickable(x, y, width, height, onClick)
+    elseif shape == "triangle" then
+        self.clickable = TriangleClickable()
+    end
     self.text = text
     self.textColor = "black"
     self.buttonColor = "gray"

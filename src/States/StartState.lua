@@ -4,14 +4,15 @@ function StartState:init()
 	local buttonWidth = 120
 	local buttonHeight = 50
 	self.buttons = {
-		["start"] = Button (
-			VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
-			VIRTUAL_HEIGHT / 2 - buttonHeight / 2 - 75,
-			buttonWidth,
-			buttonHeight,
-			"Start", function()
+		["start"] = Button ({
+			x = VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
+			y = VIRTUAL_HEIGHT / 2 - buttonHeight / 2 - 75,
+			width = buttonWidth,
+			height = buttonHeight,
+			text = "Start", 
+			onClick = function()
 				stateMachine:change("play", loadData())
-			end, "rect"),
+			end}, "rect"),
 		["settings"] = Button (
 			VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
 			VIRTUAL_HEIGHT / 2 - buttonHeight / 2,
