@@ -33,7 +33,7 @@ function PlayState:update(dt)
 		self.saveClock.time = 0
 	end
 
-	if love.keyboard.wasPressed("s") then
+	if love.keyboard.wasPressed("s") and #self.floorChanger.floors > 0 then
 		local floorsData = {}
 		for i, floor in pairs(self.floorChanger.floors) do
 			floor:update(dt)
