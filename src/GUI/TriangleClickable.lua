@@ -1,9 +1,13 @@
 TriangleClickable = Class{}
 
-function TriangleClickable:init(verticies, onClick)
+function TriangleClickable:init(verticies, onClick, floorNumber)
     self.verticies = verticies
     self.area = math.abs((self.verticies[2][1] - self.verticies[1][1])*(self.verticies[3][2] - self.verticies[1][2]) - (self.verticies[3][1] - self.verticies[1][1])*(self.verticies[2][2] - self.verticies[1][2]))
-
+    if floorNumber ~= nil then
+        self.floorNumber = floorNumber
+    else
+        self.floorNumber = nil
+    end
     self.onClick = onClick
 
     self.holding = false
@@ -11,11 +15,12 @@ function TriangleClickable:init(verticies, onClick)
 end
 
 function TriangleClickable:update(dt)
-    if self:wasClicked() then
-        print("Test")
-        self:onClick()
+    if self.floorNumber == nil or self.floorNumber == currentFloor then
+        if self:wasClicked() then
+            self:onClick()
+        end
+        self.holding = self:isHolding()
     end
-    self.holding = self:isHolding()
 end
 
 

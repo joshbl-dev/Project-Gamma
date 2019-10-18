@@ -1,11 +1,11 @@
 Cell = Class{}
 
-function Cell:init(newFloor, defs)
+function Cell:init(newFloor, defs, floorNumber)
 	self.clickable = Clickable(defs.x, defs.y, defs.width, defs.height, function()
 		if not self.cubicle.purchased then
 			self.buyCubicle.upgrading = true
 		end
-	end)
+	end, floorNumber)
 	self.color = colors['gray']
 	self.border = "line"
 
@@ -15,7 +15,7 @@ function Cell:init(newFloor, defs)
 		self.cubicle = Cubicle {x = self.clickable.x, y = self.clickable.y, width = self.clickable.width, height = self.clickable.height, worker = {false, 0}}
 	end
 
-	self.buyCubicle = UpgradeMenu {
+	self.buyCubicle = UpgradeMenu ({
 		x = self.clickable.x,
 		y = self.clickable.y,
 		width = self.clickable.width,
@@ -30,7 +30,7 @@ function Cell:init(newFloor, defs)
 			end
 		end,
 		timer = true
-	}
+	}, floorNumber)
 end
 
 

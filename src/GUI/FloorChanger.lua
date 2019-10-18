@@ -1,41 +1,63 @@
 FloorChanger = Class{}
 
-function FloorChanger:init(totalFloors)
-	self.buyMenu = UpgradeMenu {x = VIRTUAL_WIDTH / 2 - 25, y = VIRTUAL_HEIGHT / 2 - 25, width = 50, height = 50, type = "Floor",
+function FloorChanger:init()
+	self.floors = {}
+
+	self.buyMenu = UpgradeMenu ({x = 10, y = VIRTUAL_HEIGHT - 130, width = 50, height = 70, type = "Floor",
 								cost = DEFAULT_FLOOR, buttonText = "Buy", onClick = function() 
 									self.buyMenu:purchase()
-								end, timer = false}
-	self.totalFloors = totalFloors
-	self.currentFloor = 1
+									self:makeNewFloor()
+									self.buyMenu.upgrading = true
+								end, timer = false}, floorNumber)
+	self.buyMenu.upgrading = true
+	currentFloor = 1
 
 	self.upFloorBtn = Button({
 		verticies =  {{35, VIRTUAL_HEIGHT - 180}, {10, VIRTUAL_HEIGHT - 130}, {60, VIRTUAL_HEIGHT - 130}},
 		onClick = function()
-			if self.currentFloor + 1 <= self.totalFloors then
-				self.currentFloor = self.currentFloor + 1
+			if currentFloor + 1 <= #self.floors then
+				currentFloor = currentFloor + 1
 			end
 		end
 	}, "triangle")
-	-- self.downFloorBtn = Button({
-	-- 	verticies =  {VIRTUAL_WIDTH - 180, 35, VIRTUAL_WIDTH - 130, 10, VIRTUAL_WIDTH - 130, 60},
-	-- 	onClick = function()
-	-- 		if self.currentFloor - 1 > 0 then
-	-- 			self.currentFloor = self.currentFloor - 1
-	-- 		end
-	-- 	end
-	-- }, "triangle")
- 
-	-- passing the table to the function as a second argument
+
+
+	self.downFloorBtn = Button({
+		verticies =  {{35, VIRTUAL_HEIGHT - 10}, {10, VIRTUAL_HEIGHT - 60}, {60, VIRTUAL_HEIGHT - 60}},
+		onClick = function()
+			if currentFloor - 1 > 0 then
+				currentFloor = currentFloor - 1
+			end
+		end
+	}, "triangle")
 end
 
 function FloorChanger:update(dt)
+	if #self.floors > 0 then
+		for i, floor in pairs(self.floors) do
+			floor:update(dt)
+		end
+	end
+
 	self.buyMenu:update(dt)
 	self.upFloorBtn:update(dt)
-	--self.downFloorBtn:update(dt)
+	self.downFloorBtn:update(dt)
 end
 
 function FloorChanger:render()
+	if #self.floors > 0 then
+		self.floors[currentFloor]:render()
+	end
+
 	self.buyMenu:render()
 	self.upFloorBtn:render()
-	--self.downFloorBtn:render()
+	self.downFloorBtn:render()
+end
+
+function FloorChanger:makeNewFloor()
+	table.insert(self.floors, Floor(true, #self.floors + 1))
+end
+
+function FloorChanger:loadSavedFloors(floors)
+	self.floors = floors
 end

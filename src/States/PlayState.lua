@@ -1,8 +1,8 @@
 PlayState = Class{__includes = BaseState}
 
 function PlayState:init()
-	self.floors = {Floor(true, 1)}
-	self.floorChanger = FloorChanger(1)
+	--self.floors = {Floor(true, 1)}
+	self.floorChanger = FloorChanger()
 	self.tempMenu = Button({ x = 0, y = 50, width = 120, height = 50, text = "Menu", onClick = function()
 		self:saveFloor()
 		stateMachine:change("start")
@@ -14,10 +14,11 @@ end
 
 function PlayState:enter(saveData)
 	if not newGame then
-		self.floors = {}
+		local floors = {}
 		for i, floor in pairs(saveData[1]) do
-			table.insert(self.floors, Floor(false, i, floor))
+			table.insert(floors, Floor(false, i, floor))
 		end
+		self.floorChanger:loadSavedFloors(floors)
 		money = saveData[2]
 		self.clock = Clock(VIRTUAL_WIDTH / 2, 0, true, saveData[3])
 	end
@@ -26,9 +27,6 @@ function PlayState:enter(saveData)
 end
 
 function PlayState:update(dt)
-	for i, floor in pairs(self.floors) do
-		floor:update(dt)
-	end
 	self.saveClock:update(dt)
 	if self.saveClock.minutes > 0 then
 		self:saveFloor()
@@ -37,7 +35,7 @@ function PlayState:update(dt)
 
 	if love.keyboard.wasPressed("s") then
 		local floorsData = {}
-		for i, floor in pairs(self.floors) do
+		for i, floor in pairs(self.floorChanger.floors) do
 			floor:update(dt)
 			local floorData = {}
 			for j, row in pairs(floor.grid.cells) do
@@ -57,7 +55,6 @@ end
 
 function PlayState:render()
 	self.floorChanger:render()
-	self.floors[self.floorChanger.currentFloor]:render()
 	self.clock:render()
 	self.tempMenu:render()
 	love.graphics.setColor(colors["black"])
@@ -67,7 +64,7 @@ end
 function PlayState:saveFloor()
 	local data = {}
 	local floorsData = {}
-		for i, floor in pairs(self.floors) do
+		for i, floor in pairs(self.floorChanger.floors) do
 			local floorData = {}
 			for j, row in pairs(floor.grid.cells) do
 				for i, cell in pairs(row) do

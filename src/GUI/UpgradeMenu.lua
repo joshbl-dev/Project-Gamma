@@ -1,7 +1,7 @@
 
 UpgradeMenu = Class{}
 
-function UpgradeMenu:init(defs)
+function UpgradeMenu:init(defs, floorNumber)
     self.x = defs.x
     self.y = defs.y
     self.width = defs.width
@@ -11,8 +11,8 @@ function UpgradeMenu:init(defs)
     self.buttonText = defs.buttonText
     self.buttonWidth = font:getWidth(self.buttonText)
     self.buttonHeight = font:getHeight(self.buttonText)
-    self.button = Button({x = self.x + self.width - self.buttonWidth * 1.2, y = self.y + self.height - self.buttonHeight * 1.2,
-                            width = self.buttonWidth * 1.1, height = self.buttonHeight * 1.1, text = self.buttonText, onClick = defs.onClick}, "rect")
+    self.button = Button({x = self.x + self.width / 2 - self.buttonWidth / 2, y = self.y + self.height / 2 - self.buttonHeight / 2,
+                            width = self.buttonWidth * 1.1, height = self.buttonHeight * 1.1, text = self.buttonText, onClick = defs.onClick}, "rect", floorNumber)
     if defs.timer then
         self.timer = defs.timer
         self.clock = Clock(-100, -100, false, 0)
@@ -40,7 +40,8 @@ function UpgradeMenu:render()
     if self.upgrading then
         self.button:render()
         love.graphics.setColor(colors["black"])
-        love.graphics.print("$" .. self.cost, self.x, self.y + self.height - font:getHeight("$" .. self.cost))
+        love.graphics.print("$" .. self.cost, self.x + self.width / 2 - font:getWidth("$" .. self.cost) / 2, self.y + self.height - font:getHeight("$" .. self.cost))
+        --love.graphics.print("$" .. self.cost, self.x + self.width / 2 - font:getWidth("$" .. self.cost) / 2, self.y + self.height / 2 - font:getHeight("$" .. self.cost) / 2)
         love.graphics.print(self.type, self.x + self.width / 2 - font:getWidth(self.type) / 2, self.y)
     end
 end

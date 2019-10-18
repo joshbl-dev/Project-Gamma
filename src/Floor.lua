@@ -3,17 +3,18 @@ Floor = Class{}
 
 function Floor:init(newFloor, floorNumber, workerData)
 
+	self.floorNumber = floorNumber
 	if not newFloor then
 		self.grid = Grid (newFloor, {
 			rows = 5,
 			cols = 5,
 			workerData = workerData
-		})
+		}, floorNumber)
 	else
 		self.grid = Grid (newFloor, {
 			rows = 5,
 			cols = 5
-		})
+		}, floorNumber)
 	end
 	--self.floorNumber = floorNumber
 
@@ -38,7 +39,7 @@ end
 function Floor:render()
 	-- if not self.buyMenu.upgrading then
 		self.grid:render()
-		--love.graphics.print(self.floorNumber, VIRTUAL_WIDTH - font:getWidth(self.floorNumber), 0)
+	love.graphics.print(self.floorNumber, VIRTUAL_WIDTH - font:getWidth(self.floorNumber), 0)
 	-- else
 	-- 	self.buyMenu:render()
 	-- end

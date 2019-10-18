@@ -1,22 +1,28 @@
 Clickable = Class{}
 
-function Clickable:init(x, y, width, height, onClick)
+function Clickable:init(x, y, width, height, onClick, floorNumber)
     self.x = x
     self.y = y
     self.width = width
     self.height = height
     self.onClick = onClick
+    if floorNumber ~= nil then
+        self.floorNumber = floorNumber
+    else
+        self.floorNumber = nil
+    end
 
     self.holding = false
 
 end
 
 function Clickable:update(dt)
-    if self:wasClicked() then
-        print("Test")
-        self:onClick()
+    if self.floorNumber == nil or self.floorNumber == currentFloor then
+        if self:wasClicked() then
+            self:onClick()
+        end
+        self.holding = self:isHolding()
     end
-    self.holding = self:isHolding()
 end
 
 

@@ -1,10 +1,10 @@
 
 Button = Class{}
 
-function Button:init(defs, shape)
+function Button:init(defs, shape, floorNumber)
     -- x, y, width, height, text, onClick, shape
     if shape == "rect" then
-        self.clickable = Clickable(defs.x, defs.y, defs.width, defs.height, defs.onClick)
+        self.clickable = Clickable(defs.x, defs.y, defs.width, defs.height, defs.onClick, floorNumber)
     -- verticies
     elseif shape == "triangle" then
         self.verticiesForRender = {}
@@ -13,7 +13,7 @@ function Button:init(defs, shape)
                 table.insert(self.verticiesForRender, value)
             end
         end
-        self.clickable = TriangleClickable(defs.verticies, defs.onClick)
+        self.clickable = TriangleClickable(defs.verticies, defs.onClick, floorNumber)
     end
     self.shape = shape
     self.text = defs.text
