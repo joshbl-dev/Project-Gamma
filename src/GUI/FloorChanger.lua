@@ -8,6 +8,9 @@ function FloorChanger:init()
 									self.buyMenu:purchase()
 									self:makeNewFloor()
 									self.buyMenu.upgrading = true
+									if currentFloor + 1 <= #self.floors then
+										currentFloor = currentFloor + 1
+									end
 								end, timer = false}, floorNumber)
 	self.buyMenu.upgrading = true
 	currentFloor = 1
