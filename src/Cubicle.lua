@@ -6,7 +6,7 @@ function Cubicle:init(defs)
 	self.width = defs.width
 	self.height = defs.height
 	self.worker = Worker(defs)
-	self.price = DEFAULT_CUB
+	self.price = DEFAULT_CUB * (math.pow(1.5, defs.floorNum - 1))
 	self.purchased = defs.worker[1]
 end
 
