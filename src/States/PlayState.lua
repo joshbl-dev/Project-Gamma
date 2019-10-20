@@ -33,19 +33,8 @@ function PlayState:update(dt)
 		self.saveClock.time = 0
 	end
 
-	if love.keyboard.wasPressed("s") and #self.floorChanger.floors > 0 then
-		local floorsData = {}
-		for i, floor in pairs(self.floorChanger.floors) do
-			floor:update(dt)
-			local floorData = {}
-			for j, row in pairs(floor.grid.cells) do
-				for i, cell in pairs(row) do
-					table.insert(floorData, cell:getData()) -- insert worker into workerData table (containing all workers on the floor)
-			end
-		end
-		table.insert(floorsData, floorData)
-	end
-		saveData(floorsData)
+	if love.keyboard.wasReleased("s") and #self.floorChanger.floors > 0 then
+		self:saveFloor()
 	end
 
 	self.floorChanger:update(dt)

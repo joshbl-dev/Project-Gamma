@@ -16,6 +16,9 @@ currFont = fonts["skia"]
 
 
 function love.load()
+    thread = love.thread.newThread("save_thread.lua")
+    channel = love.thread.newChannel()
+
 	love.graphics.setDefaultFilter('nearest', 'nearest')
 	love.window.setTitle('Project Gamma')
 
@@ -36,6 +39,7 @@ function love.load()
     stateMachine:change('start')
 
     love.keyboard.keysPressed = {}
+    love.keyboard.keysReleased = {}
 
     love.filesystem.setIdentity("Project-Gamma")
 end
@@ -56,8 +60,18 @@ function love.keyboard.wasPressed(key)
     return love.keyboard.keysPressed[key]
 end
 
+function love.keyreleased(key)
+    love.keyboard.keysReleased[key] = true
+end
+
+function love.keyboard.wasReleased(key)
+    return love.keyboard.keysReleased[key]
+end
+
 function love.update(dt)
     stateMachine:update(dt)
+    love.keyboard.keysPressed = {}
+    love.keyboard.keysReleased = {}
 end
 
 function love.draw()
@@ -81,13 +95,15 @@ function loadData()
     end
 end
 
-function saveData(data)
-    bitser.dumpLoveFile('save-data.dat', data)
-end
-
 function saveReset()
     love.filesystem.remove("save-data.dat")
-    saveData("")
+    thread:start(channel)
+    channel:push("")
     newGame = true
     print("New Game")
+end
+
+function saveData(data)
+    thread:start(channel)
+    channel:push(data)
 end
