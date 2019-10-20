@@ -4,9 +4,10 @@ function FloorChanger:init()
 	self.floors = {}
 
 	self.buyMenu = UpgradeMenu ({x = 10, y = VIRTUAL_HEIGHT - 130, width = 50, height = 70, type = "Floor",
-								cost = DEFAULT_FLOOR * (math.pow(1.5, #self.floors)), buttonText = "Buy", onClick = function() 
-									self.buyMenu:purchase()
-									self:makeNewFloor()
+								cost = math.floor(DEFAULT_FLOOR * (math.pow(1.5, #self.floors))), buttonText = "Buy", onClick = function() 
+									if self.buyMenu:purchase() then
+										self:makeNewFloor()
+									end
 									self.buyMenu.upgrading = true
 									if currentFloor + 1 <= #self.floors then
 										currentFloor = currentFloor + 1
@@ -42,9 +43,8 @@ function FloorChanger:update(dt)
 		end
 	end
 	
-	if DEFAULT_FLOOR * (math.pow(1.5, #self.floors)) ~= self.buyMenu.cost then --when the actual price of a floor doesn't match what it should cost, make a new buy
-		self.buyMenu.cost = DEFAULT_FLOOR * (math.pow(1.5, #self.floors))
-		self.buyMenu:render()
+	if math.floor(DEFAULT_FLOOR * (math.pow(1.5, #self.floors))) ~= self.buyMenu.cost then --when the actual price of a floor doesn't match what it should cost, make a new buy
+		self.buyMenu.cost = math.floor(DEFAULT_FLOOR * (math.pow(1.5, #self.floors)))
 	end
 	self.buyMenu:update(dt)
 	self.upFloorBtn:update(dt)
