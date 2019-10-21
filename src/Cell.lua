@@ -12,7 +12,7 @@ function Cell:init(newFloor, defs, floorNumber)
 	if not newFloor then
 		self.cubicle = Cubicle {x = self.clickable.x, y = self.clickable.y, width = self.clickable.width, height = self.clickable.height, worker = defs.workerData, floorNum = floorNumber}
 	else
-		self.cubicle = Cubicle {x = self.clickable.x, y = self.clickable.y, width = self.clickable.width, height = self.clickable.height, worker = {false, 0, floorNum = floorNumber}, floorNum = floorNumber}
+		self.cubicle = Cubicle {x = self.clickable.x, y = self.clickable.y, width = self.clickable.width, height = self.clickable.height, worker = {false, 0}, floorNum = floorNumber}
 	end
 
 	self.buyCubicle = UpgradeMenu ({
