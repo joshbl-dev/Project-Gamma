@@ -12,7 +12,7 @@ function Worker:init(defs)
 	self.wclock = Clock(self.x, self.y + 10, true, self.timeEmployed)
 	self.lastDay = self.wclock.day
 	self.lastMonth = self.wclock.month
-	self.rev = DEFAULT_REV
+	self.rev = DEFAULT_REV * (math.pow(1.5, defs.floorNum - 1))
 end
 
 function Worker:update(dt)
