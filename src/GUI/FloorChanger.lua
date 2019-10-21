@@ -3,7 +3,7 @@ FloorChanger = Class{}
 function FloorChanger:init()
 	self.floors = {}
 
-	self.buyMenu = UpgradeMenu ({x = 10 + VIRTUAL_WIDTH * .15 / 2, y = VIRTUAL_HEIGHT - 130, width = 50, height = 70, type = "Floor",
+	self.buyMenu = UpgradeMenu ({x = VIRTUAL_WIDTH * .15 / 2 - 25, y = VIRTUAL_HEIGHT - 130, width = 50, height = 70, type = "Floor",
 								cost = math.floor(DEFAULT_FLOOR * (math.pow(1.5, #self.floors))), buttonText = "Buy", onClick = function() 
 									if self.buyMenu:purchase() then
 										self:makeNewFloor()
@@ -17,7 +17,7 @@ function FloorChanger:init()
 	currentFloor = 1
 
 	self.upFloorBtn = Button({
-		verticies =  {{35 + VIRTUAL_WIDTH * .15 / 2, VIRTUAL_HEIGHT - 180}, {10 + VIRTUAL_WIDTH * .15 / 2, VIRTUAL_HEIGHT - 130}, {60 + VIRTUAL_WIDTH * .15 / 2, VIRTUAL_HEIGHT - 130}},
+		verticies =  {{VIRTUAL_WIDTH * .15 / 2, VIRTUAL_HEIGHT - 180}, {VIRTUAL_WIDTH * .15 / 2 - 25, VIRTUAL_HEIGHT - 130}, {VIRTUAL_WIDTH * .15 / 2 + 25, VIRTUAL_HEIGHT - 130}},
 		onClick = function()
 			if currentFloor + 1 <= #self.floors then
 				currentFloor = currentFloor + 1
@@ -27,7 +27,7 @@ function FloorChanger:init()
 
 
 	self.downFloorBtn = Button({
-		verticies =  {{35 + VIRTUAL_WIDTH * .15 / 2, VIRTUAL_HEIGHT - 10}, {10 + VIRTUAL_WIDTH * .15 / 2, VIRTUAL_HEIGHT - 60}, {60 + VIRTUAL_WIDTH * .15 / 2, VIRTUAL_HEIGHT - 60}},
+		verticies =  {{VIRTUAL_WIDTH * .15 / 2, VIRTUAL_HEIGHT - 10}, {VIRTUAL_WIDTH * .15 / 2 - 25, VIRTUAL_HEIGHT - 60}, {VIRTUAL_WIDTH * .15 / 2 + 25, VIRTUAL_HEIGHT - 60}},
 		onClick = function()
 			if currentFloor - 1 > 0 then
 				currentFloor = currentFloor - 1

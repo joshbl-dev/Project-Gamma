@@ -88,19 +88,15 @@ function displayFPS()
 end
 
 function loadData()
-    if not love.filesystem.exists('save-data.dat') then
-        saveReset()
-    else
+    if love.filesystem.exists('save-data.dat') then
         return bitser.loadLoveFile('save-data.dat')
+    else
+        newGame = true
     end
 end
 
 function saveReset()
     love.filesystem.remove("save-data.dat")
-    thread:start(channel)
-    channel:push("")
-    newGame = true
-    print("New Game")
 end
 
 function saveData(data)

@@ -41,7 +41,6 @@ function UpgradeMenu:render()
         self.button:render()
         love.graphics.setColor(colors["black"])
         love.graphics.print("$" .. self.cost, self.x + self.width / 2 - font:getWidth("$" .. self.cost) / 2, self.y + self.height - font:getHeight("$" .. self.cost))
-        --love.graphics.print("$" .. self.cost, self.x + self.width / 2 - font:getWidth("$" .. self.cost) / 2, self.y + self.height / 2 - font:getHeight("$" .. self.cost) / 2)
         love.graphics.print(self.type, self.x + self.width / 2 - font:getWidth(self.type) / 2, self.y)
     end
 end
