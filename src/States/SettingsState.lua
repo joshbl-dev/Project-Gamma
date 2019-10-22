@@ -3,6 +3,8 @@ SettingsState = Class{__includes = BaseState}
 function SettingsState:init()
 	local buttonWidth = 120
 	local buttonHeight = 50
+
+	-- settings buttons (font button will not be  in distribution)
 	self.buttons = {
 		["font"] = Button ({ x = VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
 			y = VIRTUAL_HEIGHT / 2 - buttonHeight / 2 - 75,

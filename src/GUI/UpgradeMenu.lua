@@ -1,3 +1,5 @@
+-- an upgrade menu is our way of upgrading/buying new elements in the game
+
 
 UpgradeMenu = Class{}
 
@@ -24,6 +26,7 @@ function UpgradeMenu:init(defs, floorNumber)
 end
 
 function UpgradeMenu:update(dt)
+    -- this is a quality of life upgrade to make the upgrade guis dissappear if they dont need to be permanent
     if self.upgrading then
         if self.timer then
             self.clock:update(dt)
@@ -46,6 +49,7 @@ function UpgradeMenu:render()
 end
 
 function UpgradeMenu:purchase()
+    -- we use this is do a purchase
     if money >= self.cost then
         self.upgrading = false
         money = money - self.cost

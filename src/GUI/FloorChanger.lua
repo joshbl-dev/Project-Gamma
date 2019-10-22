@@ -1,3 +1,5 @@
+-- controls the current floor and all floors
+
 FloorChanger = Class{}
 
 function FloorChanger:init()
@@ -43,6 +45,7 @@ function FloorChanger:update(dt)
 		end
 	end
 	
+	-- our current calculations calculated this to be a nice scaled economy
 	if math.floor(DEFAULT_FLOOR * (math.pow(1.5, #self.floors))) ~= self.buyMenu.cost then --when the actual price of a floor doesn't match what it should cost, make a new buy
 		self.buyMenu.cost = math.floor(DEFAULT_FLOOR * (math.pow(1.5, #self.floors)))
 	end

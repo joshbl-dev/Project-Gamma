@@ -1,3 +1,7 @@
+
+-- stateMachines were shown to be the best way for us to manage the states between the game for control
+-- and organization
+
 StateMachine = Class{}
 
 function StateMachine:init(states)

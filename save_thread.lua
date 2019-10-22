@@ -3,6 +3,7 @@ bitser = require 'lib/bitser'
 channel = ...
 
 
+-- this is the basic call to save the file when the thread is started
 local status, err = pcall(function()
     print("Waiting")
     data = channel:pop()

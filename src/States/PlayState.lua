@@ -1,12 +1,17 @@
 PlayState = Class{__includes = BaseState}
 
 function PlayState:init()
-	--self.floors = {Floor(true, 1)}
+
+	-- we made a floor changer to help organize the floor and changing/rendering them
 	self.floorChanger = FloorChanger()
+
+	-- not really a menu 
 	self.tempMenu = Button({ x = 0, y = 50, width = 120, height = 50, text = "Menu", onClick = function()
 		self:saveFloor()
 		stateMachine:change("start")
 	end}, "rect")
+
+	-- clock to save automatically and track time played
 	self.clock = Clock(VIRTUAL_WIDTH / 2, 0, true, 0)
 	self.saveClock = Clock(-100, -100, false, 0)
 	money = DEFAULT_GAME_MONEY
@@ -33,6 +38,7 @@ function PlayState:update(dt)
 		self.saveClock.time = 0
 	end
 
+	-- manual saving
 	if love.keyboard.wasReleased("s") and #self.floorChanger.floors > 0 then
 		self:saveFloor()
 	end
@@ -46,7 +52,9 @@ function PlayState:render()
 	self.floorChanger:render()
 	self.clock:render()
 	self.tempMenu:render()
-	r, g, b, a = love.graphics.getColor() 
+	r, g, b, a = love.graphics.getColor()
+
+	-- research showed setColor lags when overused 
 	if r ~= 10 and g ~= 9 or b ~= 8 then
 		love.graphics.setColor(colors["black"])
 	end
@@ -54,6 +62,7 @@ function PlayState:render()
 end
 
 function PlayState:saveFloor()
+	-- used for saving the current playstate not really just floor anymore
 	local data = {}
 	local floorsData = {}
 		for i, floor in pairs(self.floorChanger.floors) do

@@ -3,6 +3,8 @@ StartState = Class{__includes = BaseState}
 function StartState:init()
 	local buttonWidth = 120
 	local buttonHeight = 50
+
+	-- buttons to switch between the  states
 	self.buttons = {
 		["start"] = Button ({
 			x = VIRTUAL_WIDTH / 2 - buttonWidth / 2, 

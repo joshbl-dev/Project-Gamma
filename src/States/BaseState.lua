@@ -1,3 +1,5 @@
+-- base state is an abstract class used to create the rest
+
 BaseState = Class{}
 
 function BaseState:init() end

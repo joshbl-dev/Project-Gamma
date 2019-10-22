@@ -16,20 +16,23 @@ currFont = fonts["skia"]
 
 
 function love.load()
+    -- threas are used to isolate tasking things
     thread = love.thread.newThread("save_thread.lua")
     channel = love.thread.newChannel()
+
+
 
 	love.graphics.setDefaultFilter('nearest', 'nearest')
 	love.window.setTitle('Project Gamma')
 
-
-
+    -- used to emualte the size changes
 	push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
         fullscreen = false,
         resizable = false,
         vsync = true
     })
 
+    -- used to run seperate parts of the game
     stateMachine = StateMachine{
         ['start'] = function() return StartState() end,
         ['play'] = function() return PlayState() end,
@@ -38,6 +41,7 @@ function love.load()
 
     stateMachine:change('start')
 
+    -- saves last frames key actions
     love.keyboard.keysPressed = {}
     love.keyboard.keysReleased = {}
 
@@ -76,6 +80,7 @@ end
 
 function love.draw()
 	push:apply('start')
+    -- clears the screen white
     love.graphics.clear(colors['white'])
     stateMachine:render()
 	displayFPS()
@@ -88,6 +93,7 @@ function displayFPS()
 end
 
 function loadData()
+    -- using the bitser library data is serialized for and deserialized for easy storage
     if love.filesystem.exists('save-data.dat') then
         return bitser.loadLoveFile('save-data.dat')
     else
