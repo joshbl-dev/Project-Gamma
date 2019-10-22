@@ -1,5 +1,6 @@
 Clickable = Class{}
-
+--the parent class for button
+--button uses clickable to actually work
 function Clickable:init(x, y, width, height, onClick, floorNumber)
     self.x = x
     self.y = y

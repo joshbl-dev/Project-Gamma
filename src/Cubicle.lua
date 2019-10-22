@@ -1,6 +1,6 @@
 Cubicle = Class{}
 
-function Cubicle:init(defs)
+function Cubicle:init(defs)--set cubicle to saved value or default, whatever is passed through in defs
 	self.x = defs.x
 	self.y = defs.y
 	self.width = defs.width
@@ -20,7 +20,7 @@ function Cubicle:render()
 	if self.purchased then
 		self.worker:render()
 	end
-	love.graphics.setColor(colors["purple"])
+	love.graphics.setColor(colors["purple"])--make desk
 	love.graphics.rectangle("fill", self.x, self.y, self.width * .25, self.height * .75)
 end
 

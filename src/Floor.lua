@@ -8,7 +8,7 @@ function Floor:init(newFloor, floorNumber, workerData)
 		self.grid = Grid (newFloor, {
 			rows = 5,
 			cols = 5,
-			workerData = workerData
+			workerData = workerData--saved data for workers on a floor
 		}, floorNumber)
 	else
 		self.grid = Grid (newFloor, {
