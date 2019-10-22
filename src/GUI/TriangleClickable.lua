@@ -1,3 +1,5 @@
+-- this is a triangle clickable since it is created differently than a square
+
 TriangleClickable = Class{}
 
 function TriangleClickable:init(verticies, onClick, floorNumber)
@@ -27,6 +29,8 @@ end
 function TriangleClickable:isHovering()
     local x, y = love.mouse.getPosition()
     if x ~= nil and y ~= nil then
+
+        -- research showed this is the best way to do triangle collision detection
         area1 = math.abs((self.verticies[1][1] - x)*(self.verticies[2][2] - y) - (self.verticies[2][1] - x)*(self.verticies[1][2] - y))
         area2 = math.abs((self.verticies[2][1] - x)*(self.verticies[3][2] - y) - (self.verticies[3][1] - x)*(self.verticies[2][2] - y))
         area3 = math.abs((self.verticies[3][1] - x)*(self.verticies[1][2] - y) - (self.verticies[1][1] - x)*(self.verticies[3][2] - y))
