@@ -6,7 +6,7 @@ function FloorChanger:init()
 	self.floors = {}
 	local trash = math.random(math.floor(DEFAULT_FLOOR * (math.pow(1.5, #self.floors))), math.floor(DEFAULT_FLOOR * (math.pow(1.5, #self.floors)) * 1.1))
 	self.buyMenu = UpgradeMenu ({x = VIRTUAL_WIDTH * .15 / 2 - 25, y = VIRTUAL_HEIGHT - 130, width = 50, height = 70, type = "Floor",
-								cost = math.random(math.floor(DEFAULT_FLOOR * (math.pow(1.5, #self.floors))), math.floor(DEFAULT_FLOOR * (math.pow(1.5, #self.floors)) * 1.1)), buttonText = "Buy", onClick = function() 
+								cost = math.random(math.floor(DEFAULT_FLOOR * (math.pow(1.5, #self.floors))), math.floor(DEFAULT_FLOOR * (math.pow(1.5, #self.floors)) * math.pow(1.1, #self.floors))), buttonText = "Buy", onClick = function() 
 									if self.buyMenu:purchase() then
 										self:makeNewFloor()
 									end
@@ -47,7 +47,7 @@ function FloorChanger:update(dt)
 	
 	-- our current calculations calculated this to be a nice scaled economy
 	if math.floor(DEFAULT_FLOOR * (math.pow(1.5, #self.floors))) > self.buyMenu.cost then --when the actual price of a floor doesn't match what it should cost, make a new buy
-		self.buyMenu.cost = math.random(math.floor(DEFAULT_FLOOR * (math.pow(1.5, #self.floors))), math.floor(DEFAULT_FLOOR * (math.pow(1.5, #self.floors)) * 1.1))
+		self.buyMenu.cost = math.random(math.floor(DEFAULT_FLOOR * (math.pow(1.5, #self.floors))), math.floor(DEFAULT_FLOOR * (math.pow(1.5, #self.floors)) * math.pow(1.1, #self.floors)))
 	end
 	self.buyMenu:update(dt)
 	self.upFloorBtn:update(dt)

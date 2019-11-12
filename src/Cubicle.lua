@@ -6,8 +6,8 @@ function Cubicle:init(defs)--set cubicle to saved value or default, whatever is 
 	self.width = defs.width
 	self.height = defs.height
 	self.worker = Worker(defs)
-	local trash = math.random(DEFAULT_CUB * (math.pow(1.5, defs.floorNum - 1)), (DEFAULT_CUB * (math.pow(1.5, defs.floorNum - 1))) * 1.1)
-	self.price = math.floor(math.random(DEFAULT_CUB * (math.pow(1.5, defs.floorNum - 1)), (DEFAULT_CUB * (math.pow(1.5, defs.floorNum - 1))) * 1.1))
+	local trash = math.random(DEFAULT_CUB * (math.pow(1.5, defs.floorNum - 1)), (DEFAULT_CUB * (math.pow(1.5, defs.floorNum - 1))) * math.pow(1.1, defs.floorNum - 1)1)
+	self.price = math.floor(math.random(DEFAULT_CUB * (math.pow(1.5, defs.floorNum - 1)), (DEFAULT_CUB * (math.pow(1.5, defs.floorNum - 1))) * math.pow(1.1, defs.floorNum - 1)))
 	self.purchased = defs.worker[1]
 end
 
