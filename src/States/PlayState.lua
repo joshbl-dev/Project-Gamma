@@ -52,12 +52,7 @@ function PlayState:render()
 	self.floorChanger:render()
 	self.clock:render()
 	self.tempMenu:render()
-	r, g, b, a = love.graphics.getColor()
-
-	-- research showed setColor lags when overused 
-	if r ~= 10 and g ~= 9 or b ~= 8 then
-		love.graphics.setColor(colors["black"])
-	end
+	setColor(colors["black"])
 	love.graphics.print("Money: $" .. (math.floor(money)), 100, 0)
 end
 

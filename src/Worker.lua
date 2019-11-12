@@ -30,6 +30,6 @@ function Worker:update(dt)
 end
 
 function Worker:render()
-		love.graphics.setColor(colors["green"])--draw worker(green circle)
-		love.graphics.circle("fill", self.x + self.width * .25 + self.size, self.y + self.height * .75 / 2, self.size)
+	setColor(colors["green"])--draw worker(green circle)
+	love.graphics.circle("fill", self.x + self.width * .25 + self.size, self.y + self.height * .75 / 2, self.size)
 end

@@ -51,7 +51,7 @@ function Cell:update(dt)
 end
 
 function Cell:render()
-	love.graphics.setColor(self.color)
+	setColor(self.color)
 	love.graphics.rectangle(self.border, self.clickable.x, self.clickable.y, self.clickable.width, self.clickable.height)
 	
 	if self.cubicle.purchased then
