@@ -42,16 +42,16 @@ function Button:update(dt)
 end
 
 function Button:render()
-    love.graphics.setColor(colors[self.buttonColor])
+    setColor(colors[self.buttonColor])
     if self.shape == "rect" then--draw actual button if rectangle
         love.graphics.rectangle("fill", self.clickable.x, self.clickable.y, self.clickable.width, self.clickable.height)
         love.graphics.setFont(love.graphics.newFont(currFont, 20))
         font = love.graphics.getFont()
-        love.graphics.setColor(colors[self.textColor])
+        setColor(colors[self.textColor])
         love.graphics.print(self.text, math.floor(self.clickable.x + self.clickable.width / 2 - font:getWidth(self.text) / 2), math.floor(self.clickable.y + self.clickable.height / 2 - font:getHeight(self.text) / 2))
 
     elseif self.shape == "triangle" then--draw actual button if triangle
-        love.graphics.setColor(colors["purple"])
+        setColor(colors["purple"])
         love.graphics.polygon('fill', self.verticiesForRender)
     end
     

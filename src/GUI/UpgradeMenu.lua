@@ -42,7 +42,7 @@ end
 function UpgradeMenu:render()
     if self.upgrading then
         self.button:render()
-        love.graphics.setColor(colors["black"])
+        setColor(colors["black"])
         love.graphics.print("$" .. self.cost, self.x + self.width / 2 - font:getWidth("$" .. self.cost) / 2, self.y + self.height - font:getHeight("$" .. self.cost))
         love.graphics.print(self.type, self.x + self.width / 2 - font:getWidth(self.type) / 2, self.y)
     end

@@ -38,6 +38,6 @@ function Clock:update(dt)
 end
 
 function Clock:render()
-	love.graphics.setColor(colors['black'])
+	setColor(colors['black'])
 	love.graphics.print('Month: ' .. self.month .. ' Day: ' .. self.day .. ' Hour: ' .. self.hours, self.x, self.y)
 end
