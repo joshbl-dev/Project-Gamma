@@ -1,5 +1,5 @@
 function displayFPS()
-    love.graphics.setColor(colors['black'])
+    setColor(colors['black'])
     love.graphics.print('FPS: ' .. tostring(love.timer.getFPS()), 0, 0)
 end
 
