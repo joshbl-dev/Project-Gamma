@@ -21,7 +21,7 @@ function Cubicle:render()
 	if self.purchased then
 		self.worker:render()
 	end
-	love.graphics.setColor(colors["purple"])--make desk
+	setColor(colors["purple"])--make desk
 	love.graphics.rectangle("fill", self.x, self.y, self.width * .25, self.height * .75)
 end
 

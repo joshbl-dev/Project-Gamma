@@ -4,6 +4,7 @@ bitser = require 'lib/bitser'
 --makes all classes able to be used and accessed
 require 'src/constants'
 require 'src/StateMachine'
+require 'src/Util'
 
 -- States
 require 'src/States/BaseState'
