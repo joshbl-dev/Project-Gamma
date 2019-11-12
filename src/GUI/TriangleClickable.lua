@@ -53,7 +53,6 @@ end
 
 function TriangleClickable:wasClicked()
     if self:isHovering() and self.holding and not love.mouse.isDown(1) then
-        print("true")
         return true
     else
         return false

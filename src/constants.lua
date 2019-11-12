@@ -21,4 +21,4 @@ DEFAULT_EXP = 10 --default salary of worker per month
 DEFAULT_CUB = 200 --default cubicle cost
 DEFAULT_UP = 1000 --default upgrade worker cost
 DEFAULT_FLOOR = 2000 --default floor cost
-DEFAULT_GAME_MONEY = 21000 --money throughout game, starts at 2100
+DEFAULT_GAME_MONEY = 2350 --money throughout game, starts at 2400

@@ -1,5 +1,6 @@
 Clickable = Class{}
-
+--the parent class for button
+--button uses clickable to actually work
 function Clickable:init(x, y, width, height, onClick, floorNumber)
     self.x = x
     self.y = y
@@ -46,7 +47,6 @@ end
 
 function Clickable:wasClicked()
     if self:isHovering() and self.holding and not love.mouse.isDown(1) then
-        print("true")
         return true
     else
         return false

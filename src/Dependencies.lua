@@ -1,7 +1,7 @@
-Class = require 'lib/class'
+Class = require 'lib/class'--creates "class" idea in lua
 push = require 'lib/push'
 bitser = require 'lib/bitser'
-
+--makes all classes able to be used and accessed
 require 'src/constants'
 require 'src/StateMachine'
 
