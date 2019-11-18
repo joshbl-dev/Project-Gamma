@@ -63,8 +63,8 @@ function FloorChanger:render()
 	self.downFloorBtn:render()
 end
 
-function FloorChanger:makeNewFloor()
-	table.insert(self.floors, Floor(true, #self.floors + 1))
+function FloorChanger:makeNewFloor(cost)
+	table.insert(self.floors, Floor(true, #self.floors + 1, nil))
 end
 
 function FloorChanger:loadSavedFloors(floors)

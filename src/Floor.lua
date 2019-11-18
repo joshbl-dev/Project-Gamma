@@ -1,7 +1,7 @@
 Floor = Class{}
 
 
-function Floor:init(newFloor, floorNumber, workerData)
+function Floor:init(newFloor, floorNumber, workerData, cost)
 
 	self.floorNumber = floorNumber
 	if not newFloor then

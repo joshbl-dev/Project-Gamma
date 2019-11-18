@@ -21,9 +21,11 @@ function PlayState:enter(saveData)
 	if not newGame then
 		local floors = {}
 		for i, floor in pairs(saveData[1]) do
+			local cost = floor[1]
 			table.insert(floors, Floor(false, i, floor))
 		end
 		self.floorChanger:loadSavedFloors(floors)
+		self.floorChanger.buyMenu.cost = saveData[4]
 		money = saveData[2]
 		self.clock = Clock(VIRTUAL_WIDTH / 2, 0, true, saveData[3])
 	end
@@ -65,12 +67,13 @@ function PlayState:saveFloor()
 			for j, row in pairs(floor.grid.cells) do
 				for i, cell in pairs(row) do
 					table.insert(floorData, cell:getData()) -- insert worker into workerData table (containing all workers on the floor)
+				end
 			end
+			table.insert(floorsData, floorData)
 		end
-		table.insert(floorsData, floorData)
-	end
-		table.insert(data, floorsData)
-		table.insert(data, money)
-		table.insert(data, self.clock.time)
-		saveData(data)
+	table.insert(data, floorsData)
+	table.insert(data, money)
+	table.insert(data, self.clock.time)
+	table.insert(data, self.floorChanger.buyMenu.cost)
+	saveData(data)
 end
