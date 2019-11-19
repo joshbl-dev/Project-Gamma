@@ -12,9 +12,15 @@ function PlayState:init()
 	end}, "rect")
 
 	-- clock to save automatically and track time played
-	self.clock = Clock(VIRTUAL_WIDTH / 2, 0, true, 0)
+	timeScale = 6.9*math.pow(10,-5)
+	clock = Clock(VIRTUAL_WIDTH / 2, 0, true, 0)
 	self.saveClock = Clock(-100, -100, false, 0)
 	money = DEFAULT_GAME_MONEY
+	moneyLost = 0
+	self.lastSecond = -4
+	allSalary = {}
+	allSalary[0] = 0
+	lastMonth = clock.month
 end
 
 function PlayState:enter(saveData)
@@ -27,7 +33,7 @@ function PlayState:enter(saveData)
 		self.floorChanger:loadSavedFloors(floors)
 		self.floorChanger.buyMenu.cost = saveData[4]
 		money = saveData[2]
-		self.clock = Clock(VIRTUAL_WIDTH / 2, 0, true, saveData[3])
+		clock = Clock(VIRTUAL_WIDTH / 2, 0, true, saveData[3])
 	end
 	self:saveFloor()
 	newGame = false
@@ -45,17 +51,44 @@ function PlayState:update(dt)
 		self:saveFloor()
 	end
 
+	if love.keyboard.wasPressed("]") then
+		timeScale = 6.9*math.pow(10,-6.25)
+	elseif love.keyboard.wasReleased("]") and timeScale ~= 6.9*math.pow(10,-5) then
+		timeScale = 6.9*math.pow(10,-5)
+	end
+	lastMonth = clock.month
+	clock:update(dt)
 	self.floorChanger:update(dt)
-	self.clock:update(dt)
 	self.tempMenu:update(dt)
+	if allSalary[1] ~= nil then
+		for i=1, #allSalary do
+			moneyLost = moneyLost + allSalary[i]
+		end
+		clear(allSalary)
+		allSalary[0] = 0
+	end
+	if moneyLost ~= 0 then
+		money = money - moneyLost
+		self.fakeMoneyLost = moneyLost
+		self.lastSecond = self.saveClock.seconds
+		moneyLost = 0
+	end
+	
 end
 
 function PlayState:render()
 	self.floorChanger:render()
-	self.clock:render()
+	clock:render()
 	self.tempMenu:render()
 	setColor(colors["black"])
 	love.graphics.print("Money: $" .. (math.floor(money)), 100, 0)
+	if self.saveClock.seconds - self.lastSecond < 3 then
+		setColor(colors["red"])
+		love.graphics.print("-$" .. math.floor(self.fakeMoneyLost), 170, 20)
+	else
+		setColor(colors["black"])
+		love.graphics.rectangle("fill", 170, 20, 100, 30)
+	end
 end
 
 function PlayState:saveFloor()
@@ -73,7 +106,7 @@ function PlayState:saveFloor()
 		end
 	table.insert(data, floorsData)
 	table.insert(data, money)
-	table.insert(data, self.clock.time)
+	table.insert(data, clock.time)
 	table.insert(data, self.floorChanger.buyMenu.cost)
 	saveData(data)
 end

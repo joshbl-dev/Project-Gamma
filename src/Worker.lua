@@ -12,19 +12,17 @@ function Worker:init(defs)
 
 	self.wclock = Clock(self.x, self.y + 10, true, self.timeEmployed)--clock to get payed
 	self.lastDay = self.wclock.day
-	self.lastMonth = self.wclock.month
 	self.rev = DEFAULT_REV * (math.pow(1.5, defs.floorNum - 1))
 end
 
 function Worker:update(dt)
 	self.lastDay = self.wclock.day
-	self.lastMonth = self.wclock.month
 	self.wclock:update(dt)
 	if self.lastDay ~= self.wclock.day then
 		money = money + self.rev
 	end
-	if self.lastMonth ~= self.wclock.month then
-		money = money - self.salary
+	if lastMonth ~= clock.month then
+		allSalary[#allSalary + 1] = self.salary
 	end
 	self.timeEmployed = self.wclock.time
 end

@@ -29,3 +29,9 @@ function setColor(color)
         love.graphics.setColor(color)
     end
 end
+
+function clear(table)
+    for i = 0,1000 do
+        table[i] = nil
+    end
+end
