@@ -83,11 +83,9 @@ function PlayState:render()
 	setColor(colors["black"])
 	love.graphics.print("Money: $" .. (math.floor(money)), 100, 0)
 	if self.saveClock.seconds - self.lastSecond < 3 then
+		print(self.saveClock.seconds - self.lastSecond)
 		setColor(colors["red"])
 		love.graphics.print("-$" .. math.floor(self.fakeMoneyLost), 170, 20)
-	else
-		setColor(colors["black"])
-		love.graphics.rectangle("fill", 170, 20, 100, 30)
 	end
 end
 
