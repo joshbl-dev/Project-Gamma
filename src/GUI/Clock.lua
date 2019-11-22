@@ -32,7 +32,7 @@ function Clock:update(dt)
 	temp = temp % 3600
 	self.minutes = math.floor(temp/60)
 	temp = temp % 60
-	self.seconds = math.floor(temp/60)
+	self.seconds = math.floor(temp)
 end
 
 function Clock:render()

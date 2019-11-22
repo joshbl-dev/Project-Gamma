@@ -31,7 +31,7 @@ function setColor(color)
 end
 
 function clear(table)
-    for i = 0,1000 do
+    for i = 1, #table do
         table[i] = nil
     end
 end
