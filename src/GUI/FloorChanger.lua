@@ -44,12 +44,20 @@ function FloorChanger:update(dt)
 			floor:update(dt)
 		end
 	end
-	
+
+	self.buyMenu:update(dt)
+	if self.buyMenu.button.clickable:isHovering() and money >= self.buyMenu.cost then
+		self.buyMenu.button.buttonColor = "green"
+	elseif self.buyMenu.button.clickable:isHovering() and money < self.buyMenu.cost then
+		self.buyMenu.button.buttonColor = "red"
+	else
+		self.buyMenu.button.buttonColor = "gray"
+	end
+
 	-- our current calculations calculated this to be a nice scaled economy
 	if math.floor(DEFAULT_FLOOR * (math.pow(1.5, #self.floors))) > self.buyMenu.cost then --when the actual price of a floor doesn't match what it should cost, make a new buy
 		self.buyMenu.cost = math.random(math.floor(DEFAULT_FLOOR * (math.pow(1.5, #self.floors))), math.floor(DEFAULT_FLOOR * (math.pow(1.5, #self.floors)) * math.pow(1.1, #self.floors + 1)))
 	end
-	self.buyMenu:update(dt)
 	self.upFloorBtn:update(dt)
 	self.downFloorBtn:update(dt)
 end
