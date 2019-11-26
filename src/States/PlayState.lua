@@ -52,7 +52,7 @@ function PlayState:update(dt)
 	end
 
 	if love.keyboard.wasPressed("]") then
-		timeScale = 6.9*math.pow(10,-6.25)
+		timeScale = 6.9*math.pow(10,-7)
 	elseif love.keyboard.wasReleased("]") and timeScale ~= 6.9*math.pow(10,-5) then
 		timeScale = 6.9*math.pow(10,-5)
 	end

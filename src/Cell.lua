@@ -1,9 +1,12 @@
 Cell = Class{}
 
 function Cell:init(newFloor, defs, floorNumber)
+	self.floorNumber = floorNumber
 	self.clickable = Clickable(defs.x, defs.y, defs.width, defs.height, function()
 		if not self.cubicle.purchased then
 			self.buyCubicle.upgrading = true
+		else
+			self.upgradeWorker.upgrading = true
 		end
 	end, floorNumber)
 	self.color = colors['gray']--sets color of button
@@ -31,6 +34,24 @@ function Cell:init(newFloor, defs, floorNumber)
 		end,
 		timer = true
 	}, floorNumber)
+
+	self.upgradeWorker = UpgradeMenu ({--creates the option to upgrade a worker when a cell is clicked
+		x = self.clickable.x,
+		y = self.clickable.y,
+		width = self.clickable.width,
+		height = self.clickable.height,
+		type = "Worker",
+		cost = (DEFAULT_UPGRADE_COST * (math.pow(1.5, floorNumber - 1)))*(math.pow(2, self.cubicle.worker.upgradeLevel)),
+		buttonText = "Buy",
+		onClick = function() 
+			if self.upgradeWorker:purchase() then
+				self.cubicle.worker:upgrade()
+				print("Upgraded Worker")
+				self:newUpgradeWorker()
+			end
+		end,
+		timer = true
+	}, floorNumber)
 end
 
 
@@ -47,6 +68,14 @@ function Cell:update(dt)
 
 	if self.cubicle.purchased then
 		self.cubicle:update(dt)
+		self.upgradeWorker:update(dt)
+		if self.upgradeWorker.button.clickable:isHovering() and money >= self.upgradeWorker.cost then
+			self.upgradeWorker.button.buttonColor = "green"
+		elseif self.upgradeWorker.button.clickable:isHovering() and money < self.upgradeWorker.cost then
+			self.upgradeWorker.button.buttonColor = "red"
+		else
+			self.upgradeWorker.button.buttonColor = "gray"
+		end
 	end
 end
 
@@ -54,8 +83,10 @@ function Cell:render()
 	setColor(self.color)
 	love.graphics.rectangle(self.border, self.clickable.x, self.clickable.y, self.clickable.width, self.clickable.height)
 	
-	if self.cubicle.purchased then
+	if self.cubicle.purchased and not self.upgradeWorker.upgrading then
 		self.cubicle:render()
+	elseif self.cubicle.purchased then
+		self.upgradeWorker:render()
 	end
 
 	self.buyCubicle:render()
@@ -64,3 +95,27 @@ end
 function Cell:getData()
 	return {self.cubicle.purchased, self.cubicle.worker.timeEmployed, self.cubicle.price}
 end
+
+
+function Cell:newUpgradeWorker()
+	self.upgradeWorker = UpgradeMenu ({--creates the option to upgrade a worker when a cell is clicked
+		x = self.clickable.x,
+		y = self.clickable.y,
+		width = self.clickable.width,
+		height = self.clickable.height,
+		type = "Worker",
+		cost = (DEFAULT_UPGRADE_COST * (math.pow(1.5, self.floorNumber - 1)))*(math.pow(2, self.cubicle.worker.upgradeLevel)),
+		buttonText = "Buy",
+		onClick = function() 
+			if self.upgradeWorker:purchase() then
+				self.cubicle.worker:upgrade()
+				print("Upgraded Worker")
+				self:newUpgradeWorker()
+				
+			end
+		end,
+		timer = true
+	}, floorNumber)
+end
+
+

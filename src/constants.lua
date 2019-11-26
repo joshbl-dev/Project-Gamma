@@ -22,3 +22,4 @@ DEFAULT_CUB = 200 --default cubicle cost
 DEFAULT_UP = 1000 --default upgrade worker cost
 DEFAULT_FLOOR = 2000 --default floor cost
 DEFAULT_GAME_MONEY = 2250 --money throughout game, starts at 2400
+DEFAULT_UPGRADE_COST = 75
