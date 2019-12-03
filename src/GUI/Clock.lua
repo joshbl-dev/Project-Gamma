@@ -5,6 +5,8 @@ function Clock:init(x, y, scaled, time)
 	self.y = y
 	self.time = time
 	local temp = self.time
+	self.year = math.floor(temp/(12 * 30 * 24 * 3600))
+	temp = temp % (12 * 30 * 24 * 3600)
 	self.month = math.floor(temp/(30 * 24 * 3600))--once month reaches 12 it loops back to 0
 	temp = temp % (30 * 24 * 3600)
 	self.day = math.floor(temp/(24 * 3600))--once day reaches 30, set day to 0 and increment month by 1
@@ -24,6 +26,8 @@ function Clock:update(dt)
 		self.time = self.time - dt/timeScale + dt --unscale time
 	end
 	temp = self.time
+	self.year = math.floor(temp/(12 * 30 * 24 * 3600))
+	temp = temp % (12 * 30 * 24 * 3600)
 	self.month = math.floor(temp/(30 * 24 * 3600))
 	temp = temp % (30 * 24 * 3600)
 	self.day = math.floor(temp/(24 * 3600))
@@ -37,5 +41,5 @@ end
 
 function Clock:render()
 	setColor(colors['black'])
-	love.graphics.print('Month: ' .. self.month .. ' Day: ' .. self.day .. ' Hour: ' .. self.hours, self.x, self.y)
+	love.graphics.print('Year: ' .. self.year .. ' Month: ' .. self.month .. ' Day: ' .. self.day .. ' Hour: ' .. self.hours, self.x - font:getWidth('Year: ' .. self.year .. ' Month: ' .. self.month .. ' Day: ' .. self.day .. ' Hour: ' .. self.hours) / 2, self.y)
 end
