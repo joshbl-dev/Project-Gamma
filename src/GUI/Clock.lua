@@ -4,7 +4,7 @@ function Clock:init(x, y, scaled, time, renderBoolean)
 	self.x = x
 	self.y = y
 	self.time = time
-	self.render = render
+	self.renderBoolean = renderBoolean
 	local temp = self.time
 	self.year = math.floor(temp/(12 * 30 * 24 * 3600))
 	temp = temp % (12 * 30 * 24 * 3600)
