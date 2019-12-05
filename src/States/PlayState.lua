@@ -35,7 +35,7 @@ function PlayState:enter(saveData)
 		self.floorChanger:loadSavedFloors(floors)
 		self.floorChanger.buyMenu.cost = saveData[4]
 		money = saveData[2]
-		clock = Clock(VIRTUAL_WIDTH / 2, 0, true, saveData[3])
+		clock = Clock(VIRTUAL_WIDTH / 2, 0, true, saveData[3], true)
 	end
 	self:saveFloor()
 	newGame = false
@@ -77,7 +77,8 @@ function PlayState:update(dt)
 		print(moneyLost)
 		money = money - moneyLost
 		self.textMoneyLost = moneyLost
-		self.showLostMoneyClock = Clock(-9999, -9999, false, 0, false)
+		self.showLostMoneyClock = Clock(0, 0, false, 0, false)
+		self.showLostMoneyClock = Clock(0, 0, false, 0, false)
 		moneyLost = 0
 	end
 	if self.showLostMoneyClock then
