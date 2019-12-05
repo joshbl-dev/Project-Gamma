@@ -17,7 +17,7 @@ function UpgradeMenu:init(defs, floorNumber)
                             width = self.buttonWidth * 1.1, height = self.buttonHeight * 1.1, text = self.buttonText, onClick = defs.onClick}, "rect", floorNumber)
     if defs.timer then
         self.timer = defs.timer
-        self.clock = Clock(-100, -100, false, 0)
+        self.clock = Clock(-100, -100, false, 0, false)
     else
         self.timer = defs.timer
     end

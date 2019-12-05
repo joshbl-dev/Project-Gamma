@@ -10,7 +10,7 @@ function Worker:init(defs)
 	self.salary = math.floor(math.random(DEFAULT_EXP * (math.pow(1.5, defs.floorNum - 1)), (DEFAULT_EXP * (math.pow(1.5, defs.floorNum - 1))) * math.pow(1.1, defs.floorNum)))-- salary
 	self.timeEmployed = defs.worker[2] -- timeEmployed
 
-	self.wclock = Clock(self.x, self.y + 10, true, self.timeEmployed)--clock to get payed
+	self.wclock = Clock(self.x, self.y + 10, true, self.timeEmployed, false)--clock to get payed
 	self.lastDay = self.wclock.day
 	self.rev = DEFAULT_REV * (math.pow(1.5, defs.floorNum - 1))
 	self.upgradeLevel = 0

@@ -1,9 +1,10 @@
 Clock = Class{}
 
-function Clock:init(x, y, scaled, time)
+function Clock:init(x, y, scaled, time, render)
 	self.x = x
 	self.y = y
 	self.time = time
+	self.render = render
 	local temp = self.time
 	self.year = math.floor(temp/(12 * 30 * 24 * 3600))
 	temp = temp % (12 * 30 * 24 * 3600)
@@ -40,6 +41,8 @@ function Clock:update(dt)
 end
 
 function Clock:render()
-	setColor(colors['black'])
-	love.graphics.print('Year: ' .. self.year .. ' Month: ' .. self.month .. ' Day: ' .. self.day .. ' Hour: ' .. self.hours, self.x - font:getWidth('Year: ' .. self.year .. ' Month: ' .. self.month .. ' Day: ' .. self.day .. ' Hour: ' .. self.hours) / 2, self.y)
+	if self.render then
+		setColor(colors['black'])
+		love.graphics.print('Year: ' .. self.year .. ' Month: ' .. self.month .. ' Day: ' .. self.day .. ' Hour: ' .. self.hours, self.x - font:getWidth('Year: ' .. self.year .. ' Month: ' .. self.month .. ' Day: ' .. self.day .. ' Hour: ' .. self.hours) / 2, self.y)
+	end
 end
