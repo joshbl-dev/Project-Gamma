@@ -4,17 +4,19 @@ function PlayState:init()
 
 	-- we made a floor changer to help organize the floor and changing/rendering them
 	self.floorChanger = FloorChanger()
+	self.achievementSystem = AchievementSystem{["test"] = {unlocked = false, reward = 0, description = "NOTHING"},
+["test 2"] = {unlocked = false, reward = 0, description = "NOTHING"}}
 
 	-- not really a menu 
-	self.tempMenu = Button({ x = 0, y = 50, width = 120, height = 50, text = "Menu", onClick = function()
+	self.tempMenu = Button({x = 0, y = 50, width = 120, height = 50, text = "Menu", onClick = function()
 		self:saveFloor()
 		stateMachine:change("start")
 	end}, "rect")
 
 	-- clock to save automatically and track time played
 	timeScale = 6.9*math.pow(10,-5)
-	clock = Clock(VIRTUAL_WIDTH / 2, 0, true, 0)
-	self.saveClock = Clock(-100, -100, false, 0)
+	clock = Clock(VIRTUAL_WIDTH / 2, 0, true, 0, true)
+	self.saveClock = Clock(-100, -100, false, 0, false)
 	money = DEFAULT_GAME_MONEY
 	moneyLost = 0
 	self.lastSecond = -4
@@ -41,6 +43,10 @@ end
 
 function PlayState:update(dt)
 	self.saveClock:update(dt)
+	self.achievementSystem:update(dt)
+
+	self.achievementSystem:addToQueue("test")
+	self.achievementSystem:addToQueue("test 2")
 	if self.saveClock.minutes > 0 then
 		self:saveFloor()
 		self.saveClock.time = 0
@@ -71,7 +77,7 @@ function PlayState:update(dt)
 		print(moneyLost)
 		money = money - moneyLost
 		self.textMoneyLost = moneyLost
-		self.showLostMoneyClock = Clock(-9999, -9999, false, 0)
+		self.showLostMoneyClock = Clock(-9999, -9999, false, 0, false)
 		moneyLost = 0
 	end
 	if self.showLostMoneyClock then
@@ -83,6 +89,7 @@ end
 
 function PlayState:render()
 	self.floorChanger:render()
+	self.achievementSystem:render()
 	clock:render()
 	self.tempMenu:render()
 	setColor(colors["black"])
