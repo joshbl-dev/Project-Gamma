@@ -11,6 +11,7 @@ require 'src/States/BaseState'
 require 'src/States/StartState'
 require 'src/States/PlayState'
 require 'src/States/SettingsState'
+require 'src/States/AchievementState'
 
 -- GUI
 require 'src/GUI/Clickable'

@@ -8,7 +8,7 @@ function StartState:init()
 	self.buttons = {
 		["start"] = Button ({
 			x = VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
-			y = VIRTUAL_HEIGHT / 2 - buttonHeight / 2 - 75,
+			y = VIRTUAL_HEIGHT / 2 - buttonHeight / 2 - 90,
 			width = buttonWidth,
 			height = buttonHeight,
 			text = "Start", 
@@ -17,15 +17,23 @@ function StartState:init()
 			end}, "rect"),
 		["settings"] = Button ({
 			x = VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
-			y = VIRTUAL_HEIGHT / 2 - buttonHeight / 2,
+			y = VIRTUAL_HEIGHT / 2 - buttonHeight / 2 - 30,
 			width = buttonWidth,
 			height = buttonHeight,
 			text = "Settings", onClick = function()
 				stateMachine:change("settings")
 			end}, "rect"),
+		["achievment"] = Button ({
+			x = VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
+			y = VIRTUAL_HEIGHT / 2 - buttonHeight / 2 + 30,
+			width = buttonWidth,
+			height = buttonHeight,
+			text = "Achievments", onClick = function()
+				stateMachine:change("achievment")
+			end}, "rect"),
 		["quit"] = Button ({
 			x = VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
-			y = VIRTUAL_HEIGHT / 2 - buttonHeight / 2 + 75,
+			y = VIRTUAL_HEIGHT / 2 - buttonHeight / 2 + 90,
 			width = buttonWidth,
 			height = buttonHeight,
 			text = "Quit", onClick = function()
