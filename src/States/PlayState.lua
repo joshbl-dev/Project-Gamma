@@ -4,8 +4,6 @@ function PlayState:init()
 
 	-- we made a floor changer to help organize the floor and changing/rendering them
 	self.floorChanger = FloorChanger()
-	self.achievementSystem = AchievementSystem{["test"] = {unlocked = false, reward = 0, description = "NOTHING"},
-["test 2"] = {unlocked = false, reward = 0, description = "NOTHING"}}
 
 	-- not really a menu 
 	self.tempMenu = Button({x = 0, y = 50, width = 120, height = 50, text = "Menu", onClick = function()
@@ -23,6 +21,8 @@ function PlayState:init()
 	allSalary = {}
 	allSalary[0] = 0
 	lastMonth = clock.month
+	achievementSystem:addToQueue("test")
+	achievementSystem:addToQueue("test 2")
 end
 
 function PlayState:enter(saveData)
@@ -43,10 +43,7 @@ end
 
 function PlayState:update(dt)
 	self.saveClock:update(dt)
-	self.achievementSystem:update(dt)
-
-	self.achievementSystem:addToQueue("test")
-	self.achievementSystem:addToQueue("test 2")
+	achievementSystem:update(dt)
 	if self.saveClock.minutes > 0 then
 		self:saveFloor()
 		self.saveClock.time = 0
@@ -90,7 +87,7 @@ end
 
 function PlayState:render()
 	self.floorChanger:render()
-	self.achievementSystem:render()
+	achievementSystem:render()
 	clock:render()
 	self.tempMenu:render()
 	setColor(colors["black"])

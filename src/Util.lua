@@ -14,10 +14,16 @@ end
 
 function saveReset()
     love.filesystem.remove("save-data.dat")
+    achievementSystem.achievements = DEFAULT_ACHIEVEMENTS
 end
 
 function saveData(data)
     thread:start(channel)
+    achievementUnlock = {}
+    for i, achievement in pairs(achievementSystem.achievements) do
+        table.insert(achievementUnlock, achievement.unlocked)
+    end
+    table.insert(data, achievementUnlock)
     channel:push(data)
 end
 
