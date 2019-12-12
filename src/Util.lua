@@ -12,19 +12,41 @@ function loadData()
     end
 end
 
+function loadAchievementData()
+    if love.filesystem.exists('achievement-data.dat') then
+        return bitser.loadLoveFile('achievement-data.dat')
+    end
+end
+
+function saveAchievementData(data)
+    thread:start(channel)
+    achievementData = {"achievements"}
+    achievementUnlock = {}
+    for i, achievement in pairs(data) do
+        table.insert(achievementUnlock, achievement.unlocked)
+    end
+    table.insert(achievementData, achievementUnlock)
+    channel:push(achievementData)
+end
+
 function saveReset()
     love.filesystem.remove("save-data.dat")
-    achievementSystem.achievements = DEFAULT_ACHIEVEMENTS
+    love.filesystem.remove("achievement-data.dat")
+    saveAchievementData(DEFAULT_ACHIEVEMENTS)
+    achievementSystem = AchievementSystem(loadAchievementData())
+    print("Resetting saves...")
+    for i, achievement in pairs(achievementSystem.achievements) do
+        print(achievement.unlocked)
+    end
 end
+
+
 
 function saveData(data)
     thread:start(channel)
-    achievementUnlock = {}
-    for i, achievement in pairs(achievementSystem.achievements) do
-        table.insert(achievementUnlock, achievement.unlocked)
-    end
-    table.insert(data, achievementUnlock)
-    channel:push(data)
+    gameData = {"game"}
+    table.insert(gameData, data)
+    channel:push(gameData)
 end
 
 function setColor(color)

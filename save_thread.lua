@@ -8,7 +8,12 @@ local status, err = pcall(function()
     print("Waiting")
     data = channel:pop()
     print("Saving..")
-    bitser.dumpLoveFile('save-data.dat', data)
+    if (data[1] == "game") then
+    	bitser.dumpLoveFile('save-data.dat', data[2])
+    end
+    if (data[1] == "achievements") then
+    	bitser.dumpLoveFile("achievement-data.dat", data[2])
+    end
     print("Finished saving")
 end)
 print(status, err)

@@ -20,7 +20,7 @@ function AchievementSystem:update(dt)
 			self.displayingAchievement = self.mostRecentAchievements[1]
 		else
 			self.achievementTimer:update(dt)
-			if (self.achievementTimer.seconds > 30) then
+			if (self.achievementTimer.seconds > 10) then
 				table.remove(self.mostRecentAchievements, 1)
 				self.achievementTimer = nil
 			end

@@ -42,12 +42,13 @@ function love.load()
 
     stateMachine:change('start')
 
-    data = loadData()
+    data = loadAchievementData()
     achievementSystem = AchievementSystem(DEFAULT_ACHIEVEMENTS)
-    if (data and data[5]) then
-        local count = 1
+    local count = 1
+    if (data) then
+        print("Loading saved achievements")
         for i, achievement in pairs(achievementSystem.achievements) do
-            achievement.unlocked = data[5][count]
+            achievement.unlocked = data[count]
             print(achievement.unlocked)
             count = count + 1
         end

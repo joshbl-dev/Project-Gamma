@@ -119,4 +119,5 @@ function PlayState:saveFloor()
 	table.insert(data, clock.time)
 	table.insert(data, self.floorChanger.buyMenu.cost)
 	saveData(data)
+	saveAchievementData(achievementSystem.achievements)
 end
