@@ -63,3 +63,14 @@ function clear(table)
         table[i] = nil
     end
 end
+
+function love.wheelmoved(x, y)
+    if y > 0 then
+        velY = velY + 75
+    elseif y < 0 then
+        velY = velY - 75
+    end
+end
+
+
+

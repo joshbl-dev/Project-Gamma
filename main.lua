@@ -13,7 +13,7 @@ VIRTUAL_HEIGHT = 600
 
 currFont = fonts["skia"]
 
-
+velY = 0 -- scrolling text velocity
 
 function love.load()
     -- threas are used to isolate tasking things

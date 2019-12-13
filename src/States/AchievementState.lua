@@ -13,16 +13,31 @@ function AchievementState:init()
 				stateMachine:change("start")
 			end}, "rect")
 	}
+	self.contentY = 50
+	self.contentX = 100
 end
 
 function AchievementState:update(dt)
 	for i, button in pairs(self.buttons) do
 		button:update(dt)
 	end
+	self.contentY = self.contentY - velY * dt
+	velY = velY - velY * math.min( dt * 2, 1 )
 end
 
 function AchievementState:render()
-for i, button in pairs(self.buttons) do
+	for i, button in pairs(self.buttons) do
 		button:render()
 	end
+	local count = 0
+	for i, achievement in pairs(achievementSystem.achievements) do
+		setColor(colors["black"])
+		love.graphics.print(i .. ": " .. achievement.description .. " Unlocked: " .. tostring(achievement.unlocked), self.contentX, self.contentY + 20 * count)
+		count = count + 1
+	end
 end
+
+
+
+
+
