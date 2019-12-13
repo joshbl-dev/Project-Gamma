@@ -33,11 +33,11 @@ function saveReset()
     love.filesystem.remove("save-data.dat")
     love.filesystem.remove("achievement-data.dat")
     saveAchievementData(DEFAULT_ACHIEVEMENTS)
-    achievementSystem = AchievementSystem(loadAchievementData())
-    print("Resetting saves...")
-    for i, achievement in pairs(achievementSystem.achievements) do
-        print(achievement.unlocked)
-    end
+    achievementSystem:reset()
+    -- print("Resetting saves...")
+    -- for i, achievement in pairs(achievementSystem.achievements) do
+    --     print(i .. ": " .. tostring(achievement.unlocked))
+    -- end
 end
 
 

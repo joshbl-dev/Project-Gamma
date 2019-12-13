@@ -44,3 +44,13 @@ function AchievementSystem:addToQueue(achievement)
 	end
 end
 
+function AchievementSystem:reset()
+	for i, achievement in pairs(DEFAULT_ACHIEVEMENTS) do
+		achievement.unlocked = false
+	end
+	self.achievements = DEFAULT_ACHIEVEMENTS
+	self.mostRecentAchievements = {}
+	self.displayingAchievement = nil
+	self.achievementTimer = nil
+end
+
