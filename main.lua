@@ -46,10 +46,10 @@ function love.load()
     achievementSystem = AchievementSystem(DEFAULT_ACHIEVEMENTS)
     local count = 1
     if (data) then
-        print("Loading saved achievements")
+        --print("Loading saved achievements")
         for i, achievement in pairs(achievementSystem.achievements) do
             achievement.unlocked = data[count]
-            print(achievement.unlocked)
+            --print(achievement.unlocked)
             count = count + 1
         end
     end

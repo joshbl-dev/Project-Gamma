@@ -16,6 +16,7 @@ function loadAchievementData()
     if love.filesystem.exists('achievement-data.dat') then
         return bitser.loadLoveFile('achievement-data.dat')
     end
+    return false
 end
 
 function saveAchievementData(data)
@@ -32,9 +33,9 @@ end
 function saveReset()
     love.filesystem.remove("save-data.dat")
     love.filesystem.remove("achievement-data.dat")
-    saveAchievementData(DEFAULT_ACHIEVEMENTS)
     achievementSystem:reset()
-    -- print("Resetting saves...")
+    saveAchievementData(achievementSystem.achievements)
+    print("Resetting saves...\n\n")
     -- for i, achievement in pairs(achievementSystem.achievements) do
     --     print(i .. ": " .. tostring(achievement.unlocked))
     -- end
@@ -66,9 +67,9 @@ end
 
 function love.wheelmoved(x, y)
     if y > 0 then
-        velY = velY + 75
-    elseif y < 0 then
         velY = velY - 75
+    elseif y < 0 then
+        velY = velY + 75
     end
 end
 

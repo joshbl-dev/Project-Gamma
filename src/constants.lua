@@ -23,5 +23,5 @@ DEFAULT_UP = 1000 --default upgrade worker cost
 DEFAULT_FLOOR = 2000 --default floor cost
 DEFAULT_GAME_MONEY = 2250 --money throughout game, starts at 2400
 DEFAULT_UPGRADE_COST = 75
-DEFAULT_ACHIEVEMENTS = {["test"] = {unlocked = false, reward = 0, description = "NOTHING"},
-                                          ["test 2"] = {unlocked = false, reward = 0, description = "NOTHING"}}
+DEFAULT_ACHIEVEMENTS = {["first floor"] = {unlocked = false, reward = 50, description = "Purchased first floor!"},
+						["first month"] = {unlocked = false, reward = 200, description = "Played first month!"}}

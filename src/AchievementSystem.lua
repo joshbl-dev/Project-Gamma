@@ -17,6 +17,7 @@ function AchievementSystem:update(dt)
 			self.achievementTimer = Clock(0, 0, false, 0, false)
 			self.achievementTimer:update(dt)
 			self.achievements[self.mostRecentAchievements[1]].unlocked = true
+			money = money + self.achievements[self.mostRecentAchievements[1]].reward
 			self.displayingAchievement = self.mostRecentAchievements[1]
 		else
 			self.achievementTimer:update(dt)

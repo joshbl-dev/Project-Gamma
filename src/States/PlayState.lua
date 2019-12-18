@@ -21,7 +21,6 @@ function PlayState:init()
 	allSalary = {}
 	allSalary[0] = 0
 	lastMonth = clock.month
-	achievementSystem:addToQueue("test")
 end
 
 function PlayState:enter(saveData)
@@ -60,6 +59,9 @@ function PlayState:update(dt)
 	end
 	lastMonth = clock.month
 	clock:update(dt)
+	if (achievementSystem.achievements["first month"].unlocked == false and clock.month == 1) then
+		achievementSystem:addToQueue("first month")
+	end
 	self.floorChanger:update(dt)
 	self.tempMenu:update(dt)
 	if allSalary[1] ~= nil then
@@ -70,7 +72,7 @@ function PlayState:update(dt)
 		allSalary[1] = nil
 	end
 	if moneyLost ~= 0 then
-		print(moneyLost)
+		--print(moneyLost)
 		money = money - moneyLost
 		self.textMoneyLost = moneyLost
 		self.showLostMoneyClock = Clock(0, 0, false, 0, false)
@@ -79,7 +81,7 @@ function PlayState:update(dt)
 	end
 	if self.showLostMoneyClock then
 		self.showLostMoneyClock:update(dt)
-		print(self.showLostMoneyClock.seconds)
+		--print(self.showLostMoneyClock.seconds)
 	end
 	
 end
