@@ -30,6 +30,7 @@ function StartState:init()
 			height = buttonHeight,
 			text = "Achievments", onClick = function()
 				stateMachine:change("achievment")
+				velY = 0
 			end}, "rect"),
 		["quit"] = Button ({
 			x = VIRTUAL_WIDTH / 2 - buttonWidth / 2, 
