@@ -21,6 +21,7 @@ function PlayState:init()
 	allSalary = {}
 	allSalary[0] = 0
 	lastMonth = clock.month
+	achievementSystem:addToQueue("test")
 end
 
 function PlayState:enter(saveData)

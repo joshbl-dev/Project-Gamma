@@ -32,7 +32,7 @@ function AchievementState:render()
 	local count = 0
 	for i, achievement in pairs(achievementSystem.achievements) do
 		setColor(colors["black"])
-		love.graphics.print(i .. ": " .. achievement.description .. " Unlocked: " .. tostring(achievement.unlocked), self.contentX, self.contentY + 20 * count)
+		love.graphics.print(i .. ": " .. achievement.description .. "\n\tUnlocked: " .. tostring(achievement.unlocked), self.contentX, self.contentY + font:getHeight(i .. ": " .. achievement.description .. "\n\tUnlocked: " .. tostring(achievement.unlocked)) * 2 * count)
 		count = count + 1
 	end
 end
