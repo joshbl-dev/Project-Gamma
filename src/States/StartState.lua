@@ -39,6 +39,14 @@ function StartState:init()
 			height = buttonHeight,
 			text = "Quit", onClick = function()
 				love.event.quit()
+			end}, "rect"),
+		["instructions"] = Button ({
+			x = VIRTUAL_WIDTH - buttonWidth - 10, 
+			y = 10,
+			width = buttonWidth,
+			height = buttonHeight,
+			text = "Instructions", onClick = function()
+				stateMachine:change("instructions")
 			end}, "rect")
 	}
 

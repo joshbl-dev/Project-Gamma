@@ -37,7 +37,8 @@ function love.load()
         ['start'] = function() return StartState() end,
         ['play'] = function() return PlayState() end,
         ['settings'] = function() return SettingsState() end,
-        ['achievment'] = function() return AchievementState() end
+        ['achievment'] = function() return AchievementState() end,
+        ['instructions'] = function() return InstructionsState() end
     }
 
     stateMachine:change('start')
