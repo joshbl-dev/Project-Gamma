@@ -70,6 +70,7 @@ function love.load()
     love.keyboard.keysReleased = {}
 
     love.filesystem.setIdentity("Project-Gamma")
+    love.audio.play(sounds["theme"])
 end
 
 function love.resize(w, h)

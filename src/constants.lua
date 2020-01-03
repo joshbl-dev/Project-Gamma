@@ -7,14 +7,18 @@ colors = {
 		  	['green'] = {0, 227, 72, 255},
 		  	['white'] = {255, 255, 255, 255},
 		  	['red'] = {219, 0, 0, 255}
-		 }
+}
 
 fonts = {
 			['papyrus'] = "fonts/PAPYRUS.ttf",
 			['skia'] = "fonts/Skia_Regular.ttf",
 			['stsong'] = "fonts/chinese.stsong.ttf",
 			['noteworthy'] = "fonts/Noteworthy-Lt.ttf"
-		}
+}
+
+sounds = {
+			["theme"] = love.audio.newSource("sounds/best-music-electronic-no-copyright-sounds.mp3")
+}
 
 DEFAULT_REV = 100/30 --default revenue of worker per day
 DEFAULT_EXP = 10 --default salary of worker per month
