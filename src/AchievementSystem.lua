@@ -17,11 +17,12 @@ function AchievementSystem:update(dt)
 			self.achievementTimer = Clock(0, 0, false, 0, false)
 			self.achievementTimer:update(dt)
 			self.achievements[self.mostRecentAchievements[1]].unlocked = true
+			saveAchievementData(self.achievements)
 			money = money + self.achievements[self.mostRecentAchievements[1]].reward
 			self.displayingAchievement = self.mostRecentAchievements[1]
 		else
 			self.achievementTimer:update(dt)
-			if (self.achievementTimer.seconds > 10) then
+			if (self.achievementTimer.seconds > 5) then
 				table.remove(self.mostRecentAchievements, 1)
 				self.achievementTimer = nil
 			end
@@ -39,9 +40,20 @@ function AchievementSystem:render()
 	end
 end
 
+function contains(list, value)
+	for i, k in pairs(list) do
+		if k == value then
+			return true 
+		end
+	end
+	return false
+end
+
 function AchievementSystem:addToQueue(achievement)
 	if not (self.achievements[achievement].unlocked) then
-		table.insert(self.mostRecentAchievements, achievement)
+		if not (contains(self.mostRecentAchievements, achievement)) then
+			table.insert(self.mostRecentAchievements, achievement)
+		end
 	end
 end
 

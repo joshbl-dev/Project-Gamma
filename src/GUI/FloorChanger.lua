@@ -36,6 +36,7 @@ function FloorChanger:init()
 			end
 		end
 	}, "triangle")
+	cubiclesOwned = 0
 end
 
 function FloorChanger:update(dt)
@@ -43,6 +44,16 @@ function FloorChanger:update(dt)
 		for i, floor in pairs(self.floors) do
 			floor:update(dt)
 		end
+		if cubiclesOwned == 2 and achievementSystem.achievements["1st cubicle purchased"].unlocked == false then
+			achievementSystem:addToQueue("1st cubicle purchased")
+		end
+		if cubiclesOwned == 50 and achievementSystem.achievements["50th cubicle"].unlocked == false then
+			achievementSystem:addToQueue("50th cubicle")
+		end
+		if cubiclesOwned == 100 and achievementSystem.achievements["100th cubicle"].unlocked == false then
+			achievementSystem:addToQueue("100th cubicle")
+		end
+
 	end
 
 	self.buyMenu:update(dt)

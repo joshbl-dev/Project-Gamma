@@ -4,6 +4,7 @@ function Grid:init(newFloor, defs, floorNumber)--defs is saved data
 	self.rows = defs.rows
 	self.cols = defs.cols
 	self.cells = {}
+	self.floorNumber = floorNumber
 	for i = 1, self.rows, 1 do
 		self.cells[i] = {}
 		for j = 1, self.cols, 1 do
