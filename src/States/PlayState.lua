@@ -59,8 +59,8 @@ function PlayState:update(dt)
 	end
 	lastMonth = clock.month
 	clock:update(dt)
-	if (achievementSystem.achievements["first month"].unlocked == false and clock.month == 1) then
-		achievementSystem:addToQueue("first month")
+	if (achievementSystem.achievements[2].unlocked == false and clock.month == 1) then
+		achievementSystem:addToQueue(2)
 	end
 	self.floorChanger:update(dt)
 	self.tempMenu:update(dt)

@@ -22,8 +22,8 @@ end
 
 function Floor:update(dt)
 	self.grid:update(dt)
-	if (self.floorNumber == 1 and achievementSystem.achievements["first floor"].unlocked == false) then
-		achievementSystem:addToQueue("first floor")
+	if (self.floorNumber == 1 and achievementSystem.achievements[1].unlocked == false) then
+		achievementSystem:addToQueue(1)
 	end
 end
 

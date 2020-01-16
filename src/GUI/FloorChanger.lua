@@ -44,14 +44,14 @@ function FloorChanger:update(dt)
 		for i, floor in pairs(self.floors) do
 			floor:update(dt)
 		end
-		if cubiclesOwned == 2 and achievementSystem.achievements["1st cubicle purchased"].unlocked == false then
-			achievementSystem:addToQueue("1st cubicle purchased")
+		if cubiclesOwned == 2 and achievementSystem.achievements[3].unlocked == false then
+			achievementSystem:addToQueue(3)
 		end
-		if cubiclesOwned == 50 and achievementSystem.achievements["50th cubicle"].unlocked == false then
-			achievementSystem:addToQueue("50th cubicle")
+		if cubiclesOwned == 50 and achievementSystem.achievements[4].unlocked == false then
+			achievementSystem:addToQueue(4)
 		end
-		if cubiclesOwned == 100 and achievementSystem.achievements["100th cubicle"].unlocked == false then
-			achievementSystem:addToQueue("100th cubicle")
+		if cubiclesOwned == 100 and achievementSystem.achievements[5].unlocked == false then
+			achievementSystem:addToQueue(5)
 		end
 
 	end

@@ -19,7 +19,7 @@ function AchievementSystem:update(dt)
 			self.achievements[self.mostRecentAchievements[1]].unlocked = true
 			saveAchievementData(self.achievements)
 			money = money + self.achievements[self.mostRecentAchievements[1]].reward
-			self.displayingAchievement = self.mostRecentAchievements[1]
+			self.displayingAchievement = self.achievements[self.mostRecentAchievements[1]].name
 		else
 			self.achievementTimer:update(dt)
 			if (self.achievementTimer.seconds > 5) then
