@@ -1,5 +1,7 @@
 AchievementState = Class{__includes = BaseState}
 
+-- this state displays achievements and their individual values (completion, description, name)
+
 function AchievementState:init()
 	local buttonWidth = 120
 	local buttonHeight = 50

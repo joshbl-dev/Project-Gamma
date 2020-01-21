@@ -12,6 +12,7 @@ function AchievementSystem:init(achievements)
 end
 
 function AchievementSystem:update(dt)
+	-- displays current achievement in queued list for 5 seconds
 	if #self.mostRecentAchievements ~= 0 then
 		if self.achievementTimer == nil then
 			self.achievementTimer = Clock(0, 0, false, 0, false)
@@ -40,6 +41,7 @@ function AchievementSystem:render()
 	end
 end
 
+-- helper function
 function contains(list, value)
 	for i, k in pairs(list) do
 		if k == value then
@@ -49,6 +51,7 @@ function contains(list, value)
 	return false
 end
 
+-- adds achievement to queue for completion
 function AchievementSystem:addToQueue(achievement)
 	if not (self.achievements[achievement].unlocked) then
 		if not (contains(self.mostRecentAchievements, achievement)) then
@@ -57,6 +60,7 @@ function AchievementSystem:addToQueue(achievement)
 	end
 end
 
+-- resets achievements
 function AchievementSystem:reset()
 	for i, achievement in pairs(DEFAULT_ACHIEVEMENTS) do
 		achievement.unlocked = false

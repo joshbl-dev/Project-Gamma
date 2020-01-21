@@ -22,6 +22,7 @@ end
 
 function Floor:update(dt)
 	self.grid:update(dt)
+	-- achievements
 	if (self.floorNumber == 1 and achievementSystem.achievements[1].unlocked == false) then
 		achievementSystem:addToQueue(1)
 	end

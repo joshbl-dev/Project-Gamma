@@ -4,6 +4,7 @@ FloorChanger = Class{}
 
 function FloorChanger:init()
 	self.floors = {}
+	-- ensures randomization
 	local trash = math.random(math.floor(DEFAULT_FLOOR * (math.pow(1.5, #self.floors))), math.floor(DEFAULT_FLOOR * (math.pow(1.5, #self.floors)) * math.pow(1.1, #self.floors + 1)))
 	self.buyMenu = UpgradeMenu ({x = VIRTUAL_WIDTH * .15 / 2 - 25, y = VIRTUAL_HEIGHT - 130, width = 50, height = 70, type = "Floor",
 								cost = math.random(math.floor(DEFAULT_FLOOR * (math.pow(1.5, #self.floors))), math.floor(DEFAULT_FLOOR * (math.pow(1.5, #self.floors)) * math.pow(1.1, #self.floors + 1))), buttonText = "Buy", onClick = function() 
@@ -18,6 +19,7 @@ function FloorChanger:init()
 	self.buyMenu.upgrading = true
 	currentFloor = 1
 
+	-- floor buttons
 	self.upFloorBtn = Button({
 		verticies =  {{VIRTUAL_WIDTH * .15 / 2, VIRTUAL_HEIGHT - 180}, {VIRTUAL_WIDTH * .15 / 2 - 25, VIRTUAL_HEIGHT - 130}, {VIRTUAL_WIDTH * .15 / 2 + 25, VIRTUAL_HEIGHT - 130}},
 		onClick = function()
@@ -44,6 +46,8 @@ function FloorChanger:update(dt)
 		for i, floor in pairs(self.floors) do
 			floor:update(dt)
 		end
+
+		-- achievements
 		if cubiclesOwned == 2 and achievementSystem.achievements[3].unlocked == false then
 			achievementSystem:addToQueue(3)
 		end
@@ -56,6 +60,7 @@ function FloorChanger:update(dt)
 
 	end
 
+	
 	self.buyMenu:update(dt)
 	if self.buyMenu.button.clickable:isHovering() and money >= self.buyMenu.cost then
 		self.buyMenu.button.buttonColor = "green"

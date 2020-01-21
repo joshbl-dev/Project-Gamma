@@ -1,5 +1,6 @@
 InstructionsState = Class{__includes = BaseState}
 
+-- this state simply displays game instructions
 function InstructionsState:init()
 	local buttonWidth = 120
 	local buttonHeight = 50
