@@ -6,13 +6,13 @@ function Worker:init(defs)
 	self.width = defs.width
 	self.height = defs.height
 	self.size = 10
-	local trash = math.random(DEFAULT_EXP * (math.pow(1.5, defs.floorNum - 1)), (DEFAULT_EXP * (math.pow(1.5, defs.floorNum - 1))) * math.pow(1.1, defs.floorNum))
-	self.salary = math.floor(math.random(DEFAULT_EXP * (math.pow(1.5, defs.floorNum - 1)), (DEFAULT_EXP * (math.pow(1.5, defs.floorNum - 1))) * math.pow(1.1, defs.floorNum)))-- salary
+	local trash = math.random(DEFAULT_EXP * (math.pow(1.75, defs.floorNum - 1)), (DEFAULT_EXP * (math.pow(1.5, defs.floorNum - 1))) * math.pow(1.1, defs.floorNum))
+	self.salary = math.floor(math.random(DEFAULT_EXP * (math.pow(1.75, defs.floorNum - 1)), (DEFAULT_EXP * (math.pow(1.5, defs.floorNum - 1))) * math.pow(1.1, defs.floorNum)))-- salary
 	self.timeEmployed = defs.worker[2] -- timeEmployed
 
 	self.wclock = Clock(self.x, self.y + 10, true, self.timeEmployed, false)--clock to get payed
 	self.lastDay = self.wclock.day
-	self.rev = DEFAULT_REV * (math.pow(1.5, defs.floorNum - 1))
+	self.rev = DEFAULT_REV * (math.pow(1.25, defs.floorNum - 1))
 	self.upgradeLevel = 0
 end
 
