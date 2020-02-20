@@ -1,3 +1,12 @@
+-- size of actual window
+WINDOW_WIDTH = 1000
+WINDOW_HEIGHT = 600
+
+-- size to emulate with push
+
+VIRTUAL_WIDTH = 1000
+VIRTUAL_HEIGHT = 600
+
 colors = {
 		  	['blue'] = {65, 78, 150, 255}, 
 		  	['purple'] = {114, 59, 135, 255}, 
@@ -34,3 +43,18 @@ DEFAULT_ACHIEVEMENTS = {[1] = {unlocked = false, reward = 50, description = "Pur
 						[4] = {unlocked = false, reward = 2500, description = "Own 50 cubicles!", name = "50th cubicle"},
 						[5] = {unlocked = false, reward = 10000, description = "Own 100 cubicles!", name = "100th cubicle"}
 					}
+
+					-- maze generation
+WALL_LENGTH = 10
+GRID_LENGTH = 20
+ROW_OFFSET = VIRTUAL_WIDTH / 2 - GRID_LENGTH * 5
+COL_OFFSET = VIRTUAL_HEIGHT / 2 - GRID_LENGTH * 5
+DIRECTIONS = {{"N", "E"}, 
+				{"N", "W"}, 
+				{"S", "E"},
+				{"S", "W"}
+			}
+
+
+-- other
+PLAYER_SPEED = 50

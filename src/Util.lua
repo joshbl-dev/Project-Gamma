@@ -78,5 +78,111 @@ function love.wheelmoved(x, y)
     end
 end
 
+function GenerateGrid(index1, index2)
+    local maze = {}
+
+    local maxTokens = math.random(3, 5)
+    local tokenCount = 0
+    
+    for i = 0, GRID_LENGTH do
+        maze[i + 1] = {}
+        for j = 0, GRID_LENGTH do
+            maze[i + 1][j + 1] = Block(i, j)
+
+            -- generate tokens
+            if math.random() < 0.01 and tokenCount < maxTokens then
+                maze[i + 1][j + 1].hasToken = true
+                tokenCount = tokenCount + 1
+            end
+
+        end
+    end
+
+    -- generate goal
+    maze[index1][index2].hasLadder = true
+
+    return maze, tokenCount
+end
+
+function carveMaze(maze)
+    -- first index represents the East or West side
+    -- second index represents the North or South side
+    -- maybe...
+
+    -- maze bias
+    local possibleDirs = DIRECTIONS[math.random(#DIRECTIONS)]
+
+    -- Remove diagonol biased walls
+        for i = 1, #maze - 1 do
+
+            -- SE
+            if possibleDirs[1] == "S" and possibleDirs[2] == "E" then
+                maze[i][#maze].walls["E"] = nil
+                maze[i + 1][#maze].walls["W"] = nil
+
+                maze[#maze][i].walls["S"] = nil
+                maze[#maze][i + 1].walls["N"] = nil
+            end
+
+            -- SW
+            if possibleDirs[1] == "S" and possibleDirs[2] == "W" then
+                maze[i][#maze].walls["E"] = nil
+                maze[i + 1][#maze].walls["W"] = nil
+
+                maze[1][i].walls["S"] = nil
+                maze[1][i + 1].walls["N"] = nil
+            end
+
+            -- NE
+            if possibleDirs[1] == "N" and possibleDirs[2] == "E" then
+                maze[i][1].walls["E"] = nil
+                maze[i + 1][1].walls["W"] = nil
+
+                maze[#maze][i].walls["S"] = nil
+                maze[#maze][i + 1].walls["N"] = nil
+            end
+
+            -- NW
+            if possibleDirs[1] == "N" and possibleDirs[2] == "W" then
+                maze[i][1].walls["E"] = nil
+                maze[i + 1][1].walls["W"] = nil
+
+                maze[1][i].walls["S"] = nil
+                maze[1][i + 1].walls["N"] = nil
+            end
+
+
+        end
+
+
+    for i, col in pairs(maze) do
+        for j, row in pairs(maze[i]) do
+
+            local currentBlock = maze[i][j]
+
+            --  gets next carve
+            local nextDir = possibleDirs[math.random(#possibleDirs)]
+
+            if j > 1 and nextDir == "N" then
+                currentBlock.walls["N"] = nil
+                maze[i][j - 1].walls["S"] = nil
+            end
+            if j < GRID_LENGTH + 1 and nextDir == "S" then
+                currentBlock.walls["S"] = nil
+                maze[i][j + 1].walls["N"] = nil
+            end
+            if i > 1 and nextDir == "W" then
+                currentBlock.walls["W"] = nil
+                maze[i - 1][j].walls["E"] = nil
+            end
+            if i < GRID_LENGTH + 1 and nextDir == "E" then
+                currentBlock.walls["E"] = nil
+                maze[i + 1][j].walls["W"] = nil
+            end
+        end
+    end
+
+    return maze
+end
 
 

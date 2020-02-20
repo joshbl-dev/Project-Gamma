@@ -13,6 +13,7 @@ require 'src/States/PlayState'
 require 'src/States/SettingsState'
 require 'src/States/AchievementState'
 require 'src/States/InstructionsState'
+require 'src/States/MazeState'
 
 -- GUI
 require 'src/GUI/Clickable'
@@ -28,3 +29,7 @@ require 'src/Cell'
 require 'src/Cubicle'
 require 'src/Worker'
 require 'src/AchievementSystem'
+
+require 'src/Player'
+require 'src/Block'
+require 'src/Wall'

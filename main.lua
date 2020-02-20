@@ -1,14 +1,5 @@
 require 'src/Dependencies'
 
--- size of actual window
-WINDOW_WIDTH = 1000
-WINDOW_HEIGHT = 600
-
--- size to emulate with push
-
-VIRTUAL_WIDTH = 1000
-VIRTUAL_HEIGHT = 600
-
 -- current font being used
 
 currFont = fonts["skia"]
@@ -33,12 +24,14 @@ function love.load()
     })
 
     -- used to run seperate parts of the game
-    stateMachine = StateMachine{
+    stateMachine = StateMachine {
         ['start'] = function() return StartState() end,
         ['play'] = function() return PlayState() end,
         ['settings'] = function() return SettingsState() end,
         ['achievment'] = function() return AchievementState() end,
-        ['instructions'] = function() return InstructionsState() end
+        ['instructions'] = function() return InstructionsState() end,
+        ['maze'] = function() return MazeState() end
+            -- body
     }
 
     stateMachine:change('start')
