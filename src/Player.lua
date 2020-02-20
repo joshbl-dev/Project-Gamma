@@ -6,26 +6,13 @@ Player = Class{}
 function Player:init(x, y)
 	self.x = x
 	self.y = y
-	self.length = 3
+	self.length = 3 * MAZE_SCALE_RATIO
 
 
 	-- -- skills
-	-- self.skills = {
- --    	["sight"] = Skill (
- --    		"Sight",
- --    		60,
- --    		VIRTUAL_HEIGHT / 2 - 25,
- --    		25,
- --    		25
- --    	),
- --    	["speed"] = Skill (
- --    		"Speed",
- --    		60,
- --    		VIRTUAL_HEIGHT / 2 + 25,
- --    		25,
- --    		25
- --    	)
- --    }
+	self.skills = {
+    	["speed"] = 30
+    }
 
 
 end
@@ -40,17 +27,17 @@ function Player:update(dt)
 	-- movement
 	local speed = PLAYER_SPEED
 	-- sprint
-	-- if love.keyboard.isDown("lshift") then
-	-- 	speed = PLAYER_SPEED * (1 + self.skills["speed"].value / 20)
-	-- end
+	if love.keyboard.isDown("lshift") then
+		speed = PLAYER_SPEED * (1 + self.skills["speed"] / 20)
+	end
 	-- normal movement, only can move in one direction
-	if love.keyboard.isDown("w") then
+	if love.keyboard.isDown("w") or love.keyboard.isDown("up") then
 		self.y = self.y - speed * dt
-	elseif love.keyboard.isDown("s") then
+	elseif love.keyboard.isDown("s") or love.keyboard.isDown("down") then
 		self.y = self.y + speed * dt
-	elseif love.keyboard.isDown("a") then
+	elseif love.keyboard.isDown("a") or love.keyboard.isDown("left") then
 		self.x = self.x - speed * dt
-	elseif love.keyboard.isDown("d") then
+	elseif love.keyboard.isDown("d") or love.keyboard.isDown("right") then
 		self.x = self.x + speed * dt
 	end
 
@@ -76,17 +63,17 @@ function Player:collidesWithWall(wall, dt)
 		-- gSounds['wall-hit']:play()
 		local speed = PLAYER_SPEED
 		-- if sprinting adjust
-		-- if love.keyboard.isDown("lshift") then
-		-- 	speed = PLAYER_SPEED * (1 + self.skills["speed"].value / 20)
-		-- end
+		if love.keyboard.isDown("lshift") then
+			speed = PLAYER_SPEED * (1 + self.skills["speed"] / 20)
+		end
 		-- adjust to previous location
-		if love.keyboard.isDown("w") then
+		if love.keyboard.isDown("w") or love.keyboard.isDown("up") then
 			self.y = self.y + speed * dt
-		elseif love.keyboard.isDown("s") then
+		elseif love.keyboard.isDown("s") or love.keyboard.isDown("down") then
 			self.y = self.y - speed * dt
-		elseif love.keyboard.isDown("a") then
+		elseif love.keyboard.isDown("a") or love.keyboard.isDown("left") then
 			self.x = self.x + speed * dt
-		elseif love.keyboard.isDown("d") then
+		elseif love.keyboard.isDown("d") or love.keyboard.isDown("right") then
 			self.x = self.x - speed * dt
 		end
 	end

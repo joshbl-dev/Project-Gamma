@@ -7,7 +7,7 @@ function Block:init(row, col)
 	self.row = row
 	self.col = col
 	self.hasLadder = false
-	self.hasToken = false
+	-- self.hasToken = false
 
 	-- coords
 	self.x = {(row - 1) * WALL_LENGTH + ROW_OFFSET, 
@@ -47,14 +47,14 @@ function Block:render()
 	-- ladder
 	if self.hasLadder then
 		love.graphics.setColor(255, 255, 255, 255)
-		love.graphics.circle("line", self.x[2] - WALL_LENGTH / 2, self.y[2] - WALL_LENGTH / 2, 2)
+		love.graphics.circle("line", self.x[2] - WALL_LENGTH / 2, self.y[2] - WALL_LENGTH / 2, 2 * MAZE_SCALE_RATIO)
 	end
 
 	-- token
-	if self.hasToken then
+	--[[if self.hasToken then
 		love.graphics.setColor(242, 205, 43, 255)
 		love.graphics.circle("fill", self.x[2] - WALL_LENGTH / 2, self.y[2] - WALL_LENGTH / 2, 2)
-	end
+	end--]]
 
 
 	-- walls

@@ -169,7 +169,7 @@ function MazeState:render()
     -- maze sight
 	if not DEBUGGING then
 		love.graphics.stencil(function()
-		    love.graphics.circle('fill', self.player.x, self.player.y, 20 * (4 / 10)) 
+		    love.graphics.circle('fill', self.player.x, self.player.y, 20 * MAZE_SCALE_RATIO) 
 
 			end, 'replace', 2)
 
