@@ -23,20 +23,26 @@ function PlayState:init()
 	lastMonth = clock.month
 end
 
-function PlayState:enter(saveData)
-	if not newGame then
+function PlayState:enter(params)
+	if not newGame and params.saveData ~= nil then
 		local floors = {}
-		for i, floor in pairs(saveData[1]) do
+		for i, floor in pairs(params.saveData[1]) do
 			local cost = floor[1]
 			table.insert(floors, Floor(false, i, floor))
 		end
 		self.floorChanger:loadSavedFloors(floors)
-		self.floorChanger.buyMenu.cost = saveData[4]
-		money = saveData[2]
-		clock = Clock(VIRTUAL_WIDTH / 2, 0, true, saveData[3], true)
+		self.floorChanger.buyMenu.cost = params.saveData[4]
+		money = params.saveData[2]
+		clock = Clock(VIRTUAL_WIDTH / 2, 0, true, params.saveData[3], true)
+	elseif params.playState ~= nil then
+		self = params.playState
 	end
 	self:saveFloor()
 	newGame = false
+end
+
+function PlayState:getPlayState()
+	return self
 end
 
 function PlayState:update(dt)

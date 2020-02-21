@@ -13,7 +13,7 @@ function StartState:init()
 			height = buttonHeight,
 			text = "Start", 
 			onClick = function()
-				stateMachine:change("play", loadData())
+				stateMachine:change("play", {saveData = loadData()})
 			end}, "rect"),
 		["settings"] = Button ({
 			x = VIRTUAL_WIDTH / 2 - buttonWidth / 2, 

@@ -25,6 +25,11 @@ function MazeState:init()
 end
 
 function MazeState:enter(params)
+	if (params.playState ~= nil) then
+		self.playState = params.playState
+		print("Saved play state")
+	end
+
 	-- -- updates the stuff on level change
 	-- self.data = params
 
@@ -97,7 +102,9 @@ function MazeState:update(dt)
 
 				-- self.data.level = self.data.level + 1
 				-- saveData(self.data)
-				-- gStateMachine:change('play', self.data)
+				self.playState:saveFloor()
+				print(#self.playState.floorChanger.floors)
+				stateMachine.current = self.playState
 			end
 
 			-- token collision and updates
