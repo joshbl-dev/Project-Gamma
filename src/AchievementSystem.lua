@@ -36,8 +36,8 @@ end
 
 function AchievementSystem:render()
 	if self.displayingAchievement ~= nil and self.achievementTimer ~= nil then
-		love.graphics.print("Achievement Unlocked", VIRTUAL_WIDTH - font:getWidth("Achievement Unlocked") - 20, 0)
-		love.graphics.print(self.displayingAchievement, VIRTUAL_WIDTH - (font:getWidth("Achievement Unlocked") - 20) / 2 - font:getWidth(self.displayingAchievement), 20)
+		love.graphics.print("Achievement Unlocked", VIRTUAL_WIDTH - font:getWidth("Achievement Unlocked") - 20, font:getHeight("Achievement Unlocked"))
+		love.graphics.print(self.displayingAchievement, VIRTUAL_WIDTH - (font:getWidth("Achievement Unlocked") - 20) / 2 - font:getWidth(self.displayingAchievement), font:getHeight("Achievement Unlocked") * 2)
 	end
 end
 

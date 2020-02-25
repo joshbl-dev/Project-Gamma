@@ -1,10 +1,10 @@
 -- size of actual window
-WINDOW_WIDTH = 1000
+WINDOW_WIDTH = 700
 WINDOW_HEIGHT = 600
 
 -- size to emulate with push
 
-VIRTUAL_WIDTH = 1000
+VIRTUAL_WIDTH = 700
 VIRTUAL_HEIGHT = 600
 
 colors = {
@@ -27,6 +27,10 @@ fonts = {
 
 sounds = {
 			["theme"] = love.audio.newSource("sounds/best-music-electronic-no-copyright-sounds.mp3")
+}
+
+graphics = {
+			["cubicle"] = love.graphics.newImage("graphics/temp_desk.png")
 }
 
 DEFAULT_REV = 100/30 --default revenue of worker per day

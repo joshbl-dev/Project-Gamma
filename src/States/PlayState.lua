@@ -13,7 +13,7 @@ function PlayState:init()
 
 	-- clock to save automatically and track time played
 	timeScale = 6.9*math.pow(10,-5)
-	clock = Clock(VIRTUAL_WIDTH / 2, 0, true, 0, true)
+	clock = Clock(VIRTUAL_WIDTH / 2 + 100, 0, true, 0, true)
 	self.saveClock = Clock(-100, -100, false, 0, false)
 	money = DEFAULT_GAME_MONEY
 	moneyLost = 0
@@ -33,7 +33,7 @@ function PlayState:enter(params)
 		self.floorChanger:loadSavedFloors(floors)
 		self.floorChanger.buyMenu.cost = params.saveData[4]
 		money = params.saveData[2]
-		clock = Clock(VIRTUAL_WIDTH / 2, 0, true, params.saveData[3], true)
+		clock = Clock(VIRTUAL_WIDTH / 2 + 100, 0, true, params.saveData[3], true)
 	elseif params.playState ~= nil then
 		self = params.playState
 	end

@@ -6,14 +6,14 @@ function Floor:init(newFloor, floorNumber, workerData, cost)
 	self.floorNumber = floorNumber
 	if not newFloor then
 		self.grid = Grid (newFloor, {
-			rows = 5,
-			cols = 5,
+			rows = 4,
+			cols = 4,
 			workerData = workerData--saved data for workers on a floor
 		}, floorNumber)
 	else
 		self.grid = Grid (newFloor, {
-			rows = 5,
-			cols = 5
+			rows = 4,
+			cols = 4
 		}, floorNumber)
 	end
 	
