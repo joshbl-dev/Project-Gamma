@@ -7,6 +7,15 @@ function Cubicle:init(defs)--set cubicle to saved value or default, whatever is 
 	self.height = defs.height
 	self.worker = Worker(defs)
 
+	self.rotation = 0
+	if (defs.cellNum % 4 == 1 or defs.cellNum % 4 == 3) then
+		self.rotation = 3*math.pi/2
+		self.y = self.y + self.height
+	elseif (defs.cellNum % 4 == 2 or defs.cellNum % 4 == 0) then
+		self.rotation = math.pi/2
+		self.x = self.x + self.width
+	end
+
 	-- ensures randomization
 	local trash = math.random(DEFAULT_CUB * (math.pow(4, defs.floorNum - 1)), (DEFAULT_CUB * (math.pow(4, defs.floorNum - 1))) * math.pow(1.1, defs.floorNum))
 	if (defs.worker[3]) then
@@ -30,7 +39,8 @@ function Cubicle:render()
 	-- setColor(colors["purple"])--make desk
 	-- love.graphics.rectangle("fill", self.x, self.y, self.width * .25, self.height * .75)
 	love.graphics.setColor(255, 255, 255, 255)
-	love.graphics.draw(graphics["cubicle"], self.x, self.y)
+
+	love.graphics.draw(graphics["cubicle"], self.x, self.y, self.rotation)
 end
 
 function Cubicle:buyWorker()

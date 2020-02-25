@@ -1,6 +1,6 @@
 Cell = Class{}
 
-function Cell:init(newFloor, defs, floorNumber)
+function Cell:init(newFloor, defs, floorNumber, cellNum)
 	self.floorNumber = floorNumber
 	self.clickable = Clickable(defs.x, defs.y, defs.width, defs.height, function()
 		if not self.cubicle.purchased then
@@ -13,9 +13,9 @@ function Cell:init(newFloor, defs, floorNumber)
 	self.border = "line"--sets type of border around button
 
 	if not newFloor then--if it's not a new save file or new floor, then use saved data to make worker
-		self.cubicle = Cubicle {x = self.clickable.x, y = self.clickable.y, width = self.clickable.width, height = self.clickable.height, worker = defs.workerData, floorNum = floorNumber}
+		self.cubicle = Cubicle {x = self.clickable.x, y = self.clickable.y, width = self.clickable.width, height = self.clickable.height, worker = defs.workerData, floorNum = floorNumber, cellNum = cellNum}
 	else--otherwise, make a new worker
-		self.cubicle = Cubicle {x = self.clickable.x, y = self.clickable.y, width = self.clickable.width, height = self.clickable.height, worker = {false, 0}, floorNum = floorNumber}
+		self.cubicle = Cubicle {x = self.clickable.x, y = self.clickable.y, width = self.clickable.width, height = self.clickable.height, worker = {false, 0}, floorNum = floorNumber, cellNum = cellNum}
 	end
 
 	self.buyCubicle = UpgradeMenu ({--creates the option to buy a cubicle when a cell is clicked

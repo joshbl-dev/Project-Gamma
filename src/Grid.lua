@@ -5,6 +5,7 @@ function Grid:init(newFloor, defs, floorNumber)--defs is saved data
 	self.cols = defs.cols
 	self.cells = {}
 	self.floorNumber = floorNumber
+	local count = 1
 	for i = 1, self.rows, 1 do
 		self.cells[i] = {}
 		for j = 1, self.cols, 1 do
@@ -16,15 +17,16 @@ function Grid:init(newFloor, defs, floorNumber)--defs is saved data
 					width = length,
 					height = length,
 					workerData = defs.workerData[(i - 1) * self.rows + j]
-				}, floorNumber)
+				}, floorNumber, count)
 			else--create new blank grid
 				self.cells[i][j] = Cell (newFloor, {
 					x = (VIRTUAL_WIDTH - (4*length)) + length * (j - 1),
 					y = (VIRTUAL_HEIGHT - (4*length)) + length * (i - 1),
 					width = length,
 					height = length,
-				}, floorNumber)
+				}, floorNumber, count)
 			end
+			count = count + 1
 		end
 	end
 end
