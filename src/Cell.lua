@@ -83,6 +83,7 @@ function Cell:render()
 	setColor(self.color)
 
 	if not self.cubicle.purchased or self.upgradeWorker.upgrading then
+		love.graphics.setColor(colors["black"])
 		love.graphics.rectangle(self.border, self.clickable.x, self.clickable.y, self.clickable.width, self.clickable.height)
 	end
 	

@@ -1,11 +1,11 @@
 -- size of actual window
-WINDOW_WIDTH = 700
-WINDOW_HEIGHT = 600
+WINDOW_WIDTH = 800
+WINDOW_HEIGHT = 700
 
 -- size to emulate with push
 
-VIRTUAL_WIDTH = 700
-VIRTUAL_HEIGHT = 600
+VIRTUAL_WIDTH = 800
+VIRTUAL_HEIGHT = 700
 
 colors = {
 		  	['blue'] = {65, 78, 150, 255}, 
@@ -15,7 +15,9 @@ colors = {
 		  	['black'] = {10, 9, 8, 255},
 		  	['green'] = {0, 227, 72, 255},
 		  	['white'] = {255, 255, 255, 255},
-		  	['red'] = {219, 0, 0, 255}
+		  	['red'] = {219, 0, 0, 255},
+		  	['carpet-gray'] = {111, 111, 111, 255},
+		  	['carpet-grey'] = {111, 111, 111, 255}
 }
 
 fonts = {
