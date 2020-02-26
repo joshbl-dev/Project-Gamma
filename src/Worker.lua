@@ -10,7 +10,7 @@ function Worker:init(defs)
 	local trash = math.random(DEFAULT_EXP * (math.pow(1.75, defs.floorNum - 1)), (DEFAULT_EXP * (math.pow(1.5, defs.floorNum - 1))) * math.pow(1.1, defs.floorNum))
 	-- money taken from player (-)
 	self.salary = math.floor(math.random(DEFAULT_EXP * (math.pow(1.75, defs.floorNum - 1)), (DEFAULT_EXP * (math.pow(1.5, defs.floorNum - 1))) * math.pow(1.1, defs.floorNum)))-- salary
-	self.timeEmployed = defs.worker[2] -- timeEmployed
+	self.timeEmployed = defs.data[2] -- timeEmployed
 
 	self.wclock = Clock(self.x, self.y + 10, true, self.timeEmployed, false)--clock to get payed
 	self.lastDay = self.wclock.day
@@ -32,8 +32,8 @@ function Worker:update(dt)
 end
 
 function Worker:render()
-	setColor(colors["green"])--draw worker(green circle)
-	love.graphics.circle("fill", self.x + self.width * .25 + self.size, self.y + self.height * .75 / 2, self.size)
+	-- setColor(colors["green"])--draw worker(green circle)
+	-- love.graphics.circle("fill", self.x + self.width * .25 + self.size, self.y + self.height * .75 / 2, self.size)
 end
 
 function Worker:upgrade()

@@ -1,14 +1,14 @@
 Floor = Class{}
 
 
-function Floor:init(newFloor, floorNumber, workerData, cost)
+function Floor:init(newFloor, floorNumber, floorData, cost)
 
 	self.floorNumber = floorNumber
 	if not newFloor then
 		self.grid = Grid (newFloor, {
 			rows = 4,
 			cols = 4,
-			workerData = workerData--saved data for workers on a floor
+			data = floorData--saved data for workers on a floor
 		}, floorNumber)
 	else
 		self.grid = Grid (newFloor, {

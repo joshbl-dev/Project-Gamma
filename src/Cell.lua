@@ -13,9 +13,9 @@ function Cell:init(newFloor, defs, floorNumber, cellNum)
 	self.border = "line"--sets type of border around button
 
 	if not newFloor then--if it's not a new save file or new floor, then use saved data to make worker
-		self.cubicle = Cubicle {x = self.clickable.x, y = self.clickable.y, width = self.clickable.width, height = self.clickable.height, worker = defs.workerData, floorNum = floorNumber, cellNum = cellNum}
+		self.cubicle = Cubicle {x = self.clickable.x, y = self.clickable.y, width = self.clickable.width, height = self.clickable.height, data = defs.data, floorNum = floorNumber, cellNum = cellNum, floorNum = self.floorNumber}
 	else--otherwise, make a new worker
-		self.cubicle = Cubicle {x = self.clickable.x, y = self.clickable.y, width = self.clickable.width, height = self.clickable.height, worker = {false, 0}, floorNum = floorNumber, cellNum = cellNum}
+		self.cubicle = Cubicle {x = self.clickable.x, y = self.clickable.y, width = self.clickable.width, height = self.clickable.height, data = {false, 0, nil, math.random(self.floorNumber + 1, self.floorNumber + SPRITE_VARIANTS)}, floorNum = floorNumber, cellNum = cellNum, floorNum = self.floorNumber}
 	end
 
 	self.buyCubicle = UpgradeMenu ({--creates the option to buy a cubicle when a cell is clicked
@@ -81,15 +81,9 @@ end
 
 function Cell:render()
 	setColor(self.color)
-
-	if not self.cubicle.purchased or self.upgradeWorker.upgrading then
-		love.graphics.setColor(colors["black"])
-		love.graphics.rectangle(self.border, self.clickable.x, self.clickable.y, self.clickable.width, self.clickable.height)
-	end
 	
-	if self.cubicle.purchased and not self.upgradeWorker.upgrading then
-		self.cubicle:render()
-	elseif self.cubicle.purchased then
+	self.cubicle:render()
+	if self.cubicle.purchased then
 		self.upgradeWorker:render()
 	end
 
@@ -97,7 +91,7 @@ function Cell:render()
 end
 
 function Cell:getData()
-	return {self.cubicle.purchased, self.cubicle.worker.timeEmployed, self.cubicle.price}
+	return {self.cubicle.purchased, self.cubicle.worker.timeEmployed, self.cubicle.price, self.cubicle.spriteIndex}
 end
 
 

@@ -1,11 +1,11 @@
 -- size of actual window
-WINDOW_WIDTH = 800
-WINDOW_HEIGHT = 700
+WINDOW_WIDTH = 750
+WINDOW_HEIGHT = 650
 
 -- size to emulate with push
 
-VIRTUAL_WIDTH = 800
-VIRTUAL_HEIGHT = 700
+VIRTUAL_WIDTH = 750
+VIRTUAL_HEIGHT = 650
 
 colors = {
 		  	['blue'] = {65, 78, 150, 255}, 
@@ -31,9 +31,18 @@ sounds = {
 			["theme"] = love.audio.newSource("sounds/best-music-electronic-no-copyright-sounds.mp3")
 }
 
+
 graphics = {
-			["cubicle"] = love.graphics.newImage("graphics/temp_desk.png")
+			["desk_spritesheet"] = love.graphics.newImage("graphics/desk_spritesheet.png")
 }
+
+spriteTiles = {
+    ["cubicles"] = GenerateQuads(graphics["desk_spritesheet"], 120, 120)
+}
+
+
+SPRITE_VARIANTS = 3
+
 
 DEFAULT_REV = 100/30 --default revenue of worker per day
 DEFAULT_EXP = 10 --default salary of worker per month
