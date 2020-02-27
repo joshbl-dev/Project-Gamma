@@ -140,13 +140,7 @@ function MazeState:render()
 	-- renders
 	-- self.menu:render()
 	self.player:render()
-	for i, row in pairs(self.maze) do
-		for j, col in pairs(self.maze[i]) do
-			if self.maze[i][j].hasLadder then
-				self.maze[i][j]:render()
-			end
-		end
-	end
+	self.maze[ladderX][ladderY]:render()
 
 	-- Logo
     -- love.graphics.setFont(gFonts["medium"])

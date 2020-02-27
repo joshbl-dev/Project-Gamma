@@ -99,6 +99,8 @@ function GenerateGrid(index1, index2)
     end
 
     -- generate goal
+    ladderX = index1
+    ladderY = index2
     maze[index1][index2].hasLadder = true
 
     return maze, tokenCount
