@@ -153,25 +153,25 @@ function MazeState:render()
     -- love.graphics.setFont(gFonts["medium"])
 
     -- Goal Legend
-    love.graphics.setColor(79, 24, 219,255)
-	love.graphics.print("Goal: ", VIRTUAL_WIDTH / 2 + WALL_LENGTH * GRID_LENGTH / 2 + 50, VIRTUAL_HEIGHT - 50)
-	love.graphics.setColor(255, 255, 255, 255)
-	love.graphics.circle("line", VIRTUAL_WIDTH / 2 + WALL_LENGTH * GRID_LENGTH / 2 + 95, VIRTUAL_HEIGHT - 42, 2)
+ --    love.graphics.setColor(79, 24, 219,255)
+	-- love.graphics.print("Goal: ", VIRTUAL_WIDTH / 2 + WALL_LENGTH * GRID_LENGTH / 2 + 50, VIRTUAL_HEIGHT - 50)
+	-- love.graphics.setColor(255, 255, 255, 255)
+	-- love.graphics.circle("line", VIRTUAL_WIDTH / 2 + WALL_LENGTH * GRID_LENGTH / 2 + 95, VIRTUAL_HEIGHT - 42, 2)
 	
 
 	-- Token legend
-	love.graphics.setColor(79, 24, 219,255)
-    love.graphics.print("Tokens: ", VIRTUAL_WIDTH / 2 + WALL_LENGTH * GRID_LENGTH / 2 + 50, VIRTUAL_HEIGHT - 30)
-    love.graphics.setColor(242, 205, 43, 255)
-	love.graphics.circle("fill", VIRTUAL_WIDTH / 2 + WALL_LENGTH * GRID_LENGTH / 2 + 120, VIRTUAL_HEIGHT - 22, 2)
+	-- love.graphics.setColor(79, 24, 219,255)
+ --    love.graphics.print("Tokens: ", VIRTUAL_WIDTH / 2 + WALL_LENGTH * GRID_LENGTH / 2 + 50, VIRTUAL_HEIGHT - 30)
+ --    love.graphics.setColor(242, 205, 43, 255)
+	-- love.graphics.circle("fill", VIRTUAL_WIDTH / 2 + WALL_LENGTH * GRID_LENGTH / 2 + 120, VIRTUAL_HEIGHT - 22, 2)
 
 
 
 	-- Token and Level count
-	love.graphics.setColor(79, 24, 219,255)
-    -- love.graphics.print("Level: " .. tostring(self.data.level), VIRTUAL_WIDTH / 2 - 50, 20)
-    love.graphics.print("Tokens Found: " .. tostring(self.tokensLevelCount) .. " / " .. tostring(self.maxTokens), 
-    					VIRTUAL_WIDTH / 2 - 100, 35)
+	-- love.graphics.setColor(79, 24, 219,255)
+ --    -- love.graphics.print("Level: " .. tostring(self.data.level), VIRTUAL_WIDTH / 2 - 50, 20)
+ --    love.graphics.print("Tokens Found: " .. tostring(self.tokensLevelCount) .. " / " .. tostring(self.maxTokens), 
+ --    					VIRTUAL_WIDTH / 2 - 100, 35)
 
     -- total tokens
     -- love.graphics.print("Tokens: " .. tostring(self.data.tokens), 100, VIRTUAL_HEIGHT / 2 - 20)
