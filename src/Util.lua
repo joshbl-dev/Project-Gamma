@@ -112,6 +112,7 @@ function carveMaze(maze)
     -- maybe...
 
     -- maze bias
+    local trash math.random(#DIRECTIONS)
     local possibleDirs = DIRECTIONS[math.random(#DIRECTIONS)]
 
     -- Remove diagonol biased walls
