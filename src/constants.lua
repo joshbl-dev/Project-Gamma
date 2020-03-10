@@ -33,15 +33,17 @@ sounds = {
 
 
 graphics = {
-			["desk_spritesheet"] = love.graphics.newImage("graphics/desk_spritesheet.png")
+			["desk_spritesheet"] = love.graphics.newImage("graphics/desk_spritesheet.png"),
+			["chair_spritesheet"] = love.graphics.newImage("graphics/chair_spritesheet.png")
 }
 
 spriteTiles = {
-    ["cubicles"] = GenerateQuads(graphics["desk_spritesheet"], 120, 120)
+    ["cubicles"] = GenerateQuads(graphics["desk_spritesheet"], 120, 120),
+    ["chairs"] = GenerateQuads(graphics["chair_spritesheet"], 20, 20)
 }
 
 
-SPRITE_VARIANTS = 3
+SPRITE_VARIANTS = 6
 
 
 DEFAULT_REV = 100/30 --default revenue of worker per day
