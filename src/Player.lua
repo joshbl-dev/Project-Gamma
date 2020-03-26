@@ -1,6 +1,3 @@
--- Author: Josh Landsman
--- Email: laxisgood4u@gmail.com
-
 Player = Class{}
 
 function Player:init(x, y)
@@ -18,12 +15,7 @@ function Player:init(x, y)
 end
 
 function Player:update(dt)
-	-- update each skill
-	-- for _, skill in pairs(self.skills) do
-	-- 	skill:update(dt)
-	-- end
-
-
+	
 	-- movement
 	local speed = PLAYER_SPEED
 	-- sprint
@@ -59,8 +51,6 @@ function Player:collidesWithWall(wall, dt)
 		
 		then
 
-
-		-- gSounds['wall-hit']:play()
 		local speed = PLAYER_SPEED
 		-- if sprinting adjust
 		if love.keyboard.isDown("lshift") then
@@ -81,9 +71,6 @@ end
 
 
 function Player:render()
-	-- for _, skill in pairs(self.skills) do
-	-- 	skill:render()
-	-- end
 
 	love.graphics.setColor(66, 78, 244, 255)
 	love.graphics.rectangle("fill", self.x, self.y, self.length, self.length)

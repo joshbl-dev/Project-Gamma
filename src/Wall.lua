@@ -1,6 +1,3 @@
--- Author: Josh Landsman
--- Email: laxisgood4u@gmail.com
-
 Wall = Class{}
 
 function Wall:init(x1, y1, x2, y2)

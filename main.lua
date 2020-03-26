@@ -40,24 +40,11 @@ function love.load()
     achievementSystem = AchievementSystem(DEFAULT_ACHIEVEMENTS)
     local count = 1
     if (data) then
-        --print("Loading saved achievements")
         for i, achievement in pairs(achievementSystem.achievements) do
             achievement.unlocked = data[count]
-            --print(achievement.unlocked)
             count = count + 1
         end
     end
-    -- if (loadData()[5] ~= nil) then
-    --     achievements = loadData()[5]
-    --     print(achievements.unlocked)
-    --     -- for i, achievment in pairs(achievementSystem.achievments) do
-    --     --     print(i)
-    --     --     print(achievment.unlocked)
-    --     -- end
-    -- end
-    -- achievementSystem:addToQueue("test")
-    -- achievementSystem:addToQueue("test 2")
-
     -- saves last frames key actions
     love.keyboard.keysPressed = {}
     love.keyboard.keysReleased = {}

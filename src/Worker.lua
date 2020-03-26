@@ -32,8 +32,6 @@ function Worker:update(dt)
 end
 
 function Worker:render()
-	-- setColor(colors["green"])--draw worker(green circle)
-	-- love.graphics.circle("fill", self.x + self.width * .25 + self.size, self.y + self.height * .75 / 2, self.size)
 	love.graphics.draw(graphics["chair_spritesheet"], spriteTiles["chairs"][1], self.x + self.width / 2 - 10, self.y + self.height / 2)
 end
 

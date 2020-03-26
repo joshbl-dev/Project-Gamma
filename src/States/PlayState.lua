@@ -78,7 +78,6 @@ function PlayState:update(dt)
 		allSalary[1] = nil
 	end
 	if moneyLost ~= 0 then
-		--print(moneyLost)
 		money = money - moneyLost
 		self.textMoneyLost = moneyLost
 		self.showLostMoneyClock = Clock(0, 0, false, 0, false)
@@ -87,7 +86,6 @@ function PlayState:update(dt)
 	end
 	if self.showLostMoneyClock then
 		self.showLostMoneyClock:update(dt)
-		--print(self.showLostMoneyClock.seconds)
 	end
 	
 end
@@ -100,7 +98,6 @@ function PlayState:render()
 	setColor(colors["black"])
 	love.graphics.print("Money: $" .. (math.floor(money)), 100, 0)
 	if self.showLostMoneyClock and self.showLostMoneyClock.seconds < 3 then
-		--print(self.saveClock.seconds - self.lastSecond)
 		setColor(colors["red"])
 		love.graphics.print("-$" .. math.floor(self.textMoneyLost), 170, 20)
 	elseif self.showLostMoneyClock then

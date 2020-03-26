@@ -40,9 +40,6 @@ function saveReset()
     achievementSystem:reset()
     saveAchievementData(achievementSystem.achievements)
     print("Resetting saves...\n\n")
-    -- for i, achievement in pairs(achievementSystem.achievements) do
-    --     print(i .. ": " .. tostring(achievement.unlocked))
-    -- end
 end
 
 -- saves game data
