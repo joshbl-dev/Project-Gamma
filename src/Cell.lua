@@ -45,6 +45,8 @@ function Cell:init(newFloor, defs, floorNumber, cellNum)
 		buttonText = "Buy",
 		onClick = function() 
 			if self.upgradeWorker:purchase() then
+				local playState = stateMachine.current:getPlayState()
+			    stateMachine:change("flappy", {playState = playState, workerLevel = self.cubicle.worker.upgradeLevel})
 				self.cubicle.worker:upgrade()
 				print("Upgraded Worker")
 				self:newUpgradeWorker()

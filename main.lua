@@ -30,7 +30,8 @@ function love.load()
         ['settings'] = function() return SettingsState() end,
         ['achievment'] = function() return AchievementState() end,
         ['instructions'] = function() return InstructionsState() end,
-        ['maze'] = function() return MazeState() end
+        ['maze'] = function() return MazeState() end,
+        ['flappy'] = function() return FlappyState() end
             -- body
     }
 

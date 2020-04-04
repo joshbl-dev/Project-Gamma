@@ -14,6 +14,7 @@ require 'src/States/SettingsState'
 require 'src/States/AchievementState'
 require 'src/States/InstructionsState'
 require 'src/States/MazeState'
+require 'src/States/FlappyState'
 
 -- GUI
 require 'src/GUI/Clickable'
@@ -33,3 +34,6 @@ require 'src/AchievementSystem'
 require 'src/Player'
 require 'src/Block'
 require 'src/Wall'
+
+require 'src/Bird'
+require 'src/Pipe'
