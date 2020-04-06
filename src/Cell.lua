@@ -42,7 +42,7 @@ function Cell:init(newFloor, defs, floorNumber, cellNum)
 		height = self.clickable.height,
 		type = "Worker",
 		cost = (DEFAULT_UPGRADE_COST * (math.pow(1.5, floorNumber - 1)))*(math.pow(2, self.cubicle.worker.upgradeLevel)),
-		buttonText = "Buy",
+		buttonText = "Upgrade",
 		onClick = function() 
 			if self.upgradeWorker:purchase() then
 				local playState = stateMachine.current:getPlayState()
@@ -108,6 +108,8 @@ function Cell:newUpgradeWorker()
 		buttonText = "Buy",
 		onClick = function() 
 			if self.upgradeWorker:purchase() then
+				local playState = stateMachine.current:getPlayState()
+			    stateMachine:change("flappy", {playState = playState, workerLevel = self.cubicle.worker.upgradeLevel})
 				self.cubicle.worker:upgrade()
 				print("Upgraded Worker")
 				self:newUpgradeWorker()

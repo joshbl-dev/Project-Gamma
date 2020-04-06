@@ -19,11 +19,17 @@ function FlappyState:enter(params)
 end
 
 function FlappyState:update(dt)
+	if love.keyboard.isDown("9") then
+		self.playState:saveFloor()
+		stateMachine.current = self.playState
+	end
 	if #self.pipes == 0 or self.pipes[#self.pipes].x <= VIRTUAL_WIDTH - 200 and #self.pipes < self.maxPipes then
 		self.pipes[#self.pipes + 1] = Pipe()
 	end
 	for i in pairs(self.pipes) do
-		self.pipes[i]:update(dt)
+		if self.pipes[i].x > 0 - self.pipes[i].width then
+			self.pipes[i]:update(dt)
+		end
 	end
 	self.bird:update(dt)
 	if self.bird.reachedGoal and #self.pipes > 0 then
@@ -38,7 +44,9 @@ end
 function FlappyState:render()
 	love.graphics.clear(40, 45, 52, 255)
 	for i in pairs(self.pipes) do
-		self.pipes[i]:render()
+		if self.pipes[i].x > 0 - self.pipes[i].width then
+			self.pipes[i]:render()
+		end
 	end
 	self.bird:render()
 end
@@ -48,6 +56,11 @@ function FlappyState:touching()
 		if (self.bird.x > self.pipes[i].x and self.bird.x < self.pipes[i].x + self.pipes[i].width) and 
 		  ((self.bird.y > self.pipes[i].y and self.bird.y < self.pipes[i].gapY) or
 		  (self.bird.y > self.pipes[i].gapY + self.pipes[i].gapLength and self.bird.y < self.pipes[i].height)) then
+		  	return true
+		end
+		if (self.bird.x + self.bird.width > self.pipes[i].x and self.bird.x + self.bird.width < self.pipes[i].x + self.pipes[i].width) and 
+		  ((self.bird.y + self.bird.width > self.pipes[i].y and self.bird.y + self.bird.width < self.pipes[i].gapY) or
+		  (self.bird.y + self.bird.width > self.pipes[i].gapY + self.pipes[i].gapLength and self.bird.y + self.bird.width < self.pipes[i].height)) then
 		  	return true
 		end
 	end
