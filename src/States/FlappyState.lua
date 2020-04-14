@@ -4,7 +4,7 @@ function FlappyState:init()
 	self.pipes = {}
 	self.maxPipes = nil
 	self.bird = Bird()
-
+	self.popup = Popup("test")
 end
 
 function FlappyState:enter(params)
@@ -23,25 +23,30 @@ function FlappyState:update(dt)
 		self.playState:saveFloor()
 		stateMachine.current = self.playState
 	end
-	if #self.pipes == 0 or self.pipes[#self.pipes].x <= VIRTUAL_WIDTH - 200 and #self.pipes < self.maxPipes then
-		self.pipes[#self.pipes + 1] = Pipe()
-	end
-	for i in pairs(self.pipes) do
-		if self.pipes[i].x > 0 - self.pipes[i].width then
-			self.pipes[i]:update(dt)
+	if self.popup.pushed == true then
+		if #self.pipes == 0 or self.pipes[#self.pipes].x <= VIRTUAL_WIDTH - 200 and #self.pipes < self.maxPipes then
+			self.pipes[#self.pipes + 1] = Pipe()
 		end
-	end
-	self.bird:update(dt)
-	if self.bird.reachedGoal and #self.pipes > 0 then
-		self.playState:saveFloor()
-		stateMachine.current = self.playState
-	end
-	if self:touching() then
-		stateMachine:change('flappy', {playState = self.playState, workerLevel = self.maxPipes/3 - 1})
+		for i in pairs(self.pipes) do
+			if self.pipes[i].x > 0 - self.pipes[i].width then
+				self.pipes[i]:update(dt)
+			end
+		end
+		self.bird:update(dt)
+		if self.bird.reachedGoal and #self.pipes > 0 then
+			self.playState:saveFloor()
+			stateMachine.current = self.playState
+		end
+		if self:touching() then
+			stateMachine:change('flappy', {playState = self.playState, workerLevel = self.maxPipes/3 - 1})
+		end
+	else
+		self.popup:update(dt)
 	end
 end
 
 function FlappyState:render()
+	
 	love.graphics.clear(40, 45, 52, 255)
 	for i in pairs(self.pipes) do
 		if self.pipes[i].x > 0 - self.pipes[i].width then
@@ -49,6 +54,9 @@ function FlappyState:render()
 		end
 	end
 	self.bird:render()
+	if self.popup.pushed == false then
+		self.popup:render()
+	end
 end
 
 function FlappyState:touching()

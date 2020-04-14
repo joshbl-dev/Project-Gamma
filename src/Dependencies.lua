@@ -23,6 +23,7 @@ require 'src/GUI/UpgradeMenu'
 require 'src/GUI/Clock'
 require 'src/GUI/FloorChanger'
 require 'src/GUI/TriangleClickable'
+require 'src/GUI/Popup'
 
 require 'src/Floor'
 require 'src/Grid'
