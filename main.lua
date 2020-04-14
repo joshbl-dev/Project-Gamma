@@ -49,9 +49,9 @@ function love.load()
     -- saves last frames key actions
     love.keyboard.keysPressed = {}
     love.keyboard.keysReleased = {}
-
+    musicVolume = .5
     love.filesystem.setIdentity("Project-Gamma")
-    sounds["theme"]:setVolume(.5)
+    sounds["theme"]:setVolume(musicVolume)
     love.audio.play(sounds["theme"])
 
 end

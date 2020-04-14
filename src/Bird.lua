@@ -10,20 +10,19 @@ end
 
 function Bird:update(dt)
 	-- movement
-	-- normal movement, only can move in one direction
-	if love.keyboard.isDown("w") or love.keyboard.isDown("up") then
+	if love.keyboard.isDown("w") or love.keyboard.isDown("up") and self.y - self.speed * dt > 0 then
 		self.y = self.y - self.speed * dt
 	end
-	if love.keyboard.isDown("s") or love.keyboard.isDown("down") then
+	if love.keyboard.isDown("s") or love.keyboard.isDown("down") and self.y + self.speed * dt < VIRTUAL_HEIGHT then
 		self.y = self.y + self.speed * dt
 	end
-	if love.keyboard.isDown("a") or love.keyboard.isDown("left") then
+	if love.keyboard.isDown("a") or love.keyboard.isDown("left") and self.x - self.speed * dt > 0 then
 		self.x = self.x - self.speed * dt
 	end
 	if love.keyboard.isDown("d") or love.keyboard.isDown("right") then
 		self.x = self.x + self.speed * dt
 	end
-	if self.x >= VIRTUAL_WIDTH then
+	if self.x >= VIRTUAL_WIDTH - self.width then
 		self.reachedGoal = true
 		self.x = 100
 		self.y = VIRTUAL_HEIGHT/2
