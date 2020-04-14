@@ -30,26 +30,26 @@ end
 
 function MazeState:update(dt)
 	-- debugging keycombo
-	if love.keyboard.isDown("=") and love.keyboard.isDown("-") and not DEPLOYED then
-		DEBUGGING = not DEBUGGING
-		-- prevent double click
-		love.timer.sleep(.2)
-	end 
+	-- if love.keyboard.isDown("=") and love.keyboard.isDown("-") and not DEPLOYED then
+	-- 	DEBUGGING = not DEBUGGING
+	-- 	-- prevent double click
+	-- 	love.timer.sleep(.2)
+	-- end 
 
-	if love.keyboard.isDown("[") and DEBUGGING then
-		self.data.tokens = self.data.tokens + 1
-		-- prevent double click
-		love.timer.sleep(.2)
-	end 
+	-- if love.keyboard.isDown("[") and DEBUGGING then
+	-- 	self.data.tokens = self.data.tokens + 1
+	-- 	-- prevent double click
+	-- 	love.timer.sleep(.2)
+	-- end 
 
 	-- updates
 	self.player:update(dt)
 
-	if love.keyboard.isDown("8") and not DEPLOYED then
-		self.playState:saveFloor()
-		print(#self.playState.floorChanger.floors)
-		stateMachine.current = self.playState
-	end 
+	-- if love.keyboard.isDown("8") and not DEPLOYED then
+	-- 	self.playState:saveFloor()
+	-- 	print(#self.playState.floorChanger.floors)
+	-- 	stateMachine.current = self.playState
+	-- end 
 
 	-- collisions
 	for i, row in pairs(self.maze) do

@@ -39,7 +39,3 @@ function Worker:upgrade()
 	self.upgradeLevel = self.upgradeLevel + 1
 	self.rev = self.rev + (10/3 * (self.upgradeLevel))
 end
-
-
-
-
