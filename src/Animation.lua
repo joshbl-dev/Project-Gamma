@@ -9,6 +9,7 @@ function Animation:init(def)
     self.timer = 0
     self.currentFrame = 1
 
+-- Check if animation loop complete
     self.timesPlayed = 0
 end
 
@@ -19,10 +20,12 @@ function Animation:refresh()
 end
 
 function Animation:update(dt)
+    -- stop at end of animation
     if not self.looping and self.timesPlayed > 0 then
         return
     end
 
+    -- only animate if more than one frame
     if #self.frames > 1 then
         self.timer = self.timer + dt
 
@@ -31,6 +34,7 @@ function Animation:update(dt)
 
             self.currentFrame = math.max(1, (self.currentFrame + 1) % (#self.frames + 1))
 
+            -- looped to beginning (complete loop)
             if self.currentFrame == 1 then
                 self.timesPlayed = self.timesPlayed + 1
             end
