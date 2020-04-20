@@ -10,13 +10,13 @@ end
 
 function Bird:update(dt)
 	-- movement
-	if love.keyboard.isDown("w") or love.keyboard.isDown("up") and self.y - self.speed * dt > 0 then
+	if love.keyboard.isDown("w") or love.keyboard.isDown("up") and self.y - (self.speed * dt) > 0 then
 		self.y = self.y - self.speed * dt
 	end
-	if love.keyboard.isDown("s") or love.keyboard.isDown("down") and self.y + self.speed * dt < VIRTUAL_HEIGHT then
+	if love.keyboard.isDown("s") or love.keyboard.isDown("down") and self.y + (self.speed * dt) < VIRTUAL_HEIGHT - self.width then
 		self.y = self.y + self.speed * dt
 	end
-	if love.keyboard.isDown("a") or love.keyboard.isDown("left") and self.x - self.speed * dt > 0 then
+	if love.keyboard.isDown("a") or love.keyboard.isDown("left") and self.x - (self.speed * dt) > 0 then
 		self.x = self.x - self.speed * dt
 	end
 	if love.keyboard.isDown("d") or love.keyboard.isDown("right") then

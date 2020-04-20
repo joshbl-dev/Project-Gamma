@@ -4,7 +4,7 @@ function FlappyState:init()
 	self.pipes = {}
 	self.maxPipes = nil
 	self.bird = Bird()
-	--self.popup = Popup("test")
+	self.popup = Popup("Make it to the right side of the screen\nwithout touching the bars. Use WASD or\nthe arrow keys to move. The number of\nbars corresponds to the level of the\nworker times 3.")
 end
 
 function FlappyState:enter(params)
@@ -23,7 +23,7 @@ function FlappyState:update(dt)
 		self.playState:saveFloor()
 		stateMachine.current = self.playState
 	end
-	--if self.popup.pushed == true then
+	if self.popup.pushed == true then
 		if #self.pipes == 0 or self.pipes[#self.pipes].x <= VIRTUAL_WIDTH - 200 and #self.pipes < self.maxPipes then
 			self.pipes[#self.pipes + 1] = Pipe()
 		end
@@ -40,9 +40,9 @@ function FlappyState:update(dt)
 		if self:touching() then
 			stateMachine:change('flappy', {playState = self.playState, workerLevel = self.maxPipes/3 - 1})
 		end
-	--else
-		--self.popup:update(dt)
-	--end
+	else
+		self.popup:update(dt)
+	end
 end
 
 function FlappyState:render()
@@ -54,9 +54,9 @@ function FlappyState:render()
 		end
 	end
 	self.bird:render()
-	--if self.popup.pushed == false then
-		--self.popup:render()
-	--end
+	if self.popup.pushed == false then
+		self.popup:render()
+	end
 end
 
 function FlappyState:touching()
