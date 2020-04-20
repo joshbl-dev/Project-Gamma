@@ -45,11 +45,11 @@ function MazeState:update(dt)
 	-- updates
 	self.player:update(dt)
 
-	-- if love.keyboard.isDown("8") and not DEPLOYED then
-	-- 	self.playState:saveFloor()
-	-- 	print(#self.playState.floorChanger.floors)
-	-- 	stateMachine.current = self.playState
-	-- end 
+	if love.keyboard.isDown("8") and not DEPLOYED then
+		self.playState:saveFloor()
+		print(#self.playState.floorChanger.floors)
+		stateMachine.current = self.playState
+	end 
 
 	-- collisions
 	for i, row in pairs(self.maze) do

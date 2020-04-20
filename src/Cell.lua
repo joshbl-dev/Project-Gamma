@@ -15,7 +15,7 @@ function Cell:init(newFloor, defs, floorNumber, cellNum)
 	if not newFloor then--if it's not a new save file or new floor, then use saved data to make worker
 		self.cubicle = Cubicle {x = self.clickable.x, y = self.clickable.y, width = self.clickable.width, height = self.clickable.height, data = defs.data, floorNum = floorNumber, cellNum = cellNum, floorNum = self.floorNumber}
 	else--otherwise, make a new worker
-		self.cubicle = Cubicle {x = self.clickable.x, y = self.clickable.y, width = self.clickable.width, height = self.clickable.height, data = {false, 0, nil, math.random(self.floorNumber + 1, self.floorNumber + SPRITE_VARIANTS)}, floorNum = floorNumber, cellNum = cellNum, floorNum = self.floorNumber}
+		self.cubicle = Cubicle {x = self.clickable.x, y = self.clickable.y, width = self.clickable.width, height = self.clickable.height, data = {false, 0, nil, math.random(self.floorNumber + 1, self.floorNumber + SPRITE_VARIANTS), 0}, floorNum = floorNumber, cellNum = cellNum, floorNum = self.floorNumber}
 	end
 
 	self.buyCubicle = UpgradeMenu ({--creates the option to buy a cubicle when a cell is clicked
@@ -93,7 +93,7 @@ function Cell:render()
 end
 
 function Cell:getData()
-	return {self.cubicle.purchased, self.cubicle.worker.timeEmployed, self.cubicle.price, self.cubicle.spriteIndex}
+	return {self.cubicle.purchased, self.cubicle.worker.timeEmployed, self.cubicle.price, self.cubicle.spriteIndex, self.cubicle.worker.upgradeLevel}
 end
 
 

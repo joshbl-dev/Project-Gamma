@@ -16,7 +16,7 @@ function Worker:init(defs)
 	self.lastDay = self.wclock.day
 	-- money made for player (+)
 	self.rev = DEFAULT_REV * (math.pow(1.25, defs.floorNum - 1))
-	self.upgradeLevel = 0
+	self.upgradeLevel = defs.data[5]
 end
 
 function Worker:update(dt)
