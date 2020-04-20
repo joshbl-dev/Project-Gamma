@@ -24,7 +24,7 @@ function SettingsState:init()
 			y = VIRTUAL_HEIGHT / 2 - buttonHeight / 2,
 			width = buttonWidth,
 			height = buttonHeight,
-			text = "Volume\n\t" .. musicVolume, onClick = function()
+			text = "Volume " .. musicVolume, onClick = function()
 				musicVolume = musicVolume + .1
 				if (musicVolume > 1) then
 					musicVolume = 0
