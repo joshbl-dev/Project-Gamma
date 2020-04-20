@@ -34,12 +34,14 @@ sounds = {
 
 graphics = {
 			["desk_spritesheet"] = love.graphics.newImage("graphics/desk_spritesheet.png"),
-			["chair_spritesheet"] = love.graphics.newImage("graphics/chair_spritesheet.png")
+			["chair_spritesheet"] = love.graphics.newImage("graphics/chair_spritesheet.png"),
+			["worker_spritesheet"] = love.graphics.newImage("graphics/worker_spritesheet.png")
 }
 
 spriteTiles = {
     ["cubicles"] = GenerateQuads(graphics["desk_spritesheet"], 120, 120),
-    ["chairs"] = GenerateQuads(graphics["chair_spritesheet"], 20, 20)
+    ["chairs"] = GenerateQuads(graphics["chair_spritesheet"], 20, 20),
+    ["worker"] = GenerateQuads(graphics["chair_spritesheet"], 92, 208)
 }
 
 

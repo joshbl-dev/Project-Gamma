@@ -38,3 +38,6 @@ require 'src/Wall'
 
 require 'src/Bird'
 require 'src/Pipe'
+
+require'src/worker_defs.lua'
+require 'Animation.lua'
