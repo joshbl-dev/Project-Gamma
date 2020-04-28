@@ -29,7 +29,7 @@ function InstructionsState:render()
 		button:render()
 	end
 	setColor(colors["black"])
-	love.graphics.print("When you first load into the game, there will be a mostly blank screen with a \nclock at the top, a back to menu button, and a floor changer in the bottom left\ncorner.", 45, 100)
-	love.graphics.print("Click the button to buy a floor. A grid will appear with a cubicle and worker \nalready bought. You can buy more workers for a randomized price, or you can\nclick on existing workers to buy upgrades.", 45, 160)
-	love.graphics.print("You can also buy more floors. As the floors go up, the more costly they\nbecome, but the more money they make you as well. Workers will get payed\nat the end of every month, so plan accordingly.", 45, 220 )
+	love.graphics.print("When you first load into the game, there will be a mostly blank screen with a \nclock at the top, a back to menu button, and a floor changer in the bottom left\ncorner.", 25, 100)
+	love.graphics.print("Click the button to buy a floor. A grid will appear with a cubicle and worker \nalready bought. You can buy more workers for a randomized price, or you can\nclick on existing workers to buy upgrades.", 25, 160)
+	love.graphics.print("You can also buy more floors. As the floors go up, the more costly they\nbecome, but the more money they make you as well. Workers will get payed\nat the end of every month, so plan accordingly.", 25, 220 )
 end
