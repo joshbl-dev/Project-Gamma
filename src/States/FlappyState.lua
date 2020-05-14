@@ -33,7 +33,7 @@ function FlappyState:update(dt)
 			end
 		end
 		self.bird:update(dt)
-		if self.bird.reachedGoal and #self.pipes > 0 then
+		if self.bird.reachedGoal then
 			self.playState:saveFloor()
 			stateMachine.current = self.playState
 		end
