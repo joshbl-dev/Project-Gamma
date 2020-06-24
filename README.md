@@ -1,4 +1,3 @@
-IDLE GAME -- In Development --
+IDLE GAME
 
-GitHub proxy add command: git config --global --add remote.origin.proxy "" 
-GitHub proxy unset command: git config --global --unset-all remote.origin.proxy
+A mixture of different games to idle with.
